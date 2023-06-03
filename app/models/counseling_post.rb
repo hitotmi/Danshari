@@ -1,0 +1,2 @@
+class CounselingPost < ApplicationRecord
+end
