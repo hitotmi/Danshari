@@ -1,0 +1,50 @@
+<%= form_with model: counseling_post do |f| %>
+  <div class="form-group">
+    <%= f.label :image, "画像", class: "font-weight-bold" %></br>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, "相談タイトル", class: "font-weight-bold" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, "相談内容", class: "font-weight-bold" %>
+    <%= f.text_area :content, placeholder: "相談投稿（相談内容）", class: "form-control", rows: 5 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :usage_frequency, "使用頻度を選択してください", class: "font-weight-bold" %><br>
+    <%= f.select :usage_frequency, options_for_select(CounselingPost.usage_frequencies_i18n.keys.map { |key| [CounselingPost.usage_frequencies_i18n[key], key] }, counseling_post.usage_frequency), include_blank: "選択してください" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :star,"お気に入り度を入力してください", class: "font-weight-bold" %>
+    <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+    <div id="stars"></div>
+  </div>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#stars');
+      if (elem == null)return;
+        elem.innerHTML = ""
+        let opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'counseling_post[star]',
+        score: "<%= isEdit ? counseling_post.star : 0 %>"
+      };
+      raty(elem,opt);
+    });
+  </script>
+
+
+  <% if counseling_post.id.nil? %>
+    <%= f.hidden_field :status, value: "answer_reception" %>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :status, "ステータスを選択してください" %><br>
+      <%= f.select :status, options_for_select(CounselingPost.statuses_i18n.keys.map { |key| [CounselingPost.statuses_i18n[key], key] }, counseling_post.status), include_blank: "選択してください" %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "投稿", class: "btn btn-color w-100" %>
+  </div>
+<% end %>
