@@ -1,0 +1,2 @@
+module Admin::CounselingPostsHelper
+end
