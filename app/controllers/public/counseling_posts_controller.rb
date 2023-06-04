@@ -20,6 +20,7 @@ class Public::CounselingPostsController < ApplicationController
 
   def show
     @counseling_post = CounselingPost.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :users,  only: [:index, :show, :edit, :update]
     resources :counseling_posts,  only: [:index, :show, :destroy]
-    resources :answers, only: :destroy
+    resources :post_coments, only: :destroy
   end
 
   scope module: :public do
@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     resources :counseling_posts do
       resource :favorites, only: [:create, :destroy]
       resource :votes, only: [:create, :destroy]
-      resources :answers, only: [:create, :destroy] do
-        resource :good_answers, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy] do
+        resource :good_comments, only: [:create, :destroy]
       end
     end
     get "ranking" => "users#ranking"
