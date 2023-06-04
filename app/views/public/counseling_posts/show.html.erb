@@ -35,6 +35,7 @@
     <div class="col-12">
       <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
       <%= render "public/post_comments/index", counseling_post: @counseling_post %>
+      <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
     </div>
   </div>
 

@@ -3,6 +3,7 @@ class CounselingPost < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :post_comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :title, presence:true
   validates :content, length: { maximum: 200 }, presence:true

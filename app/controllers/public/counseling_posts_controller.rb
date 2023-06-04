@@ -21,6 +21,8 @@ class Public::CounselingPostsController < ApplicationController
   def show
     @counseling_post = CounselingPost.find(params[:id])
     @post_comment = PostComment.new
+    @vote =  @counseling_post.votes.build
+    @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
   end
 
   def edit

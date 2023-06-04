@@ -1,0 +1,51 @@
+<table class="table table-bordered mt-5 mb-5">
+  <thead>
+    <tr>
+      <th class="text-center">捨てる</th>
+      <th class="text-center">捨てない</th>
+      <th class="text-center">どちらでもよい</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
+      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
+      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="mt-5">Ｑ捨てるべきですか？捨てないべきですか？</h3>
+<div>
+  <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), method: :post do |f| %>
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">
+          <label class="btn discard-btn">
+            <%= f.radio_button :option, 'discard' %>
+            <%= f.label :option_discard, '捨てる', class: "btn btn-block btn-color" %>
+          </label>
+          <label class="btn keep-btn">
+            <%= f.radio_button :option, 'keep' %>
+            <%= f.label :option_keep, '捨てない', class: "btn btn-block btn-color mt-1" %>
+          </label>
+          <label class="btn either-btn">
+            <%= f.radio_button :option, 'either' %>
+            <%= f.label :option_either, 'どちらでもよい', class: "btn btn-block btn-color mt-1" %>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <p>※投票は1人1回までです</p>
+        <% if user_vote %>
+          <p><strong>あなたは「<%= user_vote.option_i18n %>」に投票済です</strong></p>
+        <% end %>
+        <%= f.submit '投票', class: "btn btn-primary btn-block mt-2" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div>
+  <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-block mt-1' %>
+</div>
