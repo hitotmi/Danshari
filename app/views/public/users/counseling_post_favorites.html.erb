@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center">ためになった相談一覧</h2>
+  <h2 class="text-center">参考になった相談一覧</h2>
   <div class="row">
     <div class="col-12">
       <% if @counseling_posts.present? %>
@@ -19,12 +19,15 @@
                 <td style="width: 20%">
                   <%= link_to "詳細",counseling_post_path(counseling_post.id), class: "btn btn-dark" %>
                 </td>
+                <td style="width: 20%">
+                  <%= render "public/favorites/btn", counseling_post: counseling_post %>
+                </td>
               </tr>
             </tbody>
           <% end %>
         </table>
       <% else %>
-        <p>ためになった相談はまだありません</p>
+        <p>参考になった相談はまだありません</p>
       <% end %>
     </div>
   </div>
