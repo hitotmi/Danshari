@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
+      質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %><br>
+      <h3 class="mt-5"><strong>相談者</strong></h3><br>
+      <div class="d-flex align-items-end">
+        <%= link_to user_path(@counseling_post.user_id) do %>
+          <%= image_tag @counseling_post.user.get_profile_image(80,80), class: "rounded-circle bordered-image mt-2" %>
+        <% end %>
+        <%= link_to @counseling_post.user.name, user_path(@counseling_post.user_id), class: "ml-1 mb-0" %>さん
+      </div>
+    </div>
+    <div class="col-6">
+      <div>
+        <h1 class="show-underline-text"><%= @counseling_post.status_i18n %></h1>
+        <% if current_user.id == @counseling_post.user_id %>
+          <%= link_to "編集", edit_counseling_post_path(@counseling_post), class: "btn btn-color" %>
+          <%= link_to "削除" , counseling_post_path(@counseling_post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-color ml-2" %>
+        <% end %>
+      </div>
+      <div class="card-border p-3 mt-4">
+        <h3 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h3>
+        <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
+        <div class="d-flex align-items-center mt-5">
+          <div class="mr-2">お気に入り度： </div>
+          <%= render "star", counseling_post: @counseling_post %>
+        </div>
+        <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
+      </div>
+    </div>
+  </div>
+</div>

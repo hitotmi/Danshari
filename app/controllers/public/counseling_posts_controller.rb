@@ -19,12 +19,26 @@ class Public::CounselingPostsController < ApplicationController
   end
 
   def show
+    @counseling_post = CounselingPost.find(params[:id])
   end
 
   def edit
+    @counseling_post = CounselingPost.find(params[:id])
+  end
+
+  def update
+    @counseling_post = CounselingPost.find(params[:id])
+    if  @counseling_post.update(counseling_post_params)
+      redirect_to counseling_post_path(@counseling_post)
+    else
+      render :edit
+    end
   end
 
   def destory
+    @counseling_post = CounselingPost.find(params[:id])
+    @counseling_post.destroy
+    redirect_to counseling_posts_path
   end
 
   def counseling_post_params
