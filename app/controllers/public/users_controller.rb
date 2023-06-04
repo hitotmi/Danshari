@@ -24,6 +24,10 @@ class Public::UsersController < ApplicationController
   def withdraw
   end
 
+  def counseling_post_favorites
+    @counseling_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc)
+  end
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted)
   end

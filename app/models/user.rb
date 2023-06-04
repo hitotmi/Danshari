@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :counseling_posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :counseling_post_favoirtes, through: :favorites, source: :counseling_post
 
 
   def get_profile_image(width, height)
