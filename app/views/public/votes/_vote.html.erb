@@ -47,5 +47,7 @@
   <% end %>
 </div>
 <div>
-  <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-block mt-1' %>
+  <% if counseling_post.voted_by?(current_user) %>
+ 　　 <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-block mt-1' %>
+  <% end %>
 </div>

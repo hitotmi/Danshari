@@ -13,9 +13,13 @@ class CounselingPost < ApplicationRecord
   enum status: { answer_reception: "回答受付中", resolved: "解決済" }
   enum usage_frequency: { everyday: "毎日", weeks_once: "週に1回", month_once: "月に1回", once_to_half_year: "半年に1回", once_to_1_year: "1年に1回", unused: "ほとんど使っていない" }
 
-    def favorited_by?(user)
-      favorites.exists?(user_id: user.id)
-    end
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+    
+  def voted_by?(user)
+    votes.exists?(user_id: user.id)
+  end
 
 
   def get_image

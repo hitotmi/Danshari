@@ -1,7 +1,7 @@
-<div id="rate_<%= counseling_post.id %>"></div>
+<div id="star_<%= counseling_post.id %>"></div>
 <script>
 $(document).on('turbolinks:load', function() {
-  let elem = document.querySelector('#rate_<%= counseling_post.id %>');
+  let elem = document.querySelector('#star_<%= counseling_post.id %>');
   if (elem == null) return;
 
   elem.innerHTML = "";
