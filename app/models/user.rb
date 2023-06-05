@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :good_comments, through: :post_comments, dependent: :destroy
 
 
+  # ユーザーのgood_commentsの数（グッドアドバイス数）を取得します。
   def total_good_comments_count
     good_comments.count
   end
