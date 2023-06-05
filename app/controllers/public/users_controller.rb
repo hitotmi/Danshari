@@ -23,6 +23,11 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会手続きが完了しました。ご利用ありがとうございました。"
+    redirect_to root_path
   end
 
   # ユーザーが参考になった相談に登録した相談投稿の一覧を取得します。

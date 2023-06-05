@@ -2,6 +2,8 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :user_status, only: [:create]
+
 
   # GET /resource/sign_in
   # def new
@@ -33,6 +35,23 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     flash[:notice] = "ログアウトに成功しました。"
     root_path
+  end
+
+
+  protected
+
+  # ログインしようとしたユーザーが退会済みなら新規登録画面へ遷移させる。
+  def user_status
+    @user = User.find_by(email: params[:user][:email])
+    ## アカウントを取得できなかった場合、このメソッドを終了する
+    return if !@user
+
+    ##取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    ##ユーザーが退会済みなら新規登録画面に遷移させる
+    if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+      flash[:notice] = "退会済みの為、再度ご登録してご利用ください"
+      redirect_to new_user_registration_path
+    end
   end
 
 end
