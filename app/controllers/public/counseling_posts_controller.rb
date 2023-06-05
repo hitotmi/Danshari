@@ -15,7 +15,12 @@ class Public::CounselingPostsController < ApplicationController
   end
 
   def index
-    @counseling_posts = CounselingPost.all.order(created_at: :desc)
+    if params[:content].present?
+      @content = params[:content]
+      @counseling_posts =  CounselingPost.search_for(@content)
+    else
+      @counseling_posts = CounselingPost.all.order(created_at: :desc)
+    end
   end
 
   def show

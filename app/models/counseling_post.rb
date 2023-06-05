@@ -22,6 +22,14 @@ class CounselingPost < ApplicationRecord
   end
 
 
+  def self.search_for(content)
+    if content.present?
+       CounselingPost.where('title LIKE :search OR content LIKE :search', search: "%#{content}%")
+    else
+      CounselingPost.all
+    end
+  end
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
