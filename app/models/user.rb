@@ -13,7 +13,12 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :counseling_post_favoirtes, through: :favorites, source: :counseling_post
-  has_many :good_comments, dependent: :destroy
+  has_many :good_comments, through: :post_comments, dependent: :destroy
+
+
+  def total_good_comments_count
+    good_comments.count
+  end
 
 
   def get_profile_image(width, height)

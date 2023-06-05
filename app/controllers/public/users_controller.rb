@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
   def show
      @user = User.find(params[:id])
      @counseling_posts = @user.counseling_posts
+     @good_comments_count = @user.total_good_comments_count
   end
 
   def edit
