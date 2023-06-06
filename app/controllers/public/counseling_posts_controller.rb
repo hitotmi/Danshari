@@ -18,6 +18,9 @@ class Public::CounselingPostsController < ApplicationController
     if params[:content].present?
       @content = params[:content]
       @counseling_posts =  CounselingPost.search_for(@content)
+    elsif params[:tag_ids].present?
+      tag_post_ids = PostTag.where(tag_id: params[:tag_ids]).pluck(:counseling_post_id)
+      @counseling_posts = CounselingPost.where(id: tag_post_ids).order(created_at: :desc)
     else
       @counseling_posts = CounselingPost.all.order(created_at: :desc)
     end
@@ -50,7 +53,7 @@ class Public::CounselingPostsController < ApplicationController
   end
 
   def counseling_post_params
-    params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star)
+    params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star , tag_ids: [])
   end
 
 end

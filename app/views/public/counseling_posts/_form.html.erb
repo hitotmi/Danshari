@@ -3,18 +3,22 @@
     <%= f.label :image, "画像", class: "font-weight-bold" %></br>
     <%= f.file_field :image, accept: "image/*" %>
   </div>
+
   <div class="form-group">
     <%= f.label :title, "相談タイトル", class: "font-weight-bold" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
+
   <div class="form-group">
     <%= f.label :content, "相談内容", class: "font-weight-bold" %>
     <%= f.text_area :content, placeholder: "相談投稿（相談内容）", class: "form-control", rows: 5 %>
   </div>
+
   <div class="form-group">
     <%= f.label :usage_frequency, "使用頻度を選択してください", class: "font-weight-bold" %><br>
     <%= f.select :usage_frequency, options_for_select(CounselingPost.usage_frequencies_i18n.keys.map { |key| [CounselingPost.usage_frequencies_i18n[key], key] }, counseling_post.usage_frequency), include_blank: "選択してください" %>
   </div>
+
   <div class="form-group">
     <%= f.label :star,"お気に入り度を入力してください", class: "font-weight-bold" %>
     <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
@@ -35,6 +39,19 @@
     });
   </script>
 
+  <div class="form-group">
+    <%= f.label :tag_ids, "タグの一覧", class: "font-weight-bold" %>
+    <div class="d-flex flex-wrap">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class="form-check mr-3">
+          <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <% if counseling_post.id.nil? %>
     <%= f.hidden_field :status, value: "answer_reception" %>

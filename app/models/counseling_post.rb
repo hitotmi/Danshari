@@ -5,6 +5,8 @@ class CounselingPost < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_tags,dependent: :destroy
+  has_many :tags,through: :post_tags
 
   validates :title, presence:true
   validates :content, length: { maximum: 200 }, presence:true
@@ -16,7 +18,7 @@ class CounselingPost < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-    
+
   def voted_by?(user)
     votes.exists?(user_id: user.id)
   end

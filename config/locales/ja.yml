@@ -21,9 +21,9 @@ ja:
         either: 'どちらでもよい'
 
 
-  datetime:
-    distance_in_words:
-      x_days: "%{count}日"
-      about_x_hours: "%{count}時間"
-      x_minutes: "%{count}分"
-      less_than_x_minutes: "1分未満"
+    datetime:
+      distance_in_words:
+        x_days: "%{count}日"
+        about_x_hours: "%{count}時間"
+        x_minutes: "%{count}分"
+        less_than_x_minutes: "1分未満"

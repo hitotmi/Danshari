@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
 
-  #ランキングで表示するトータル数取得。
+  #ランキングで表示するトータル数を取得。
   def good_comments_count
     good_comments_through_post_comments.created_this_month.count
   end
