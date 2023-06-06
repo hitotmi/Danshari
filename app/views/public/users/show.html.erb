@@ -17,13 +17,15 @@
           <tr>
             <th class="text-center">相談数</th>
             <th class="text-center">回答数</th>
-            <th class="text-center">グッドアドバイス数</th>
+            <th class="text-center">投票数</th>
+            <th class="text-center col-3">グッドアドバイス数</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th class="text-center"><%= @user.counseling_posts.count %></th>
             <th class="text-center"><%= @user.post_comments.count %></th>
+            <th class="text-center"><%= @user.votes.count %></th>
             <th class="text-center"><%= @good_comments_count %></th>
           </tr>
         </tbody>
