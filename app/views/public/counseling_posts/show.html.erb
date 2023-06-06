@@ -4,7 +4,9 @@
       <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
       <div class="d-flex justify-content-between mt-2">
         <div>質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %></div>
-        <%= render "public/favorites/btn", counseling_post: @counseling_post %>
+        <div id="favorite_btn_<%=  @counseling_post.id %>">
+          <%= render "public/favorites/btn", counseling_post: @counseling_post %>
+        </div>
       </div>
       <h3 class="mt-5"><strong>相談者</strong></h3><br>
       <div class="d-flex align-items-end">
