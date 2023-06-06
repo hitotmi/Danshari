@@ -6,11 +6,11 @@
   <div class="card-body answer-card mb-1">
     <% counseling_post.post_comments.each do |post_comment| %>
       <div class="d-flex align-items-start mt-2">
-        <%= link_to user_path(post_comment.user_id) do %>
+        <%= link_to user_path(post_comment.user_id), remote: true do %>
           <%= image_tag post_comment.user.get_profile_image(50, 50), class: "rounded-circle mr-3 user-image" %>
         <% end %>
         <div>
-          <%= link_to user_path(post_comment.user_id) do %>
+          <%= link_to user_path(post_comment.user_id), remote: true do %>
             <p class="card-title mb-0 user-name"><%= post_comment.user.name %>さん</p>
           <% end %>
           <p class="card-text mb-0"><small><%= time_ago_in_words(post_comment.created_at) %>前</small></p>
@@ -21,7 +21,7 @@
         <%= render "public/good_comments/btn", counseling_post: counseling_post, post_comment: post_comment %>
         <% if post_comment.user == current_user %>
           <div class="d-flex justify-content-end mb-1">
-            <%= link_to "削除", counseling_post_post_comment_path(post_comment.counseling_post, post_comment), method: :delete %>
+            <%= link_to "削除", counseling_post_post_comment_path(post_comment.counseling_post, post_comment), remote: true, method: :delete %>
           </div>
         <% end %>
       </div>
