@@ -31,6 +31,13 @@
           <%= render "star", counseling_post: @counseling_post %>
         </div>
         <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
+        <% if @counseling_post.tags.present? %>
+          <% @counseling_post.tags.each do |tag| %>
+            <%= link_to counseling_posts_path(tag_ids: tag.id) do %>
+              <span>#<%=tag.name%></span>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
