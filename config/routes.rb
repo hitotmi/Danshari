@@ -33,7 +33,9 @@ Rails.application.routes.draw do
       end
     end
     get "ranking" => "users#ranking"
-    resources :notifications, only: [:index, :destroy]
+    resources :notifications, only: [:index, :destroy] do
+      post :mark_read, on: :member
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

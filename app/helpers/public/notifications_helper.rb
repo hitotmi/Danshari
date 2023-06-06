@@ -3,7 +3,7 @@ module Public::NotificationsHelper
   def notification_form(notification)
     @visitor = notification.visitor
     @visitor_comment = notification.post_comment_id
-    @post_comment = PostComment.find_by(id: @visitor_comment)&.comment
+    # @post_comment = PostComment.find_by(id: @visitor_comment)&.comment
 
     case notification.action
     when "post_comment"
@@ -12,6 +12,10 @@ module Public::NotificationsHelper
     # when "good_comment"
     # when "favorite"
     end
+  end
+
+  def get_post_comment(notification)
+    PostComment.find_by(id: notification.post_comment_id)&.comment
   end
 
 end

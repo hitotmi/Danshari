@@ -1,13 +1,19 @@
 <% visitor = notification.visitor %>
-<% counseling_post = notification.counseling_post_id %>
 
 <div class="user-view clearfix pb-1 pt-1 notification" style="border-bottom: 1px solid #c0c0c0;">
   <%= link_to user_path(notification.visitor) do %>
     <%= image_tag visitor.get_profile_image(60,60), class: "rounded-circle user-image" %>
   <% end %>
-  <%= notification_form(notification) %><span><%= " (#{time_ago_in_words(notification.created_at.in_time_zone("Tokyo"))} 前)" %></span>
+  <%= notification_form(notification) %>
+  <span><%= " (#{time_ago_in_words(notification.created_at.in_time_zone("Tokyo"))} 前)" %></span>
+  <% if notification.checked %>
+    <span>既読</span>
+  <% else %>
+    <span><%= link_to '既読にする', mark_read_notification_path(notification), method: :post %></span>
+  <% end %>
   <br>
-  <% unless @post_comment.nil? %>
-    <p><%= simple_format(@post_comment) %></p>
+  <% post_comment = get_post_comment(notification) %>
+  <% unless post_comment.nil? %>
+    <p><%= simple_format(post_comment) %></p>
   <% end %>
 </div>
