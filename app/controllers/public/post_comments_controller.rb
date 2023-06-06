@@ -6,6 +6,8 @@ class Public::PostCommentsController < ApplicationController
     comment.counseling_post_id = counseling_post.id
     comment.save
     redirect_to request.referer
+    @post_comment_item = comment.counseling_post
+    @post_comment_item.create_notification_post_comment!(current_user, comment.id)
   end
 
   def destroy

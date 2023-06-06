@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :counseling_post_favoirtes, through: :favorites, source: :counseling_post
   has_many :good_comments, dependent: :destroy
   has_many :good_comments_through_post_comments, through: :post_comments, source: :good_comments
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
 
 
   ## ユーザーのgood_commentsの数（グッドアドバイス数）を取得。
