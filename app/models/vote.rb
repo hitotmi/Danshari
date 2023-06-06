@@ -7,4 +7,6 @@ class Vote < ApplicationRecord
 
   enum option: { discard: '捨てる', keep: '捨てない', either: 'どちらでもよい' }
 
+  scope :created_this_month, -> { where(created_at: Time.current.beginning_of_month..Time.current.end_of_day) }
+
 end

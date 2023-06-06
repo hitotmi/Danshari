@@ -13,25 +13,31 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :counseling_post_favoirtes, through: :favorites, source: :counseling_post
-  has_many :good_comments, through: :post_comments, dependent: :destroy
+  has_many :good_comments, dependent: :destroy
+  has_many :good_comments_through_post_comments, through: :post_comments, source: :good_comments
+
+
+  ## ユーザーのgood_commentsの数（グッドアドバイス数）を取得。
+  def total_good_comments_count
+    good_comments_through_post_comments.count
+  end
 
 
   #ランキングで表示するトータル数取得。
-  ## ユーザーのgood_commentsの数（グッドアドバイス数）を取得。
-  def total_good_comments_count
-    good_comments.count
+  def good_comments_count
+    good_comments_through_post_comments.created_this_month.count
   end
-  
+
   def post_commennts_count
-    post_comments.count
+    post_comments.created_this_month.count
   end
 
   def votes_count
-    votes.count
+    votes.created_this_month.count
   end
 
   def total_count
-    total_good_comments_count +  post_commennts_count + votes_count
+    good_comments_count +  post_commennts_count + votes_count
   end
 
 
