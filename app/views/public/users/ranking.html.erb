@@ -1,0 +1,35 @@
+<div class="container">
+  <h3>ランキング</h3>
+  <p>相談者に貢献した人のランキングです(投票数・回答数・グッドアドバイス数をカウント)</p>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>順位</th>
+          <th>ユーザー</th>
+          <th>総アクセス数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rank = 1 %>
+        <% previous_count = nil %>
+        <% @users.each do |user| %>
+          <% if user.total_count != previous_count %>
+            <% current_rank = rank %>
+          <% end %>
+          <tr>
+            <td><%= current_rank %></td>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= user.name %>
+              <% end %>
+            </td>
+            <td><%= user.total_count %></td>
+          </tr>
+          <% previous_count = user.total_count %>
+          <% rank += 1 %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

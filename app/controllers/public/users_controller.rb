@@ -30,6 +30,11 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def ranking
+    @users = User.all.sort_by { |user| - user.total_count }
+  end
+
+
   # ユーザーが参考になった相談に登録した相談投稿の一覧を取得します。
   def counseling_post_favorites
     @counseling_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc)
