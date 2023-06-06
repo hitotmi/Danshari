@@ -25,6 +25,9 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        name: 名前
+        email: Eメール
+        password: パスワード
     models:
       user: ユーザー
   devise:
@@ -133,6 +136,8 @@ ja:
       unlocked: アカウントをロック解除しました。
   errors:
     messages:
+      confirmation: 確認用パスワードが一致しません
+      blank: を入力してください
       already_confirmed: は既に登録済みです。ログインしてください。
       confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
       expired: の有効期限が切れました。新しくリクエストしてください。
