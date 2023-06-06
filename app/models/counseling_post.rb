@@ -48,6 +48,18 @@ class CounselingPost < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  #参考になった（いいね）の通知
+  def create_notification_by(current_user, id, user_id)
+    return if current_user.id == user_id
+    notification = current_user.active_notifications.new(
+      counseling_post_id: id,
+      visited_id: user_id,
+      action: "favorite"
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
+  end
+
 
   def self.search_for(content)
     if content.present?
