@@ -8,6 +8,7 @@ class Public::CounselingPostsController < ApplicationController
     @counseling_post = CounselingPost.new(counseling_post_params)
     @counseling_post.user_id = current_user.id
     if  @counseling_post.save
+      flash[:notice] = "投稿しました。"
       redirect_to counseling_posts_path
     else
       render :new
@@ -39,7 +40,8 @@ class Public::CounselingPostsController < ApplicationController
 
   def update
     @counseling_post = CounselingPost.find(params[:id])
-    if  @counseling_post.update(counseling_post_params)
+    if @counseling_post.update(counseling_post_params)
+      flash[:notice] = "更新しました。"
       redirect_to counseling_post_path(@counseling_post)
     else
       render :edit
@@ -49,6 +51,7 @@ class Public::CounselingPostsController < ApplicationController
   def destory
     @counseling_post = CounselingPost.find(params[:id])
     @counseling_post.destroy
+    flash[:notice] = "削除しました。"
     redirect_to counseling_posts_path
   end
 

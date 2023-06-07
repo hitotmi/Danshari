@@ -53,7 +53,9 @@
       <div class="post-comments-index">
         <%= render "public/post_comments/index", counseling_post: @counseling_post %>
       </div>
-      <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
+      <div class="votes-index">
+        <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
+      </div>
     </div>
   </div>
 

@@ -16,7 +16,7 @@
 </table>
 <h3 class="mt-5">Ｑ捨てるべきですか？捨てないべきですか？</h3>
 <div>
-  <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), method: :post do |f| %>
+  <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), local: false, method: :post do |f| %>
     <div class="row justify-content-center">
       <div class="col">
         <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">
@@ -48,6 +48,6 @@
 </div>
 <div>
   <% if counseling_post.voted_by?(current_user) %>
- 　　 <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-block mt-1' %>
+ 　　 <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), remote: true, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-block mt-1' %>
   <% end %>
 </div>
