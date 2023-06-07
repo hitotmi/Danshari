@@ -9,7 +9,7 @@
       <div class="link_button mt-5 mb-5 text-center">
         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-signup btn-lg" %>
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg ml-3" %>
-        <%= link_to 'ゲストログイン（閲覧用）', '#', class: "btn btn-login btn-lg ml-3" %>
+        <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg ml-3", method: :post %>
       </div>
     </div>
   </div>

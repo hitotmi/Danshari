@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
 
   def show
      @user = User.find(params[:id])
@@ -31,7 +33,13 @@ class Public::UsersController < ApplicationController
   end
 
   def ranking
-    @users = User.all.sort_by { |user| - user.total_count }
+    if user_signed_in? && current_user.name == 'ゲストユーザー'
+      @users = User.all
+    else
+      @users = User.where.not(name: 'ゲストユーザー')
+    end
+
+    @users = @users.all.sort_by { |user| - user.total_count }
   end
 
 
@@ -40,8 +48,19 @@ class Public::UsersController < ApplicationController
     @counseling_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc)
   end
 
+
+  private
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted)
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "ゲストユーザー"
+      redirect_to user_path(current_user)
+      flash[:notice] = 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 
 
