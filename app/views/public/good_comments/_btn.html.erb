@@ -1,9 +1,9 @@
 <div class="mt-2">
   <% if current_user.id == counseling_post.user_id %>
     <% if post_comment.good_commented_by?(current_user) %>
-      <%= link_to "役に立った解除", counseling_post_post_comment_good_comments_path(counseling_post.id, post_comment.id),method: :delete, remote: true, class: "btn btn-danger" %>
+      <%= link_to "グッドアドバイス済み", counseling_post_post_comment_good_comments_path(counseling_post.id, post_comment.id),method: :delete, remote: true, class: "btn btn-unfavorite" %>
     <% else %>
-      <%= link_to "役に立った", counseling_post_post_comment_good_comments_path(counseling_post.id, post_comment.id),method: :post, remote: true, class: "btn btn-primary" %>
+      <%= link_to "グッドアドバイス", counseling_post_post_comment_good_comments_path(counseling_post.id, post_comment.id),method: :post, remote: true, class: "btn btn-favorite" %>
     <% end %>
   <% else %>
     <% if post_comment.good_commented_by?(counseling_post.user) %>

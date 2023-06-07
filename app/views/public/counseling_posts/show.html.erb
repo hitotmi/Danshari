@@ -1,5 +1,16 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-4">
+    <div class="d-flex">
+      <h1 class="post-status"><%= @counseling_post.status_i18n %></h1>
+    </div>
+    <div class="ml-auto">
+      <% if current_user.id == @counseling_post.user_id %>
+        <%= link_to "編集", edit_counseling_post_path(@counseling_post), class: "btn btn-color" %>
+        <%= link_to "削除" , counseling_post_path(@counseling_post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-delete ml-2" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4">
     <div class="col-6">
       <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
       <div class="d-flex justify-content-between mt-2">
@@ -8,24 +19,17 @@
           <%= render "public/favorites/btn", counseling_post: @counseling_post %>
         </div>
       </div>
-      <h3 class="mt-5"><strong>相談者</strong></h3><br>
-      <div class="d-flex align-items-end">
-        <%= link_to user_path(@counseling_post.user_id) do %>
-          <%= image_tag @counseling_post.user.get_profile_image(80,80), class: "rounded-circle bordered-image mt-2" %>
+      <h3 class="mt-5 subtitle-underline"><strong>相談者</strong></h3><br>
+      <div class="d-flex align-items-end user-link">
+        <%= link_to user_path(@counseling_post.user_id), class: "user-link" do %>
+          <%= image_tag @counseling_post.user.get_profile_image(80,80), class: "rounded-circle user-image mt-2" %>
         <% end %>
         <%= link_to @counseling_post.user.name, user_path(@counseling_post.user_id), class: "ml-1 mb-0" %>さん
       </div>
     </div>
 
     <div class="col-6">
-      <div>
-        <h1 class="show-underline-text"><%= @counseling_post.status_i18n %></h1>
-        <% if current_user.id == @counseling_post.user_id %>
-          <%= link_to "編集", edit_counseling_post_path(@counseling_post), class: "btn btn-color" %>
-          <%= link_to "削除" , counseling_post_path(@counseling_post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-color ml-2" %>
-        <% end %>
-      </div>
-      <div class="card-border p-3 mt-4">
+      <div class="card-border p-3">
         <h3 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h3>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
@@ -35,7 +39,7 @@
         <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
         <% if @counseling_post.tags.present? %>
           <% @counseling_post.tags.each do |tag| %>
-            <%= link_to counseling_posts_path(tag_ids: tag.id) do %>
+            <%= link_to counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm" do %>
               <span>#<%=tag.name%></span>
             <% end %>
           <% end %>
@@ -45,14 +49,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
-      <div class="errors">
-        <%= render 'layouts/error', obj: @post_comment %>
-      </div>
-      <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
-      <div class="post-comments-index">
-        <%= render "public/post_comments/index", counseling_post: @counseling_post %>
-      </div>
+    <div class="col-4">
       <div class="vote-message">
         <% if @message.present? %>
           <p><%= @message %></p>
@@ -60,6 +57,15 @@
       </div>
       <div class="votes-index">
         <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="errors">
+        <%= render 'layouts/error', obj: @post_comment %>
+      </div>
+      <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", counseling_post: @counseling_post %>
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
-<h3 class="mt-5 mb-4"><strong>回答しよう</strong></h3>
+<h3 class="mt-5 mb-4 subtitle-underline"><strong>回答しよう</strong></h3>
 <div class="answer-card card">
   <div class="card-body answer-card-body">
     <%= form_with model: [counseling_post, post_comment], local: false do |f| %>
       <%= f.text_area :comment, class: "form-control mb-3 comment-area", placeholder: "コメントを入力してください",rows: "7" %>
       <div class="text-center">
-        <%= f.submit "送信", class: "btn btn-primary" %>
+        <%= f.submit "送信", class: "btn btn-submit" %>
       </div>
     <% end %>
   </div>

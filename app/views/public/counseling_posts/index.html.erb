@@ -1,12 +1,17 @@
 <div class="container">
-  <h2 class="text-center py-5 underline-text">お悩み相談一覧</h2>
-  <%= render "public/counseling_posts/search" %>
-  <%= render "public/counseling_posts/tag_search" %>
+  <h2 class="text-center title-underline mb-5 mt-3">お悩み相談</h2>
+  <% if params[:tag_ids].present? %>
+    <h5 class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</h5>
+  <% end %>
+  <div class="mt-5">
+    <%= render "public/counseling_posts/search" %>
+    <%= render "public/counseling_posts/tag_search" %>
+  </div>
   <div class="row mb-5 d-flex justify-content-between">
-    <%= link_to '相談・質問をする', new_counseling_post_path, class: "btn btn-dark text-center col-3" %>
-    <%= link_to "新着順", counseling_posts_path, class: "btn text-center btn-dark col-3" %>
-    <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "btn btn-dark text-center col-3" %>
-    <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "btn btn-dark text-center col-3" %>
+    <%= link_to '相談・質問をする', new_counseling_post_path, class: "btn btn-color text-center col-3" %>
+    <%= link_to "新着順", counseling_posts_path, class: "btn text-center btn-color col-3" %>
+    <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "btn btn-color text-center col-3" %>
+    <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "btn btn-color text-center col-3" %>
   </div>
   <div class="row post-list">
     <% @counseling_posts.each do |counseling_post| %>

@@ -1,5 +1,5 @@
 .btn-registration{
-  background-color: #f79428;
+  background-color: #61A4BC;
 }
 
 
@@ -24,22 +24,22 @@ header{
         margin-right: 20px;
         &:hover{
           text-decoration: none;
-          color: #f79428;
+          color: #325288;
         }
       }
     }
   }
 }
 
-.btn-color-orange {
+.btn-color-blue {
   padding: 10px 20px;
-  background-color: #f79428;
+  background-color: #2994B2;
   border-radius: 20px;
   color: #FFF;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: rgba(247, 148, 40, 0.8);
+    background-color: rgba(41, 148, 178, 0.5);
     color: #FFF;
   }
 }

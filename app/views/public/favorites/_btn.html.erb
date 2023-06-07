@@ -1,9 +1,9 @@
 <% if counseling_post.favorited_by?(current_user) %>
-  <%= link_to counseling_post_favorites_path(counseling_post.id), method: :delete, remote: true, class: "btn btn-danger" do %>
-    参考になる（<%= counseling_post.favorites.count %>）
+  <%= link_to counseling_post_favorites_path(counseling_post.id), method: :delete, remote: true, class: "btn btn-unfavorite" do %>
+    参考済み（<%= counseling_post.favorites.count %>）
   <% end %>
 <% else %>
-  <%= link_to counseling_post_favorites_path(counseling_post.id), method: :post, remote: true, class: "btn btn-primary" do %>
+  <%= link_to counseling_post_favorites_path(counseling_post.id), method: :post, remote: true, class: "btn btn-favorite" do %>
     参考になる（<%= counseling_post.favorites.count %>）
   <% end %>
 <% end %>
