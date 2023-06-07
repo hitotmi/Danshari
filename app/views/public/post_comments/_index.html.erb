@@ -18,7 +18,9 @@
       </div>
       <div class="answer-comment">
         <p class="card-text"><%= simple_format(post_comment.comment) %></p>
-        <%= render "public/good_comments/btn", counseling_post: counseling_post, post_comment: post_comment %>
+        <div id="good_comment_btn_<%= post_comment.id %>">
+          <%= render "public/good_comments/btn", counseling_post: counseling_post, post_comment: post_comment %>
+        </div>
         <% if post_comment.user == current_user %>
           <div class="d-flex justify-content-end mb-1">
             <%= link_to "削除", counseling_post_post_comment_path(post_comment.counseling_post, post_comment), remote: true, method: :delete %>
