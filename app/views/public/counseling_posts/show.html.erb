@@ -53,15 +53,17 @@
       <div class="post-comments-index">
         <%= render "public/post_comments/index", counseling_post: @counseling_post %>
       </div>
-<div class="vote-message">
-  <% if @message.present? %>
-    <p><strong><%= @message %></strong></p>
-  <% end %>
-</div>
+      <div class="vote-message">
+        <% if @message.present? %>
+          <p><%= @message %></p>
+        <% end %>
+      </div>
       <div class="votes-index">
         <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
       </div>
     </div>
   </div>
-
+  <div class="row d-flex justify-content-center mt-2">
+    <%= link_to "一覧に戻る", counseling_posts_path, class: "btn btn-dark" %>
+  </div>
 </div>

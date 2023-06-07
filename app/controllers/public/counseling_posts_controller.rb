@@ -22,6 +22,8 @@ class Public::CounselingPostsController < ApplicationController
     elsif params[:tag_ids].present?
       tag_post_ids = PostTag.where(tag_id: params[:tag_ids]).pluck(:counseling_post_id)
       @counseling_posts = CounselingPost.where(id: tag_post_ids).order(created_at: :desc)
+    elsif params[:status].present?
+      @counseling_posts = CounselingPost.where(status: params[:status]).order(created_at: :desc)
     else
       @counseling_posts = CounselingPost.all.order(created_at: :desc)
     end

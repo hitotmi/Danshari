@@ -30,6 +30,12 @@ ja:
         password: パスワード
     models:
       user: ユーザー
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "はすでに使用されています"
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -146,3 +152,4 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+
