@@ -5,13 +5,18 @@ class Public::VotesController < ApplicationController
     @counseling_post = CounselingPost.find(params[:counseling_post_id])
     @vote = @counseling_post.votes.find_or_initialize_by(user: current_user)
     @vote.option = vote_params[:option]
-    @vote.save
+    if @vote.save
+      @message = "投票完了しました"
+    else
+      @message = "投票に失敗しました"
+    end
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
   end
 
   def destroy
     @counseling_post = CounselingPost.find(params[:counseling_post_id])
     @vote = current_user.votes.find_by(counseling_post: @counseling_post)
+    @vote.destroy
   end
 
 
@@ -22,5 +27,3 @@ class Public::VotesController < ApplicationController
   end
 
 end
-
-
