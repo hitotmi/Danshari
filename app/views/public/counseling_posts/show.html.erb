@@ -46,6 +46,9 @@
 
   <div class="row">
     <div class="col-12">
+      <div class="errors">
+        <%= render 'layouts/error', obj: @post_comment %>
+      </div>
       <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", counseling_post: @counseling_post %>

@@ -5,6 +5,7 @@
         <h3><strong>相談してみよう</strong></h3>
       </div>
       <div class="new-form">
+        <%= render 'layouts/error', obj: @counseling_post %>
         <%= render "form", counseling_post: @counseling_post, isEdit: true %>
       </div>
     </div>

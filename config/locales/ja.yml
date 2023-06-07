@@ -28,3 +28,9 @@ ja:
       about_x_hours_ago: "%{count}時間前"
       x_minutes: "%{count}分"
       less_than_x_minutes: "1分未満"
+
+  activerecord:
+    attributes:
+      counseling_post:
+        title: "タイトル"
+        content: "相談内容"
