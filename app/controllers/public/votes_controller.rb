@@ -6,6 +6,7 @@ class Public::VotesController < ApplicationController
     @vote = @counseling_post.votes.find_or_initialize_by(user: current_user)
     @vote.option = vote_params[:option]
     if @vote.save
+      redirect_to  counseling_post_path(@counseling_post)
       @message = "投票完了しました"
     else
       @message = "投票に失敗しました"

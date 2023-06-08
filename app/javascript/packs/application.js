@@ -11,6 +11,7 @@ import jQuery from "jquery"
 import raty from 'raty-js'
 import "popper.js";
 import "bootstrap";
+import Chart from "chart.js/auto";
 
 import "../stylesheets/application";
 
@@ -20,6 +21,7 @@ ActiveStorage.start()
 
 global.$ = jQuery;
 window.$ = jQuery;
+global.Chart = Chart;
 
 import Raty from "raty.js"
 window.raty = function(elem,opt) {

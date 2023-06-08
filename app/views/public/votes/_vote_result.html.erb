@@ -1,0 +1,22 @@
+<h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
+<div class="vote-message">
+  <% if @message.present? %>
+    <p class="vote-notice"><%= @message %></p>
+  <% end %>
+</div>
+<table class="table table-bordered mb-5">
+  <thead>
+    <tr>
+      <th class="text-center">捨てる</th>
+      <th class="text-center">捨てない</th>
+      <th class="text-center">どちらでもよい</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
+      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
+      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
+    </tr>
+  </tbody>
+</table>

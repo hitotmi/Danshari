@@ -1,1 +1,1 @@
-$('.votes-index').html("<%= j(render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote) %>")
+$('#vote_btn_' + <%= @counseling_post.id %>).html("<%= j(render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes) %>");

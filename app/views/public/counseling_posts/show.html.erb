@@ -52,8 +52,9 @@
     </div>
   </div>
 
-  <div class="votes-index mb-5">
-    <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
+  <!--投票-->
+  <div class="row mt-5" id="vote_btn_<%=  @counseling_post.id %>">
+    <%= render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
   </div>
 
   <div class="row mt-5">

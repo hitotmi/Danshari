@@ -1,67 +1,96 @@
-<div class="row">
-  <div class="col-6">
-    <h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
-    <div class="vote-message">
-      <% if @message.present? %>
-        <p class="vote-notice"><%= @message %></p>
-      <% end %>
-    </div>
-    <table class="table table-bordered mb-5">
-      <thead>
-        <tr>
-          <th class="text-center">捨てる</th>
-          <th class="text-center">捨てない</th>
-          <th class="text-center">どちらでもよい</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
-          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
-          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="col-6">
+  <h3 class="mt-5 mb-2 subtitle-underline"><strong>投票結果</strong></h3>
+  <canvas id="votesChart" width="50" height="50"></canvas>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      var chartElement = document.getElementById('votesChart');
+      if (chartElement !== null) {
+        var ctx = chartElement.getContext('2d');
+        var chart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['捨てる', '捨てない', 'どちらでもよい'],
+            datasets: [{
+              data: [<%= counseling_post.votes.where(option: 'discard').count %>, <%= counseling_post.votes.where(option: 'keep').count %>, <%= counseling_post.votes.where(option: 'either').count %>],
+              backgroundColor: [
+                'rgba(209, 77, 40, 1)',
+                'rgba(245, 223, 101, 1)',
+                'rgba(62, 120, 178, 1)'
+              ],
+              borderColor: [
+                'rgba(0, 0, 0, 1)',
+                'rgba(0, 0, 0, 1)',
+                'rgba(0, 0, 0, 1)'
+              ],
+              borderWidth: 2
+            }]
+          },
+        });
+      }
+    });
+  </script>
 
-  <div class="col-6">
-    <h3 class="mt-5 mb-2 subtitle-underline"><strong>投票しよう</strong></h3>
-    <h5 class="mt-3">Ｑ捨てるべきですか？捨てないべきですか？</h5>
-    <div>
-      <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), local: false, method: :post do |f| %>
-        <div class="row justify-content-center">
-          <div class="col">
-            <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">
-              <label class="btn discard-btn">
-                <%= f.radio_button :option, 'discard' %>
-                <%= f.label :option_discard, '捨てる', class: "btn btn-block btn-color" %>
-              </label>
-              <label class="btn keep-btn">
-                <%= f.radio_button :option, 'keep' %>
-                <%= f.label :option_keep, '捨てない', class: "btn btn-block btn-color mt-1" %>
-              </label>
-              <label class="btn either-btn">
-                <%= f.radio_button :option, 'either' %>
-                <%= f.label :option_either, 'どちらでもよい', class: "btn btn-block btn-color mt-1" %>
-              </label>
-            </div>
+  <h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
+  <div class="vote-message">
+    <% if @message.present? %>
+      <p class="vote-notice"><%= @message %></p>
+    <% end %>
+  </div>
+  <table class="table table-bordered mb-5">
+    <thead>
+      <tr>
+        <th class="text-center">捨てる</th>
+        <th class="text-center">捨てない</th>
+        <th class="text-center">どちらでもよい</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
+        <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
+        <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-6">
+  <h3 class="mt-5 mb-2 subtitle-underline"><strong>投票しよう</strong></h3>
+  <h5 class="mt-3">Ｑ捨てるべきですか？捨てないべきですか？</h5>
+  <div>
+    <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), local: true, method: :post do |f| %>
+      <div class="row justify-content-center">
+        <div class="col">
+          <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">
+            <label class="btn discard-btn">
+              <%= f.radio_button :option, 'discard' %>
+              <%= f.label :option_discard, '捨てる', class: "btn btn-block btn-color" %>
+            </label>
+            <label class="btn keep-btn">
+              <%= f.radio_button :option, 'keep' %>
+              <%= f.label :option_keep, '捨てない', class: "btn btn-block btn-color mt-1" %>
+            </label>
+            <label class="btn either-btn">
+              <%= f.radio_button :option, 'either' %>
+              <%= f.label :option_either, 'どちらでもよい', class: "btn btn-block btn-color mt-1" %>
+            </label>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col">
-            <p>※投票は1人1回までです</p>
-            <% if user_vote %>
-              <p><strong>あなたは「<%= user_vote.option_i18n %>」に投票済です</strong></p>
-            <% end %>
-            <%= f.submit '投票', class: "btn btn-submit btn-block mt-2" %>
-          </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col">
+          <p>※投票は1人1回までです</p>
+          <% if user_vote %>
+            <p><strong>あなたは「<%= user_vote.option_i18n %>」に投票済です</strong></p>
+          <% end %>
+          <%= f.submit '投票', class: "btn btn-submit btn-block mt-2" %>
         </div>
-      <% end %>
-    </div>
-    <div>
-      <% if counseling_post.voted_by?(current_user) %>
-   　  　 <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), remote: true, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-delete btn-block mt-1' %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <% if counseling_post.voted_by?(current_user) %>
+      <%= link_to "投票を削除する", counseling_post_votes_path(counseling_post), remote: true, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-delete btn-block mt-1' %>
+    <% end %>
   </div>
 </div>
