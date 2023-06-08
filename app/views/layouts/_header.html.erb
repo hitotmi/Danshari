@@ -30,6 +30,9 @@
               <%= link_to "ランキング一覧", ranking_path, class: 'nav-link' %>
             </li>
             <li class="nav-item position-relative">
+              <% if current_user.passive_notifications.where(checked: false).present? %>
+                <span class="position-absolute top-0 translate-middle badge badge-pill badge-primary ml-5"><%= current_user.passive_notifications.where(checked: false).count %></span>
+              <% end %>
               <%= link_to "通知", notifications_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">

@@ -1,15 +1,17 @@
 <div class="container">
-  <h3>通知</h3>
-  <div class="d-flex justify-content-end">
-    <%= link_to notification_path(@notifications), method: :delete do %>
-      <h5>全部削除する</h5>
+  <h3 class="mt-4 text-center">通知</h3>
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to notification_path(@notifications), class: "btn btn-delete", method: :delete do %>
+      <i class="fa-solid fa-x"></i>全部削除する
     <% end %>
   </div>
-  <% if @notifications.exists? %>
-    <div>
-      <%= render @notifications %>
-    </div>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
+  <div class="notification-border-top">
+    <% if @notifications.exists? %>
+      <div>
+        <%= render @notifications %>
+      </div>
+    <% else %>
+      <p>通知はありません</p>
+    <% end %>
+  </div>
 </div>
