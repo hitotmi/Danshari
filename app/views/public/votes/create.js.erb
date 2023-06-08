@@ -1,2 +1,2 @@
 $('.votes-index').html("<%= j(render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote) %>");
-$('.vote-message').html("<%= j(@message) %>").show().delay(3000).fadeOut();
+$('.vote-message').html("<%= j(@message) %>").addClass('green-background').show().delay(3000).fadeOut();

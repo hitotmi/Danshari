@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :counseling_posts do
       resource :favorites, only: [:create, :destroy]
       resource :votes, only: [:create, :destroy]
-      resources :post_comments, only: [:create, :destroy] do
+      resources :post_comments, only: [:create, :destroy, :index] do
         resource :good_comments, only: [:create, :destroy]
       end
     end

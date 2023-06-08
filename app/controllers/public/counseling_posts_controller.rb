@@ -31,6 +31,7 @@ class Public::CounselingPostsController < ApplicationController
 
   def show
     @counseling_post = CounselingPost.find(params[:id])
+    @post_comments = @counseling_post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
     @post_comment = PostComment.new
     @vote =  @counseling_post.votes.build
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)

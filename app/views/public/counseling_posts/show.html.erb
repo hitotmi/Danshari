@@ -48,25 +48,19 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-4">
-      <div class="vote-message">
-        <% if @message.present? %>
-          <p><%= @message %></p>
-        <% end %>
+  <div class="votes-index mb-5">
+    <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", counseling_post: @counseling_post, post_comments: @post_comments %>
       </div>
-      <div class="votes-index">
-        <%= render "public/votes/vote", counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote %>
-      </div>
-    </div>
-    <div class="col-8">
       <div class="errors">
         <%= render 'layouts/error', obj: @post_comment %>
       </div>
       <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
-      <div class="post-comments-index">
-        <%= render "public/post_comments/index", counseling_post: @counseling_post %>
-      </div>
     </div>
   </div>
   <div class="row d-flex justify-content-center mt-2">

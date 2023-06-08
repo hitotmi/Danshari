@@ -1,2 +1,2 @@
-$('.post-comments-index').html("<%= j(render "public/post_comments/index", counseling_post: @counseling_post) %>")
+$('.post-comments-index').html("<%= j(render 'public/post_comments/index', counseling_post: @counseling_post, post_comments: @post_comments) %>")
 $('.errors').val("");
