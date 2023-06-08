@@ -1,0 +1,27 @@
+.user-profile{
+  padding: 10px;
+  background-color: #F5F5F5;
+
+  .user-name{
+    font-size: 20px;
+  }
+}
+
+.table {
+  &.count-table{
+    background-color: #FFF;
+    td, th {
+      border: 1px solid black !important;
+    }
+  }
+}
+
+.user-profile {
+  position: relative;
+}
+
+.profile-edit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
