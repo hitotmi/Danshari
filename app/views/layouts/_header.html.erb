@@ -8,10 +8,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-center">
           <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to '相談一覧', admin_counseling_posts_path, class: 'nav-link' %>
+              <%= link_to '相談投稿一覧', admin_counseling_posts_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to '会員一覧', admin_users_path, class: 'nav-link' %>
@@ -21,7 +21,7 @@
             </li>
           <% elsif user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
+              <%= link_to "相談・質問をする", new_counseling_post_path, class: 'btn btn-color-blue text-white' %>
             </li>
             <li class="nav-item">
               <%= link_to 'お悩み相談', counseling_posts_path, class: 'nav-link' %>
@@ -35,8 +35,18 @@
               <% end %>
               <%= link_to "通知", notifications_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                <% if current_user %>
+                  <%= image_tag current_user.get_profile_image(50, 50), class: "rounded-circle user-image mr-3" %>
+                <% end %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if current_user %>
+                  <li><%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+                <% end %>
+              </ul>
             </li>
           <% else %>
             <li class="nav-item">
