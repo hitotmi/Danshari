@@ -1,22 +1,59 @@
-<h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
-<div class="vote-message">
-  <% if @message.present? %>
-    <p class="vote-notice"><%= @message %></p>
+<div class="col-6">
+  <h3 class="mt-5 mb-2 subtitle-underline"><strong>投票結果</strong></h3>
+  <% if counseling_post.votes.group(:option).count.present? %>
+    <canvas id="votesChart" width="50" height="50"></canvas>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        var chartElement = document.getElementById('votesChart');
+        if (chartElement !== null) {
+          var ctx = chartElement.getContext('2d');
+          var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: ['捨てる', '捨てない', 'どちらでもよい'],
+              datasets: [{
+                data: [<%= counseling_post.votes.where(option: 'discard').count %>, <%= counseling_post.votes.where(option: 'keep').count %>, <%= counseling_post.votes.where(option: 'either').count %>],
+                backgroundColor: [
+                  'rgba(209, 77, 40, 1)',
+                  'rgba(245, 223, 101, 1)',
+                  'rgba(62, 120, 178, 1)'
+                ],
+                borderColor: [
+                  'rgba(0, 0, 0, 1)',
+                  'rgba(0, 0, 0, 1)',
+                  'rgba(0, 0, 0, 1)'
+                ],
+                borderWidth: 2
+              }]
+            },
+          });
+        }
+      });
+    </script>
+
+    <h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
+    <div class="vote-message">
+      <% if @message.present? %>
+        <p class="vote-notice"><%= @message %></p>
+      <% end %>
+    </div>
+    <table class="table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th class="text-center">捨てる</th>
+          <th class="text-center">捨てない</th>
+          <th class="text-center">どちらでもよい</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
+          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
+          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  <% else %>
+    <h5>まだ投票がされていません</h5>
   <% end %>
 </div>
-<table class="table table-bordered mb-5">
-  <thead>
-    <tr>
-      <th class="text-center">捨てる</th>
-      <th class="text-center">捨てない</th>
-      <th class="text-center">どちらでもよい</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
-      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
-      <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
-    </tr>
-  </tbody>
-</table>

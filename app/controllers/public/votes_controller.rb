@@ -14,13 +14,6 @@ class Public::VotesController < ApplicationController
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
   end
 
-  def destroy
-    @counseling_post = CounselingPost.find(params[:counseling_post_id])
-    @vote = current_user.votes.find_by(counseling_post: @counseling_post)
-    @vote.destroy
-  end
-
-
   private
 
   def vote_params

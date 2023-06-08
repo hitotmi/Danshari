@@ -53,7 +53,8 @@
   </div>
 
   <!--投票-->
-  <div class="row mt-5" id="vote_btn_<%=  @counseling_post.id %>">
+  <div class="row">
+    <%= render 'public/votes/vote_result', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
     <%= render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
   </div>
 
