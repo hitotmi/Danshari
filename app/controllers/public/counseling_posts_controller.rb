@@ -18,14 +18,14 @@ class Public::CounselingPostsController < ApplicationController
   def index
     if params[:content].present?
       @content = params[:content]
-      @counseling_posts =  CounselingPost.search_for(@content)
+      @counseling_posts =  CounselingPost.search_for(@content).page(params[:page]).per(9)
     elsif params[:tag_ids].present?
       tag_post_ids = PostTag.where(tag_id: params[:tag_ids]).pluck(:counseling_post_id)
-      @counseling_posts = CounselingPost.where(id: tag_post_ids).order(created_at: :desc)
+      @counseling_posts = CounselingPost.where(id: tag_post_ids).order(created_at: :desc).page(params[:page]).per(9)
     elsif params[:status].present?
-      @counseling_posts = CounselingPost.where(status: params[:status]).order(created_at: :desc)
+      @counseling_posts = CounselingPost.where(status: params[:status]).order(created_at: :desc).page(params[:page]).per(9)
     else
-      @counseling_posts = CounselingPost.all.order(created_at: :desc)
+      @counseling_posts = CounselingPost.all.order(created_at: :desc).page(params[:page]).per(9)
     end
   end
 

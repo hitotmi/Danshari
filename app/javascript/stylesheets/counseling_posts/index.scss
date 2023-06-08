@@ -26,9 +26,6 @@
   }
 }
 
-.post-list{
-  border: 3px solid #000;
-}
 .card-img{
   border: 3px solid #000;
 }
@@ -63,6 +60,7 @@
 }
 
 .post-card {
+  border: 1px solid #dcdcdc;
   &:hover {
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);

@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
-     @counseling_posts = @user.counseling_posts
+     @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
      @good_comments_count = @user.total_good_comments_count
   end
 
