@@ -15,8 +15,13 @@
       <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
       <div class="d-flex justify-content-between mt-2">
         <div>質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %></div>
-        <div id="favorite_btn_<%= @counseling_post.id %>" class="d-flex flex-column align-items-end">
-          <%= render "public/favorites/btn", counseling_post: @counseling_post %>
+        <div class="d-flex flex-column align-items-end">
+          <div class="favorites-counter">
+            <%= render "public/favorites/count", counseling_post: @counseling_post %>
+          </div>
+          <div id="favorite_btn_<%= @counseling_post.id %>" >
+            <%= render "public/favorites/btn", counseling_post: @counseling_post %>
+          </div>
         </div>
       </div>
       <h3 class="mt-5 subtitle-underline"><strong>相談者</strong></h3><br>
