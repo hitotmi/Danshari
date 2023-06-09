@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-12">
       <div class="text-center">
-        <div class="text-center">
-          <h1 class="home-title mb-2">Danshari</h1>
+        <div class="image-container">
+          <%= image_tag "Q.png", style: "width: 80%; height: 600px;" %>
         </div>
-      </div>
-      <div class="link_button mt-5 mb-5 text-center">
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-color-blue btn-lg" %>
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg ml-3" %>
-        <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg ml-3", method: :post %>
+        <div class="link_button mt-5 mb-5 text-center">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-color-blue btn-lg" %>
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg ml-3" %>
+          <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg ml-3", method: :post %>
+        </div>
       </div>
     </div>
   </div>
