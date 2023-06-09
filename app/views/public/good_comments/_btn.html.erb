@@ -7,7 +7,9 @@
     <% end %>
   <% else %>
     <% if post_comment.good_commented_by?(counseling_post.user) %>
-      相談者から<button class="btn btn-light" disabled>役に立った</button>をいただきました！
+      <div class="badge mt-5">
+        <i class="fa-solid fa-heart"></i>相談者からグットアドバイスをいただきました
+      </div>
     <% end %>
   <% end %>
 </div>

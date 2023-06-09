@@ -1,5 +1,5 @@
-<div class="col-6">
-  <h3 class="mt-5 mb-2 subtitle-underline"><strong>投票結果</strong></h3>
+<div class="col-5">
+  <h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
   <% if counseling_post.votes.group(:option).count.present? %>
     <canvas id="votesChart" width="50" height="50"></canvas>
     <script>
@@ -31,13 +31,7 @@
       });
     </script>
 
-    <h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
-    <div class="vote-message">
-      <% if @message.present? %>
-        <p class="vote-notice"><%= @message %></p>
-      <% end %>
-    </div>
-    <table class="table table-bordered mb-5">
+    <table class="table table-bordered mt-4 mb-5">
       <thead>
         <tr>
           <th class="text-center">捨てる</th>

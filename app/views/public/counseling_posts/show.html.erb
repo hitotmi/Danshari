@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <h3 class="mt-5 subtitle-underline"><strong>相談者</strong></h3><br>
+      <h3 class="mt-5 mb-2 subtitle-underline"><strong>相談者</strong></h3><br>
       <div class="d-flex align-items-end user-link">
         <%= link_to user_path(@counseling_post.user_id), class: "user-link" do %>
           <%= image_tag @counseling_post.user.get_profile_image(80,80), class: "rounded-circle user-image mt-2" %>
@@ -35,7 +35,7 @@
 
     <div class="col-6">
       <div class="card-border p-3">
-        <h3 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h3>
+        <h4 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
           <% if @counseling_post.star.present? %>
@@ -65,16 +65,16 @@
 
   <div class="row mt-5">
     <div class="col-12">
-      <div class="post-comments-index">
-        <%= render "public/post_comments/index", counseling_post: @counseling_post, post_comments: @post_comments %>
-      </div>
       <div class="errors">
         <%= render 'layouts/error', obj: @post_comment %>
       </div>
       <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", counseling_post: @counseling_post, post_comments: @post_comments %>
+      </div>
     </div>
   </div>
   <div class="row d-flex justify-content-center mt-2">
-    <%= link_to "一覧に戻る", counseling_posts_path, class: "btn btn-dark" %>
+    <%= link_to "一覧に戻る", counseling_posts_path, class: "btn btn-color" %>
   </div>
 </div>
