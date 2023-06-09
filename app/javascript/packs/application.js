@@ -12,6 +12,7 @@ import raty from 'raty-js'
 import "popper.js";
 import "bootstrap";
 import Chart from "chart.js/auto";
+import './preview';
 
 import "../stylesheets/application";
 

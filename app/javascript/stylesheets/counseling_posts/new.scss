@@ -46,3 +46,19 @@
     color: #FFF;
   }
 }
+
+span {
+  &.required {
+    color: #FFF;
+    padding: 2px 5px;
+    margin-left: 10px;
+    background-color: #F45050;
+  }
+}
+
+.preview {
+  .card-img {
+    width: 500px;
+    height: 500px;
+  }
+}
