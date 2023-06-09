@@ -7,9 +7,10 @@ class Public::VotesController < ApplicationController
     @vote.option = vote_params[:option]
     if @vote.save
       redirect_to  counseling_post_path(@counseling_post)
-      @message = "投票完了しました"
+      flash[:notice] = "投票完了しました"
     else
-      @message = "投票に失敗しました"
+      redirect_to  counseling_post_path(@counseling_post)
+      flash[:notice] = "投票に失敗しました"
     end
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
   end

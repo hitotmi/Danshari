@@ -1,6 +1,5 @@
 class Vote < ApplicationRecord
 
-  validates :option, presence:true
 
   belongs_to :user
   belongs_to :counseling_post

@@ -38,12 +38,11 @@
 
 .btn-unfavorite{
   padding: 10px 20px;
-  // border: 2px solid #19A7CE;
-  background-color: #73777B;
+  background-color: #7F8487;
   color: #FFF;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: rgba(157, 178, 191, 0.5);
+    background-color: rgba(127, 132, 135, 0.8);
     color: #FFF;
   }
 }

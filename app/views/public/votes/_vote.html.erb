@@ -8,15 +8,15 @@
           <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">
             <label class="btn discard-btn">
               <%= f.radio_button :option, 'discard' %>
-              <%= f.label :option_discard, '捨てる', class: "btn btn-block btn-color" %>
+              <%= f.label :option_discard, '捨てる', class: "btn btn-block", id: "discard-btn" %>
             </label>
             <label class="btn keep-btn">
               <%= f.radio_button :option, 'keep' %>
-              <%= f.label :option_keep, '捨てない', class: "btn btn-block btn-color mt-1" %>
+              <%= f.label :option_keep, '捨てない', class: "btn btn-block mt-1", id: "keep-btn" %>
             </label>
             <label class="btn either-btn">
               <%= f.radio_button :option, 'either' %>
-              <%= f.label :option_either, 'どちらでもよい', class: "btn btn-block btn-color mt-1" %>
+              <%= f.label :option_either, 'どちらでもよい', class: "btn btn-block mt-1", id: "either-btn" %>
             </label>
           </div>
         </div>

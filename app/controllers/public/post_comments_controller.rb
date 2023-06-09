@@ -11,13 +11,7 @@ class Public::PostCommentsController < ApplicationController
       @post_comment_item = @post_comment.counseling_post
       @post_comment_item.create_notification_post_comment!(current_user, @post_comment.id)
       @post_comments = @counseling_post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
-
     end
-  end
-
-  def index
-    @counseling_post = CounselingPost.find(params[:counseling_post_id])
-    @post_comments = @counseling_post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def destroy
