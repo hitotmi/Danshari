@@ -1,6 +1,20 @@
 <div class="container">
-  <h3 class="text-center">～お悩み相談一覧～</h3>
-  <%= render "admin/counseling_posts/search" %>
+  <h2 class="text-center mb-5 mt-3">～お悩み相談一覧～</h2>
+  <% if params[:tag_ids].present? %>
+    <h5 class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</h5>
+  <% end %>
+  <% if params[:content].present? %>
+    <h5 class="text-center">「<%= params[:content] %>」の検索結果</h5>
+  <% end %>
+  <div class="mt-5">
+    <%= render "admin/counseling_posts/search" %>
+    <%= render "admin/counseling_posts/tag_search" %>
+  </div>
+  <div class="row mb-2 d-flex justify-content-between">
+    <%= link_to "新着順", admin_counseling_posts_path, class: "btn text-center btn-color col-4" %>
+    <%= link_to "回答受付中", admin_counseling_posts_path(status: "answer_reception"), class: "btn btn-color text-center col-4" %>
+    <%= link_to "解決済", admin_counseling_posts_path(status: "resolved"), class: "btn btn-color text-center col-4" %>
+  </div>
   <div class="row mt-2">
     <% @counseling_posts.each do |counseling_post| %>
       <div class="col-md-4 mt-2 mb-2 post-card">
@@ -13,10 +27,15 @@
             <h5 class="post-title mt-2"><strong><%= counseling_post.title %></strong></h5>
             <p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%= counseling_post.content %></p>
             <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
-            <div class="d-flex align-items-end justify-content-start">
-              <%= image_tag counseling_post.user.get_profile_image(50, 50), class: "user-image rounded-circle" %>
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="d-flex align-items-end">
+                <%= image_tag counseling_post.user.get_profile_image(50, 50), class: "user-image rounded-circle" %>
+                <div>
+                  <%= counseling_post.user.name %>さん
+                </div>
+              </div>
               <div>
-                <%= counseling_post.user.name %>さん
+                <i class="fa-regular fa-message comment-icon"></i><span class="comment-count ml-2"><%= counseling_post.post_comments.count %></span>
               </div>
             </div>
           </div>

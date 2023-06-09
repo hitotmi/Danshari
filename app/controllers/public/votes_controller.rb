@@ -3,6 +3,7 @@ class Public::VotesController < ApplicationController
 
   def create
     @counseling_post = CounselingPost.find(params[:counseling_post_id])
+    # すでに存在する場合はその投票を返し、存在しない場合は新しい投票を作成
     @vote = @counseling_post.votes.find_or_initialize_by(user: current_user)
     @vote.option = vote_params[:option]
     if @vote.save
@@ -18,7 +19,6 @@ class Public::VotesController < ApplicationController
   private
 
   def vote_params
-    params.require(:vote).permit(:option)
+    params.fetch(:vote, {}).permit(:option)
   end
-
 end

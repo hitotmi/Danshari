@@ -1,8 +1,8 @@
 <div class="container">
   <%= render 'layouts/error', obj: @user %>
   <div class="row justify-content-center">
-    <div class="col-8">
-      <h3><%= @user.name %>さんの登録情報編集</h3>
+    <div class="col-8 mt-3 mb-5">
+      <h2 class="text_center mb-5"><%= @user.name %>さんの登録情報編集</h2>
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
         <div class="form-group">
           <table class="table table-borderless">

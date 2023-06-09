@@ -61,6 +61,8 @@ class Public::CounselingPostsController < ApplicationController
     redirect_to counseling_posts_path
   end
 
+  private
+
   def counseling_post_params
     params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star , tag_ids: [])
   end

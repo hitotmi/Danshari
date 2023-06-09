@@ -1,5 +1,15 @@
 <div class="container">
   <div class="row">
+    <div class="d-flex">
+      <h1 class="post-status"><%= @counseling_post.status_i18n %></h1>
+    </div>
+    <div class="ml-auto">
+      <% if current_admin %>
+        <%= link_to "この投稿を削除する", admin_counseling_post_path(@counseling_post), method: :delete, class: "btn btn-delete", data: { confirm: 'の投稿を削除しますか？' } %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4">
     <div class="col-6">
       <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
       <div class="d-flex justify-content-between mt-2">
@@ -15,11 +25,7 @@
     </div>
 
     <div class="col-6">
-      <div>
-        <h1 class="show-underline-text"><%= @counseling_post.status_i18n %></h1>
-        <%= link_to "投稿を削除する", admin_counseling_post_path(@counseling_post), method: :delete, class: "btn btn-danger", data: { confirm: 'コメントを削除しますか？' } %>
-      </div>
-      <div class="card-border p-3 mt-4">
+      <div class="card-border p-3">
         <h3 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h3>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
