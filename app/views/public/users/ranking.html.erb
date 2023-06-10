@@ -1,13 +1,16 @@
 <div class="container">
   <h2 class="mb-5 text-center">ランキング</h2>
-  <p>相談者に貢献した人のランキングです(投票数・回答数・グッドアドバイス数をカウント)</p>
+  <p>
+    相談者に貢献した人のランキングです(投票数・回答数・グッドアドバイス数をカウント)<br>
+    ※1か月ごとの更新
+  </p>
   <div class="row">
-    <table class="table table-bordered">
+    <table class="table table-bordered count-table">
       <thead>
         <tr>
-          <th class="col-4">順位</th>
-          <th class="col-4">ユーザー</th>
-          <th class="col-4">総アクション数</th>
+          <th class="col-3 text-center">順位</th>
+          <th class="col-6 text-center">ユーザー名</th>
+          <th class="col-3 text-center">総アクション数</th>
         </tr>
       </thead>
       <tbody>
@@ -18,13 +21,14 @@
             <% current_rank = rank %>
           <% end %>
           <tr>
-            <td><%= current_rank %></td>
+            <td class="text-center" style="font-size: 30px;"><%= current_rank %></td>
             <td>
               <%= link_to user_path(user) do %>
-                <%= user.name %>
+                <%= image_tag user.get_profile_image(50, 50), class: "rounded-circle user-image" %>
+                <%= user.name %>さん
               <% end %>
             </td>
-            <td><%= user.total_count %></td>
+            <td class="text-center" style="font-size: 30px;"><%= user.total_count %></td>
           </tr>
           <% previous_count = user.total_count %>
           <% rank += 1 %>

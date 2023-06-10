@@ -68,6 +68,9 @@
       <div class="errors">
         <%= render 'layouts/error', obj: @post_comment %>
       </div>
+      <div id="flash-message">
+        <%= render "layouts/flash" %>
+      </div>
       <%= render "public/post_comments/form", counseling_post: @counseling_post, post_comment: @post_comment %>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", counseling_post: @counseling_post, post_comments: @post_comments %>
