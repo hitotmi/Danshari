@@ -29,8 +29,13 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = "ログインに成功しました。"
-    user_path(current_user)
+    if user_signed_in?
+      flash[:alert] = "すでにログイン済みです。"
+      user_path(current_user)
+    else
+      flash[:notice] = "ログインに成功しました。"
+      user_path(current_user)
+    end
   end
 
   def after_sign_out_path_for(resource)

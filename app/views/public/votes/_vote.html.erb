@@ -3,6 +3,7 @@
   <h5 class="mt-3">Ｑ捨てるべきですか？捨てないべきですか？</h5>
   <div>
     <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), local: true, method: :post do |f| %>
+      <%= f.hidden_field :option, value: "" %>
       <div class="row justify-content-center">
         <div class="col">
           <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">

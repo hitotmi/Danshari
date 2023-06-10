@@ -2,6 +2,10 @@
   <div class="alert alert-success">
     <%= flash[:notice] %>
   </div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
 <% end %>
 
 <% if flash[:post_comment_created] %>

@@ -11,7 +11,7 @@ class Public::VotesController < ApplicationController
       flash[:notice] = "投票完了しました"
     else
       redirect_to  counseling_post_path(@counseling_post)
-      flash[:notice] = "投票に失敗しました"
+      flash[:alert] = "投票に失敗しました。選択しなおしてください。"
     end
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
   end
@@ -19,6 +19,6 @@ class Public::VotesController < ApplicationController
   private
 
   def vote_params
-    params.fetch(:vote, {}).permit(:option)
+    params.require(:vote).permit(:option)
   end
 end

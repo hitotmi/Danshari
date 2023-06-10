@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
 
-  validates :option, presence: true
+  validates :option, presence: { message: '投票オプションは必須です' }
 
   belongs_to :user
   belongs_to :counseling_post

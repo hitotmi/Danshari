@@ -34,6 +34,8 @@ ja:
       counseling_post:
         title: "タイトル"
         content: "相談内容"
+      post_comment:
+        comment: "コメント"
 
 
   views:
