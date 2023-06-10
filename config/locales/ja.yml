@@ -34,3 +34,12 @@ ja:
       counseling_post:
         title: "タイトル"
         content: "相談内容"
+
+
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
