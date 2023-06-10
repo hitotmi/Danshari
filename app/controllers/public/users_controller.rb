@@ -6,6 +6,10 @@ class Public::UsersController < ApplicationController
      @user = User.find(params[:id])
      @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
      @good_comments_count = @user.total_good_comments_count
+     # 1位のユーザーを取得
+     @ranking_top_user = User.all.sort_by { |user| -user.total_count }.first
+     # 1位ユーザーのトータルカウントを取得
+     @top_count = @ranking_top_user.total_count
   end
 
   def edit

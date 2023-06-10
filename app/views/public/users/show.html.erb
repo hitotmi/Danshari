@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col-12">
       <div class="d-flex flex-column align-items-center user-profile">
+        <% if @user.total_count == @top_count %>
+          <%= image_tag "rank1.png", width: "200px", alt: "Rank 1 Badge" %>
+        <% end %>
         <%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle user-image mb-3" %>
         <p class="user-name"><strong><%= @user.name %></strong></p>
         <p class="mt-2 profile-introduction">自己紹介</p><br>
