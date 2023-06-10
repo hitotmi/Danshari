@@ -3,3 +3,10 @@
     <%= flash[:notice] %>
   </div>
 <% end %>
+
+<% if flash[:post_comment_created] %>
+  <div class="alert alert-success">
+    <%= flash[:post_comment_created] %>
+  </div>
+<% end %>
+
