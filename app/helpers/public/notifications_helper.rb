@@ -13,7 +13,7 @@ module Public::NotificationsHelper
         tag.a(notification.visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "を参考にしました"
       when "good_comment"
         your_counseling_post = link_to 'あなたの回答', counseling_post_path(notification.post_comment.counseling_post_id), style: "font-weight: bold;"
-        tag.a(@visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "が役に立ったと評価しました"
+        tag.a(@visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "をグッドアドバイスと評価しました"
     end
   end
 

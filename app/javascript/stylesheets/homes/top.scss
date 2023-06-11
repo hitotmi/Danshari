@@ -32,6 +32,34 @@ header{
   }
 }
 
+
+.concept{
+  margin: 100px;
+
+  .concept-main{
+
+    .sub-title-heading{
+      background-color: #000;
+      color: #FFF;
+    }
+  
+    p{
+      font-size: 20px;
+    }
+  }
+
+  h1 span {
+    font-size: 2em;
+    color: #2994B2;
+    margin-right: 15px;
+  }
+
+  .featurette-divider{
+    margin: 50px 0;
+  }
+}
+
+
 .btn-color-blue {
   padding: 10px 20px;
   background-color: #2994B2;

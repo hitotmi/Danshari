@@ -5,12 +5,73 @@
         <div class="image-container">
           <%= image_tag "Q.png", style: "width: 80%; height: 600px;" %>
         </div>
-        <div class="link_button mt-5 mb-5 text-center">
+        <div class="link_button mt-5 text-center">
           <%= link_to "新規登録", new_user_registration_path, class: "btn btn-color-blue btn-lg" %>
           <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg ml-3" %>
           <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg ml-3", method: :post %>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="concept mt-3">
+    <div class="row mt-5">
+      <div class="col concept-main mt-5">
+        <h1 class="sub-title-heading text-center">Danshariについて</h1>
+        <p class="text-center concept-body mt-5">
+          Danshariはモノが捨てられない・捨てることに抵抗を感じる方が、<br>
+          ユーザー同士の交流や他者からの視点を取り入れてることで客観的にモノを評価できるようにし、<br>
+          お互いにサポートしながら断捨離を進めることができる相談コミュニティサイトです。
+        </p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 d-flex flex-column justify-content-center">
+        <h1 class="mb-3"><span>01</span>気軽に相談できる</h1>
+        <p class="lead">
+          あなたが断捨離すべきか迷っているアイテムについて、気軽に他のユーザーに意見を求めることができます。<br>
+         「モノが多く、片付けられないと思われたくない」「他人から客観的に必要かどうかを判断して欲しい」<br>
+          そういった悩みを相談して断捨離を進められます。
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "Q.png", class: "card-img", style: "width: 500px; height: 500px;" %>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2 d-flex flex-column justify-content-center">
+        <h1 class="mb-3"><span>02</span>優柔不断な方におススメな投票機能付き</h1>
+        <p class="lead">
+          モノが多く、捨てられない方の中には「捨てて良いか自分では判断できない」<br>
+          「捨ててから後悔するかもしれない」と不安を抱えているかもしれません。<br>
+          本サイトでは、皆さんに捨てるべきかどうかを投票していただくことができます。<br>
+          周りが必要ないと言っているから断捨離する。そんな方法を通じて自分の生活空間を整えることができるかもしれません。
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <%= image_tag "Q.png", class: "card-img", style: "width: 500px; height: 500px;" %>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7 d-flex flex-column justify-content-center">
+        <h1 class="mb-3"><span>03</span>ランキング形式でモチベ―ションUP</h1>
+        <p class="lead">
+          相談者へ回答や投票、相談者からグッドアドバイス評価によってポイントを獲得し、順位付けされます。<br>
+          このランキングシステムはユーザー同士が切磋琢磨し、積極的に行動しやすい環境を作り出します。<br>
+          相談者は回答を得られなければ、断捨離の一歩を踏み出すチャンスを逃してしまうかもしれません。<br>
+          そうならないために、ランキングシステムはユーザーの積極性を生み出し、活動意欲を高めます。<br>
+          相談者に解決策を提供し、上位を目指しましょう。
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "Q.png", class: "card-img", style: "width: 500px; height: 500px;" %>
+      </div>
+    </div>
+    <hr class="featurette-divider">
   </div>
 </div>
