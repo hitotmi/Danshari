@@ -1,24 +1,30 @@
 <div class="col-6 offset-1">
-  <h3 class="mt-5 mb-5 subtitle-underline"><strong>投票しよう</strong></h3>
-  <h5 class="mt-3">Ｑ捨てるべきですか？捨てないべきですか？</h5>
+  <h3 class="my-5 subtitle-underline"><strong>投票しよう</strong></h3>
+  <h5 class="my-3">Ｑ捨てるべきですか？捨てないべきですか？</h5>
   <div>
     <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), local: true, method: :post do |f| %>
       <%= f.hidden_field :option, value: "" %>
       <div class="row justify-content-center">
         <div class="col">
-          <div class="btn-group-toggle d-flex flex-column" data-toggle="buttons">
-            <label class="btn discard-btn">
-              <%= f.radio_button :option, 'discard' %>
-              <%= f.label :option_discard, '捨てる', class: "btn btn-block", id: "discard-btn" %>
-            </label>
-            <label class="btn keep-btn">
-              <%= f.radio_button :option, 'keep' %>
-              <%= f.label :option_keep, '捨てない', class: "btn btn-block mt-1", id: "keep-btn" %>
-            </label>
-            <label class="btn either-btn">
-              <%= f.radio_button :option, 'either' %>
-              <%= f.label :option_either, 'どちらでもよい', class: "btn btn-block mt-1", id: "either-btn" %>
-            </label>
+          <div class="btn-group-toggle d-flex flex-column">
+            <div class="form-group">
+              <label id="discard-btn" class="btn btn-block" for="vote_option_discard">
+                <%= f.radio_button :option, 'discard', class: 'd-none' %>
+                捨てる
+              </label>
+            </div>
+            <div class="form-group">
+              <label id="keep-btn" class="btn btn-block" for="vote_option_keep">
+                <%= f.radio_button :option, 'keep', class: 'd-none' %>
+                捨てない
+              </label>
+            </div>
+            <div class="form-group">
+              <label id="either-btn" class="btn btn-block" for="vote_option_either">
+                <%= f.radio_button :option, 'either', class: 'd-none' %>
+                どちらでもよい
+              </label>
+            </div>
           </div>
         </div>
       </div>

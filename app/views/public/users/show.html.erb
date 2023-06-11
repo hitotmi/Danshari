@@ -51,10 +51,15 @@
               <h5 class="post-title mt-2"><strong><%= counseling_post.title %></strong></h5>
               <p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%= counseling_post.content %></p>
               <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
-              <div class="d-flex align-items-end justify-content-start">
-                <%= image_tag counseling_post.user.get_profile_image(50, 50), class: "user-image rounded-circle" %>
+              <div class="d-flex justify-content-between align-items-end">
+                <div class="d-flex align-items-end">
+                  <%= image_tag counseling_post.user.get_profile_image(50, 50), class: "user-image rounded-circle" %>
+                  <div>
+                    <%= counseling_post.user.name %>さん
+                  </div>
+                </div>
                 <div>
-                  <%= counseling_post.user.name %>さん
+                  <i class="fa-regular fa-message comment-icon"></i><span class="comment-count ml-2"><%= counseling_post.post_comments.count %></span>
                 </div>
               </div>
             </div>
