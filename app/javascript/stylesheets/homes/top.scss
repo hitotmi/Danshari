@@ -60,6 +60,7 @@ header{
   }
 }
 
+
 .pagination {
   margin: 20px auto 0;
   width: 50%;
@@ -116,4 +117,16 @@ header{
 
 .gap {
   background-color: white !important;
+}
+
+
+// エラーメッセージ
+.error-messages {
+  background-color: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px 0;
+
+  h4, li {
+    color: red;
+  }
 }
