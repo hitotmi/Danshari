@@ -42,7 +42,7 @@ header{
       background-color: #000;
       color: #FFF;
     }
-  
+
     p{
       font-size: 20px;
     }
@@ -152,9 +152,17 @@ header{
 .error-messages {
   background-color: rgba(255, 0, 0, 0.2);
   padding: 10px;
-  // margin: 10px 0;
 
   h4, li {
-    color: red;
+    color: #000;
+  }
+}
+
+#error_explanation{
+  background-color: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+  margin-bottom: 30px;
+  h4, li {
+    color: #000;
   }
 }

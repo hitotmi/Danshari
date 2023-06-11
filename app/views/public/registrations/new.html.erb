@@ -4,10 +4,9 @@
       <div class="form-group new-registrations-title text-center ">
         <h4 class="mt-2 nb-2">アカウント作成</h4>
       </div>
+      <%= render "public/shared/error_messages", resource: resource %>
       <div class="new-form">
         <%= form_with model: @user, url: user_registration_path do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
-
           <div class="form-group">
             <%= f.label :name %><br />
             <%= f.text_field :name, autofocus: true, placeholder: "お名前", class: "form-control" %>
