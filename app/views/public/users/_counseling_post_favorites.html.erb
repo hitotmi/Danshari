@@ -1,0 +1,31 @@
+<div class="row post-list mt-3">
+  <div class="col-12">
+    <h3 class="text-center">参考になった投稿</h3>
+  </div>
+  <% counseling_favorites_posts.each do |counseling_post| %>
+    <div class="col-md-4 mt-2 mb-2 post-card">
+      <%= link_to counseling_post_path(counseling_post.id), class: "post-link" do %>
+        <div class="mb-4">
+          <div class="card-img-container">
+            <%= image_tag counseling_post.get_image, size: '200x300', class: "card-img" %>
+            <p class="post-status"><strong><%= counseling_post.status_i18n %></strong></p>
+          </div>
+        <h5 class="post-title mt-2"><strong><%= counseling_post.title %></strong></h5>
+          <p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%= counseling_post.content %></p>
+          <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
+          <div class="d-flex align-items-end justify-content-between">
+            <%= image_tag counseling_post.user.get_profile_image(50, 50), class: "user-image rounded-circle" %>
+            <div>
+              <%= counseling_post.user.name %>さん
+            </div>
+            <div id="favorite_btn_<%= counseling_post.id %>">
+              <%= render "public/favorites/btn", counseling_post: counseling_post %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+

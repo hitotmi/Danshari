@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update] do
       get    'withdraw_confirm'  =>  'users#withdraw_confirm'
       patch  'withdraw'          =>  'users#withdraw'
-      get :counseling_post_favorites, on: :collection
     end
     resources :counseling_posts do
       resource :favorites, only: [:create, :destroy]

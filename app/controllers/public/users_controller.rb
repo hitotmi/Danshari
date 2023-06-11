@@ -4,14 +4,21 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
-     @user = User.find(params[:id])
-     @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
-     @good_comments_count = @user.total_good_comments_count
-     # 1位のユーザーを取得
-     @ranking_top_user = User.all.sort_by { |user| -user.total_count }.first
-     # 1位ユーザーのトータルカウントを取得
-     @top_count = @ranking_top_user.total_count
+    @user = User.find(params[:id])
+    @good_comments_count = @user.total_good_comments_count
+    # 1位のユーザーを取得
+    @ranking_top_user = User.all.sort_by { |user| -user.total_count }.first
+    # 1位ユーザーのトータルカウントを取得
+    @top_count = @ranking_top_user.total_count
+
+    if params[:mode] == 'favorites'
+      #ユーザーが参考になった相談に登録した相談投稿の一覧を取得。
+      @counseling_favorites_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
+    else
+      @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
+    end
   end
+
 
   def edit
     @user = User.find(params[:id])
@@ -46,12 +53,6 @@ class Public::UsersController < ApplicationController
     end
 
     @users = @users.all.sort_by { |user| - user.total_count }
-  end
-
-
-  # ユーザーが参考になった相談に登録した相談投稿の一覧を取得します。
-  def counseling_post_favorites
-    @counseling_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
   end
 
 
