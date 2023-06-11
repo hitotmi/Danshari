@@ -1,4 +1,7 @@
 class Public::CounselingPostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
+
 
   def new
     @counseling_post = CounselingPost.new
@@ -66,5 +69,13 @@ class Public::CounselingPostsController < ApplicationController
   def counseling_post_params
     params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star , tag_ids: [])
   end
+
+  def is_matching_login_user
+    counseling_post = CounselingPost.find(params[:id])
+    unless counseling_post.user_id == current_user.id
+      redirect_to counseling_posts_path
+    end
+  end
+
 
 end
