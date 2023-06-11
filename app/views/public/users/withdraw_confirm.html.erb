@@ -1,20 +1,23 @@
 <div class="container mt-2">
   <div class="row d-flex justify-content-center">
     <div class="col-12">
-      <h1 class="text-center my-5">必ずお読みください</h1>
+      <h1 class="text-center my-5 withdraw-title">必ずお読みください</h1>
 
-      <h3 class="text-center mb-5">
+      <h4 class="text-center mb-5">
         一度退会すると、<br>
         これまで入力、取得した情報もすべて削除されます。<br>
         再度ご利用をいただく場合には、<br>新規登録のお手続きが必要になります。<br>
         本当に退会しますか？
-      </h3>
+      </h4>
     </div>
   </div>
 
   <div class="row justify-content-center mb-3">
-    <div class="col-2 ml-5">
-      <%= link_to "退会する", user_withdraw_path(current_user), method: :patch, class: "btn btn-danger" %>
+    <div class="col-6 text-right">
+      <%= link_to "キャンセルする", user_path(current_user), class: "btn btn-color btn-sm" %>
+    </div>
+    <div class="col-6 text-start">
+      <%= link_to "退会する", user_withdraw_path(current_user), method: :patch, class: "btn withdraw-btn" %>
     </div>
   </div>
 </div>

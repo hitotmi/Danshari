@@ -69,8 +69,10 @@
     <%= f.hidden_field :status, value: "answer_reception" %>
   <% else %>
     <div class="form-group">
-      <%= f.label :status, "ステータスを選択してください", class: "font-weight-bold mt-3" %>
-      <span class="required">必須</span><br>
+      <div class="d-flex align-items-center">
+        <%= f.label :status, "ステータスを選択してください", class: "font-weight-bold mt-3" %>
+        <span class="required">必須</span><br>
+      </div>
       <%= f.select :status, options_for_select(CounselingPost.statuses_i18n.keys.map { |key| [CounselingPost.statuses_i18n[key], key] }, counseling_post.status), include_blank: "選択してください" %>
     </div>
   <% end %>

@@ -1,11 +1,11 @@
 <div class="main">
   <div class="card devise-card">
     <div class="form-wrap">
-      <div class="form-group text-center new-post ">
+      <div class="form-group text-center new-post mb-0">
         <h4><strong>相談・質問編集</strong></h4>
       </div>
+      <%= render 'layouts/error', obj: @counseling_post %>
       <div class="new-form">
-        <%= render 'layouts/error', obj: @counseling_post %>
         <%= render "form", counseling_post: @counseling_post, isEdit: true %>
       </div>
     </div>

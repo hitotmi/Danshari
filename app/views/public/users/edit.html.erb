@@ -1,10 +1,10 @@
 <div class="main">
   <div class="card devise-card">
-    <%= render 'layouts/error', obj: @user %>
     <div class="form-wrap">
-      <div class="form-group text-center new-post ">
+      <div class="form-group text-center new-post mb-0">
         <h4><strong>プロフィール編集</strong></h4>
       </div>
+      <%= render 'layouts/error', obj: @user %>
       <div class="new-form">
         <%= form_with model: @user do |f| %>
           <div class="form-group">
@@ -26,13 +26,13 @@
             <%= f.text_area :introduction, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.submit "更新する", class: "btn btn-primary w-100" %>
+            <%= f.submit "更新する", class: "btn btn-submit w-100" %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
   <div class="text-center">
-    <%= link_to "退会する", user_withdraw_confirm_path(current_user), class: "btn btn-danger" %>
+    <%= link_to "退会する", user_withdraw_confirm_path(current_user), class: "btn btn-delete" %>
   </div>
 </div>

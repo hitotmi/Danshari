@@ -34,6 +34,7 @@ ja:
       counseling_post:
         title: "タイトル"
         content: "相談内容"
+        status: "ステータス(回答受付中・解決済)"
       post_comment:
         comment: "コメント"
 
