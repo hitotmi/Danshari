@@ -37,7 +37,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                <%= image_tag current_user.get_profile_image(50, 50), class: "rounded-circle user-image mr-3" %>
+                <%= image_tag current_user.get_profile_image, size: '50x50', class: "rounded-circle user-image mr-3" %>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %></li>

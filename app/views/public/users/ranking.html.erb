@@ -24,7 +24,7 @@
             <td class="text-center" style="font-size: 30px;"><%= current_rank %></td>
             <td>
               <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image(50, 50), class: "rounded-circle user-image" %>
+                <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
                 <%= user.name %>さん
               <% end %>
             </td>

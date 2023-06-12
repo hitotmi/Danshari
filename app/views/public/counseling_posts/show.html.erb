@@ -27,7 +27,7 @@
       <h3 class="mt-5 mb-2 subtitle-underline"><strong>相談者</strong></h3><br>
       <div class="d-flex align-items-end user-link">
         <%= link_to user_path(@counseling_post.user_id), class: "user-link" do %>
-          <%= image_tag @counseling_post.user.get_profile_image(80,80), class: "rounded-circle user-image mt-2" %>
+          <%= image_tag @counseling_post.user.get_profile_image, size: '80x80', class: "rounded-circle user-image mt-2" %>
         <% end %>
         <%= link_to @counseling_post.user.name, user_path(@counseling_post.user_id), class: "ml-1 mb-0" %>さん
       </div>

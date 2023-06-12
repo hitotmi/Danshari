@@ -9,7 +9,7 @@
         </tr>
         <tr>
           <td class="col-2"></td>
-          <td><%= image_tag @user.get_profile_image(80, 80), class: "rounded-circle" %></td>
+          <td><%= image_tag @user.get_profile_image, size: '80x80', class: "rounded-circle user-image" %></td>
         </tr>
         <tr>
           <td class="col-2">ユーザー名</td>

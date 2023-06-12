@@ -13,7 +13,7 @@
           </div>
           <div class="preview mt-3">
             <% if current_user.profile_image.present? %>
-              <%= image_tag current_user.get_profile_image(200, 200), class: "rounded-circle user-card-img user-image" %>
+              <%= image_tag current_user.get_profile_image, size: '200x200', class: "rounded-circle user-card-img user-image" %>
             <% end %>
               <img id="user-image-preview" src="#" alt="プレビュー" class="rounded-circle mt-2">
           </div>
