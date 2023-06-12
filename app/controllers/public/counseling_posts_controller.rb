@@ -57,7 +57,7 @@ class Public::CounselingPostsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @counseling_post = CounselingPost.find(params[:id])
     @counseling_post.destroy
     flash[:notice] = "削除しました。"
