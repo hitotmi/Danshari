@@ -13,8 +13,10 @@ header{
     color: #000 !important;
     font-weight: bold;
   }
-
-  #navbar{
+  .navbar-toggler-icon {
+    color: black;
+  }
+  #navbarNavDropdown{
     ul{
       list-style: none;
       a{
