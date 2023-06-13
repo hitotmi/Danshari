@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center mb-5 mt-3">お悩み相談</h2>
+  <h3 class="text-center mb-5 mt-3">お悩み相談</h3>
   <% if params[:tag_ids].present? %>
     <h5 class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</h5>
   <% end %>

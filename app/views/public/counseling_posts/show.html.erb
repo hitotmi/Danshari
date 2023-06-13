@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="d-flex">
-      <h1 class="post-status"><%= @counseling_post.status_i18n %></h1>
-    </div>
-    <div class="ml-auto">
-      <% if current_user.id == @counseling_post.user_id %>
-        <%= link_to "編集", edit_counseling_post_path(@counseling_post), class: "btn btn-color" %>
-        <%= link_to "削除" , counseling_post_path(@counseling_post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-delete ml-2" %>
-      <% end %>
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="post-status"><%= @counseling_post.status_i18n %></h1>
+        <div>
+          <% if current_user.id == @counseling_post.user_id %>
+            <%= link_to "編集", edit_counseling_post_path(@counseling_post), class: "btn btn-color" %>
+            <%= link_to "削除" , counseling_post_path(@counseling_post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-delete ml-2" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row mt-4">
+  <div class="row mt-4 ">
     <div class="col-6">
       <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
       <div class="d-flex justify-content-between mt-2">
@@ -47,7 +49,7 @@
           <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
           <% if @counseling_post.tags.present? %>
             <% @counseling_post.tags.each do |tag| %>
-              <%= link_to counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm" do %>
+              <%= link_to counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm mb-1" do %>
                 <span>#<%=tag.name%></span>
               <% end %>
             <% end %>

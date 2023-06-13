@@ -1,11 +1,15 @@
-h3 {
-  border-bottom: 3px dotted #000;
-}
-
-.user-name{
-  color: #000;
-}
-
+// h3 {
+//     position: relative;
+//     padding: 1rem 2rem;
+//     border-radius: 5px;
+//     box-shadow: 7px 7px #f0b531, 7px 7px 0 3px #212121;
+//     outline: 3px solid #212121;
+//     background-color: #fefefe;
+//     color: #212121;
+//     font-size: 26px;
+//     font-weight: bold;
+//     text-align: center;
+// }
 
 .card-border{
   border: 3px solid #000;
@@ -20,16 +24,14 @@ h3 {
 .tag-link {
   display: inline-block;
   padding: 4px 8px;
-  background-color: #0079FF;
+  background-color: #007bff;
   color: #FFF;
-  font-weight: bold;
   text-decoration: none;
   border-radius: 30px;
 
   &:hover {
     background-color: rgba(0, 121, 255, 0.8);
     color: #FFF;
-    font-weight: bold;
     text-decoration: none;
   }
 }
@@ -92,8 +94,9 @@ h3 {
 
 .post-status {
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #FFF;
+  background-color: #FFF;
+  color: #000;
+  border: 2px solid #000;
 }
 
 
