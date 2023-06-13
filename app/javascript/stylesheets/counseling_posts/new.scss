@@ -66,3 +66,56 @@ span {
     height: 500px;
   }
 }
+
+
+// // チェックボックス
+// .check_item{
+//   margin-left: 0;
+//   padding-left: 0;
+// }
+
+// .form-check {
+//     position: relative;
+//     display: block;
+//     text-align: left;
+// }
+
+// .form-check input[type="checkbox"] {
+// 	display: none;
+// }
+
+// .form-check input[type="checkbox"] + span {
+// 	display: inline-block;
+// 	position: relative;
+// 	padding: 0 0 0 1.2em;
+// 	margin: 0 .2em 0;
+// 	cursor: pointer;
+// }
+
+// .form-check input[type="checkbox"] + span::before {
+// 	position: absolute;
+// 	content: "";
+// 	top: 50%;
+// 	left: 0;
+// 	transform: translateY(-50%);
+// 	background: #fff;
+// 	border: 1px solid rgba(0,0,0,.1);
+// 	border-radius: 2px;
+// 	width: 1em;
+// 	height: 1em;
+// 	display: block;
+// }
+
+// .form-check input[type="checkbox"]:checked + span::after {
+// 	position: absolute;
+// 	content: "";
+// 	top: 50%;
+// 	left: 0;
+// 	transform: translateY(-50%) rotate(-45deg);
+// 	width: 1em;
+// 	height: .6em;
+// 	margin-top: -.2em;
+// 	display: block;
+// 	border-left: 3px solid #F44336;
+// 	border-bottom: 3px solid #F44336;
+// }

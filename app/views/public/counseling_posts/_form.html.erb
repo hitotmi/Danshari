@@ -15,7 +15,7 @@
       <%= f.label :title, "相談タイトル", class: "font-weight-bold mt-3 mr-2" %>
       <span class="required">必須</span>
     </div>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "ここにタイトルを入力してください (50文字以内)" %>
   </div>
 
   <div class="form-group">
@@ -23,7 +23,7 @@
       <%= f.label :content, "相談内容", class: "font-weight-bold mt-3 mr-2" %>
       <span class="required">必須</span>
     </div>
-    <%= f.text_area :content, placeholder: "相談投稿（相談内容）", class: "form-control", rows: 10 %>
+    <%= f.text_area :content, placeholder: "ここに相談内容の詳細を入力してください (500文字以内)", class: "form-control", rows: 10 %>
   </div>
 
   <div class="form-group">

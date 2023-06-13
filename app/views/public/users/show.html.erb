@@ -7,7 +7,7 @@
         <% end %>
         <%= image_tag @user.get_profile_image, size: '100x100', class: "rounded-circle user-image mb-3" %>
         <p class="user-name"><strong><%= @user.name %></strong></p>
-        <p class="mt-2 profile-introduction">自己紹介</p><br>
+        <p class="mt-2 profile-introduction">自己紹介</p>
         <p class="profile-introduction-content" style="white-space: pre-wrap;"><%= @user.introduction %></p>
         <% if @user.name != "ゲストユーザー" && @user.id == current_user.id %>
           <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-color profile-edit", style: "height: 50px;" %>
@@ -49,7 +49,7 @@
     <% if @counseling_posts.present? %>
       <%= render "public/users/counseling_post", counseling_posts: @counseling_posts %>
     <% else %>
-    <h3 class="text-center mt-3">相談した投稿</h3>
+    <h3 class="text-center mt-5">相談した投稿</h3>
     <p class="mt-5">相談した投稿はまだありません。</p>
     <% end %>
   <% end %>
@@ -59,7 +59,7 @@
     <% if @counseling_favorites_posts.present? %>
       <%= render "public/users/counseling_post_favorites", counseling_favorites_posts: @counseling_favorites_posts %>
     <% else %>
-  　　  <h3 class="text-center mt-3">参考になった投稿</h3>
+  　　  <h3 class="text-center mt-4">参考になった投稿</h3>
       <p class="mt-5">参考になった投稿はまだありません。</p>
     <% end %>
   <% end %>

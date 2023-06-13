@@ -9,12 +9,12 @@
         <%= form_with model: @user, url: user_registration_path do |f| %>
           <div class="form-group">
             <%= f.label :name %><br />
-            <%= f.text_field :name, autofocus: true, placeholder: "お名前", class: "form-control" %>
+            <%= f.text_field :name, autofocus: true, placeholder: "田中太郎", class: "form-control" %>
           </div>
 
           <div class="form-group">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
+            <%= f.email_field :email, autofocus: true, placeholder: "example@example.com", class: "form-control" %>
           </div>
 
           <div class="form-group">

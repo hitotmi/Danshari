@@ -29,6 +29,14 @@ ja:
       x_minutes: "%{count}分"
       less_than_x_minutes: "1分未満"
 
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
+
   activerecord:
     attributes:
       counseling_post:
@@ -37,12 +45,17 @@ ja:
         status: "ステータス(回答受付中・解決済)"
       post_comment:
         comment: "コメント"
+      user:
+        introduction: "自己紹介"
 
-
-  views:
-    pagination:
-      first: "&laquo;"
-      last: "&raquo;"
-      previous: "&lsaquo;"
-      next: "&rsaquo;"
-      truncate: "..."
+      errors:
+        models:
+          user:
+            attributes:
+              introduction:
+                too_long: "は最大%{count}文字までです"
+        messages:
+          too_long: "は最大%{count}文字までです"
+    errors:
+      messages:
+        too_long: "は最大%{count}文字までです"

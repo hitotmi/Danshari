@@ -1,7 +1,7 @@
 class CounselingPost < ApplicationRecord
 
-  validates :title, presence:true
-  validates :content, length: { maximum: 200 }, presence:true
+  validates :title, presence:true, length: { maximum: 50 }, presence:true
+  validates :content, length: { maximum: 500 }, presence:true
   validates :status, presence:true
 
   has_one_attached :image
