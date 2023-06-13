@@ -68,7 +68,7 @@ span {
 }
 
 
-// // チェックボックス
+// チェックボックス
 // .check_item{
 //   margin-left: 0;
 //   padding-left: 0;
@@ -119,3 +119,36 @@ span {
 // 	border-left: 3px solid #F44336;
 // 	border-bottom: 3px solid #F44336;
 // }
+
+
+
+// チェックボックス
+.tag-index {
+  label {
+    input {
+      display: none; // デフォルトのinputは非表示にする
+    }
+    span {
+      color: #000;
+      font-size: 15px;
+      border: 1px solid #000;
+      border-radius: 20px;
+      padding: 5px 20px;
+    }
+    input:checked {
+      + span {
+        color: #FFF;
+        background: #0079FF;
+        border: 1px solid #0079FF;
+      }
+    }
+  }
+}
+
+.form-check {
+  position: relative;
+  display: block;
+  padding-left: 0;
+}
+
+

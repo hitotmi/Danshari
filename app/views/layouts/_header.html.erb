@@ -30,7 +30,7 @@
               <% if current_user.passive_notifications.where(checked: false).present? %>
                 <span class="position-absolute top-0 translate-middle badge badge-pill badge-primary ml-5"><%= current_user.passive_notifications.where(checked: false).count %></span>
               <% end %>
-              <%= link_to "通知", notifications_path, class: 'nav-link mr-4' %>
+              <%= link_to "通知", notifications_path, class: 'nav-link mr-5' %>
             </li>
             <li class="nav-item">
               <%= link_to "相談・質問をする", new_counseling_post_path, class: 'btn btn-color-blue text-white' %>

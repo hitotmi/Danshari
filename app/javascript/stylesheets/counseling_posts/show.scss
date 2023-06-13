@@ -20,14 +20,16 @@ h3 {
 .tag-link {
   display: inline-block;
   padding: 4px 8px;
-  background-color: #F4EEE8;
-  color: #000;
+  background-color: #0079FF;
+  color: #FFF;
+  font-weight: bold;
   text-decoration: none;
   border-radius: 30px;
 
   &:hover {
-    background-color: rgba(225, 225, 225, 0.5);
-    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 121, 255, 0.8);
+    color: #FFF;
+    font-weight: bold;
     text-decoration: none;
   }
 }

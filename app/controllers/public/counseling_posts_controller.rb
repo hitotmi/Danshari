@@ -12,7 +12,7 @@ class Public::CounselingPostsController < ApplicationController
     @counseling_post.user_id = current_user.id
     if  @counseling_post.save
       flash[:notice] = "投稿しました。"
-      redirect_to counseling_posts_path
+      redirect_to counseling_post_path(@counseling_post)
     else
       render :new
     end
