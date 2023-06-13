@@ -7,24 +7,30 @@
       <%= render 'layouts/error', obj: @user %>
       <div class="new-form">
         <%= form_with model: @user do |f| %>
-          <div class="form-group">
-            <%= f.label :profile_image, "プロフィール画像" %><br>
-            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-          </div>
-          <div class="preview mt-3">
-            <% if current_user.profile_image.present? %>
-              <%= image_tag current_user.get_profile_image, size: '200x200', class: "rounded-circle user-card-img user-image" %>
-            <% end %>
+          <div class="d-flex flex-column align-items-center">
+            <div class="preview mt-3">
+              <% if current_user.profile_image.present? %>
+                <%= image_tag current_user.get_profile_image, size: '200x200', class: "rounded-circle user-card-img user-image" %>
+              <% end %>
               <img id="user-image-preview" src="#" alt="プレビュー" class="rounded-circle mt-2">
+            </div>
+
+            <div class="form-group mt-3 d-flex flex-column align-items-center">
+              <%= f.label :profile_image, "プロフィール画像" %>
+              <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "mx-auto" %>
+            </div>
           </div>
+
           <div class="form-group">
             <%= f.label :name, "名前" %>
             <%= f.text_field :name, class: "form-control" %>
           </div>
+
           <div class="form-group">
             <%= f.label :introduction,  "自己紹介" %>
             <%= f.text_area :introduction, class: "form-control" %>
           </div>
+
           <div class="form-group">
             <%= f.submit "更新する", class: "btn btn-submit w-100" %>
           </div>
