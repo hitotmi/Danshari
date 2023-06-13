@@ -1,0 +1,2 @@
+$('.post-comments-index').html("<%= j(render "admin/post_comments/index", counseling_post: @counseling_post,post_comment: @post_comment) %>")
+$('#flash-message').html("<%= j(render "layouts/flash") %>").show().delay(10000).fadeOut();
