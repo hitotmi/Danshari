@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <div class="error-messages">
-    <h4><strong><%= obj.errors.count %>件のエラーが発生しました</strong></h4>
+    <h4><strong><i class="fa-solid fa-triangle-exclamation"></i><%= obj.errors.count %>件のエラーが発生しました</strong></h4>
     <ul>
       <% obj.errors.full_messages.each do |message| %>
         <li><%= message %></li>

@@ -151,20 +151,32 @@ header{
 
 
 // エラーメッセージ
+// .error-messages {
+//   background-color: rgba(255, 0, 0, 0.2);
+//   padding: 10px;
+
+//   h4, li {
+//     color: #000;
+//   }
+// }
 .error-messages {
+  border: 1px solid red;
   background-color: rgba(255, 0, 0, 0.2);
   padding: 10px;
+  margin: 5px;
 
   h4, li {
-    color: #000;
+    color: red;
   }
 }
 
 #error_explanation{
+  border: 1px solid red;
   background-color: rgba(255, 0, 0, 0.2);
   padding: 10px;
-  margin-bottom: 30px;
+  margin: 5px;
+
   h4, li {
-    color: #000;
+    color: red;
   }
 }
