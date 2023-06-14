@@ -38,6 +38,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def after_sign_in_path_for(resource)
+    if user_signed_in?
+      flash[:alert] = "すでにログイン済みです。"
+      user_path(current_user)
+    end
+  end
+
+
   def after_sign_up_path_for(resource)
     flash[:notice] = "新規登録に成功しました。ご利用ありがとうございます。"
     user_path(current_user)
