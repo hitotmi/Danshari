@@ -6,5 +6,9 @@ FactoryBot.define do
     status { :answer_reception }
     usage_frequency { :everyday }
     star { 0 }
+
+    after(:create) do |counseling_post|
+      counseling_post.tags = Tag.limit(3)
+    end
   end
 end

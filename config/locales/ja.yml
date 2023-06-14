@@ -59,3 +59,4 @@ ja:
     errors:
       messages:
         too_long: "は最大%{count}文字までです"
+        record_invalid: 'バリデーションに失敗しました: %{errors}'

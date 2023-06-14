@@ -152,4 +152,11 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+    models:
+      admin:
+        attributes:
+          email:
+            taken: "は既に使用されています"
+      messages:
+        taken: "は既に使用されています"
 
