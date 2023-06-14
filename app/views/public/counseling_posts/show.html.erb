@@ -37,7 +37,7 @@
 
     <div class="col-6">
       <div class="card-border p-3">
-        <h4 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h4>
+        <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
           <% if @counseling_post.star.present? %>

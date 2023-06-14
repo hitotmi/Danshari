@@ -71,12 +71,6 @@
   border: 2px solid #000;
   position: relative;
 
-  .btn-delete{
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-  }
-
   .fa-heart{
     color: #cd5c5c;
     font-size: 15px;
@@ -97,9 +91,4 @@
   background-color: #FFF;
   color: #000;
   border: 2px solid #000;
-}
-
-
-.user-comment-wrapper {
-  align-items: flex-start; /* ensures comment starts at the top, aligned with username */
 }
