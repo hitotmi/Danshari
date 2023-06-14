@@ -11,7 +11,6 @@ RSpec.describe CounselingPost, "モデルに関するテスト", type: :model do
   end
 
   context "空白のバリデーションチェック" do
-
     it "titleが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       user = FactoryBot.create(:user) # Userオブジェクトを作成
 
