@@ -11,19 +11,19 @@
     <%= render "public/counseling_posts/tag_search" %>
   </div>
   <div class="row mb-2 d-flex justify-content-between">
-    <%= link_to '相談・質問をする', new_counseling_post_path, class: "btn btn-color text-center col-3" %>
-    <%= link_to "新着順", counseling_posts_path, class: "btn text-center btn-color col-3" %>
-    <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "btn btn-color text-center col-3" %>
-    <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "btn btn-color text-center col-3" %>
+    <%= link_to "新着順", counseling_posts_path, class: "btn text-center btn-color col-4" %>
+    <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "btn btn-color text-center col-4" %>
+    <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "btn btn-color text-center col-4" %>
   </div>
+
   <div class="row post-list">
     <% @counseling_posts.each do |counseling_post| %>
-      <div class="col-md-4 mt-2 mb-2 post-card">
+      <div class="col-md-4 my-2 post-card">
         <%= link_to counseling_post_path(counseling_post.id), class: "post-link" do %>
           <div class="mb-4">
             <div class="card-img-container">
               <%= image_tag counseling_post.get_image, size: '200x300', class: "card-img" %>
-              <p><strong><%= counseling_post.status_i18n %></strong></p>
+              <p class="status-<%= counseling_post.status %>"><strong><%= counseling_post.status_i18n %></strong></p>
             </div>
             <h5 class="post-title mt-2" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= counseling_post.title %></strong></h5>
             <p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%= counseling_post.content %></p>

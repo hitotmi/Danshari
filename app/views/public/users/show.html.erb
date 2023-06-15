@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="row">
+  <div class="row position-relative">
     <div class="col-12">
       <div class="d-flex flex-column align-items-center user-profile">
         <% if @user.total_count == @top_count %>
@@ -10,8 +10,9 @@
         <p class="mt-2 profile-introduction">自己紹介</p>
         <p class="profile-introduction-content" style="white-space: pre-wrap;"><%= @user.introduction %></p>
         <% if @user.name != "ゲストユーザー" && @user.id == current_user.id %>
-          <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-color profile-edit", style: "height: 50px;" %>
+          <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-color position-sm-static position-md-absolute", style: "height: 50px; top: 20px; right: 30px;" %>
         <% end %>
+
         <table class="table table-bordered count-table mt-2">
           <thead>
             <tr>

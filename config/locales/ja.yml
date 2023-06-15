@@ -3,7 +3,7 @@ ja:
     counseling_post:
       status:
         answer_reception: "回答受付中"
-        resolved: "解決済"
+        resolved: "解決済み"
 
       usage_frequency:
         everyday: "毎日"

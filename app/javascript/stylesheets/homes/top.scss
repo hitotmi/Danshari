@@ -36,7 +36,6 @@ header{
 
 
 .concept{
-  margin: 100px;
 
   .concept-main{
 
@@ -151,14 +150,6 @@ header{
 
 
 // エラーメッセージ
-// .error-messages {
-//   background-color: rgba(255, 0, 0, 0.2);
-//   padding: 10px;
-
-//   h4, li {
-//     color: #000;
-//   }
-// }
 .error-messages {
   border: 1px solid red;
   background-color: rgba(255, 0, 0, 0.2);
@@ -178,5 +169,13 @@ header{
 
   h4, li {
     color: red;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .custom-mx {
+    margin-left: 200px;
+    margin-right: 200px;
   }
 }

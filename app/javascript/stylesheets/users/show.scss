@@ -19,16 +19,6 @@
   }
 }
 
-.user-profile {
-  position: relative;
-}
-
-.profile-edit {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
 #user-image-preview{
   width: 200px;
   height: 200px;
@@ -48,5 +38,18 @@
   &:hover {
     background-color: rgba(178, 39, 39, 0.7);
     color: #FFF;
+  }
+}
+
+
+@media (min-width: 576px) {
+  .position-sm-static {
+    position: static;
+  }
+}
+
+@media (min-width: 768px) {
+  .position-md-absolute {
+    position: absolute;
   }
 }

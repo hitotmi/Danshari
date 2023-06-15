@@ -1,11 +1,12 @@
 h3 {
-    margin-bottom: 0.2rem;
-    padding: 1rem;
-    box-shadow: 10px 10px 0 #434242;
-    border: 2px solid #434242;
-    color: #353535;
-    font-weight: bold;
+    position: relative;
+    padding: 1rem 2rem;
+    box-shadow: 7px 7px #F2BE22, 7px 7px 0 3px #212121;
+    outline: 3px solid #212121;
+    background-color: #fefefe;
+    color: #212121;
     font-size: 26px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -33,13 +34,22 @@ h3 {
 .card-img-container {
   position: relative;
 
-  p {
+  .status-answer_reception {
     position: absolute;
     top: 0;
     right: 0;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
     color: #FFF;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .status-resolved {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    color: #FFF;
+    background-color: rgb(242, 76, 61, 0.8);
   }
 }
 
@@ -57,7 +67,7 @@ h3 {
 
 .post-card {
   border: 1px solid #dcdcdc;
-  
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
@@ -74,4 +84,17 @@ h3 {
 
 .comment-count {
   font-size: 20px;
+}
+
+
+.btn-color-index {
+  padding: 10px 20px;
+  border: 2px solid #000;
+  background-color: transparent;
+  color: #000;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #000;
+    color: #FFF;
+  }
 }
