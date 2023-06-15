@@ -141,6 +141,13 @@ describe '自分のユーザ詳細画面のテスト' do
       expect(page).to have_link "相談した投稿"
     end
   end
+
+  context "詳細画面の遷移の確認" do
+    it "編集ボタンをクリックする" do
+      click_on "編集"
+      expect(current_path).to eq("/users/" + user.id.to_s + "/edit")
+    end
+  end
 end
 
 describe "ユーザー編集画面" do
@@ -174,8 +181,7 @@ describe "ユーザー編集画面" do
 
   context '更新されユーザー詳細画面に遷移するか' do
     it "情報を入力して更新ボタンをクリックする" do
-      @user_old_name = user.name
-      @user_old_intrpduction = user.introduction
+      attach_file 'user[profile_image]', Rails.root.join('spec', 'fixtures', 'test_image.jpg')
       fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)
       fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 19)
       click_button '更新する'

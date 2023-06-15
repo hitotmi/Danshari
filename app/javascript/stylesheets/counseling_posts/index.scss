@@ -33,7 +33,7 @@ h3 {
 .card-img-container {
   position: relative;
 
-  .post-status {
+  p {
     position: absolute;
     top: 0;
     right: 0;
@@ -57,6 +57,7 @@ h3 {
 
 .post-card {
   border: 1px solid #dcdcdc;
+  
   &:hover {
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
@@ -73,10 +74,4 @@ h3 {
 
 .comment-count {
   font-size: 20px;
-}
-
-
-h2 {
-  padding: 1rem 2rem;
-  border: 6px double #000;
 }
