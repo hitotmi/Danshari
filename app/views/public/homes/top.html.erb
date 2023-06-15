@@ -3,13 +3,12 @@
     <div class="col-12">
       <div class="text-center">
         <div class="image-container">
-          <%= image_tag "Q.png", style: "max-width: 45%", class: "img-fluid" %>
+          <%= image_tag "Q.jpg", id: "responsive-image" %>
         </div>
-
-        <div class="link_button mt-5 text-center">
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-color-blue btn-lg" %>
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg ml-3" %>
-          <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg ml-3", method: :post %>
+        <div class="d-md-flex justify-content-center align-items-center flex-wrap">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-color-blue btn-lg responsive-btn d-block d-md-inline-block mb-3 mb-md-0" %>
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg responsive-btn ml-md-3 d-block d-md-inline-block mb-3 mb-md-0" %>
+          <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg responsive-btn ml-md-3 d-block d-md-inline-block", method: :post %>
         </div>
       </div>
     </div>
