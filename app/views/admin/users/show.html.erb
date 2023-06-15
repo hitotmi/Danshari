@@ -4,23 +4,23 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td class="col-2">会員ID</td>
+          <td class="col-sm-2 col-4">会員ID</td>
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <td class="col-2"></td>
+          <td class="col-sm-2 col-4"></td>
           <td><%= image_tag @user.get_profile_image, size: '80x80', class: "rounded-circle user-image" %></td>
         </tr>
         <tr>
-          <td class="col-2">ユーザー名</td>
+          <td class="col-sm-2 col-4">ユーザー名</td>
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <td class="col-2">自己紹介</td>
+          <td class="col-sm-2 col-4">自己紹介</td>
           <td><%= @user.introduction %></td>
         </tr>
         <tr>
-          <td class="col-2">会員ステータス</td>
+          <td class="col-sm-2 col-4">会員ステータス</td>
           <% if @user.is_deleted == false %>
             <td class="text-success font-weight-bold">有効</td>
           <% else %>

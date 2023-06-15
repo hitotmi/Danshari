@@ -16,8 +16,10 @@
           <td><%= user.id %></td>
           <td>
             <%= link_to admin_user_path(user.id) do %>
-              <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
-              <%= user.name %>
+              <div class="user-info">
+                <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
+                <%= user.name %>
+              </div>
             <% end %>
           </td>
           <td><%= user.email %></td>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="d-flex">
-      <h1 class="post-status"><%= @counseling_post.status_i18n %></h1>
+       <h1 class="status-<%= @counseling_post.status %> mb-3 mb-sm-0"><%= @counseling_post.status_i18n %></h1>
     </div>
     <div class="ml-auto">
       <% if current_admin %>
@@ -10,16 +10,16 @@
     </div>
   </div>
   <div class="row mt-4">
-    <div class="col-6">
+     <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
       <div class="d-flex justify-content-between mt-2">
         <div>質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %></div>
       </div>
     </div>
 
-    <div class="col-6">
+     <div class="col-md-6">
       <div class="card-border p-3">
-        <h3 class="border-bottom border-dark"><strong><%= @counseling_post.title %></strong></h3>
+        <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
           <div class="mr-2">お気に入り度： </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+     <div class="col-md-6">
       <h3 class="mt-5"><strong>相談者</strong></h3><br>
       <div class="d-flex align-items-end">
         <%= link_to admin_user_path(@counseling_post.user_id) do %>

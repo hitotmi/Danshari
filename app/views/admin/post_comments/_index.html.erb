@@ -6,7 +6,7 @@
   <div class="card mb-2">
     <div class="comment-card-body d-flex">
       <div class="d-flex flex-column align-items-start mt-2">
-        <div style="width: 120px;">
+        <div style="width: 100px;">
           <%= link_to user_path(post_comment.user_id), remote: true do %>
             <%= image_tag post_comment.user.get_profile_image, size: '50x50', class: "rounded-circle mr-3 user-image" %>
           <% end %>
@@ -17,14 +17,18 @@
           </div>
         </div>
       </div>
-      <div class=" ml-5 answer-comment">
-        <p class="card-text mb-0"><small><%= time_ago_in_words(post_comment.created_at) %>前</small></p>
-        <p class="card-text"><%= simple_format(post_comment.comment) %></p>
-        <% if current_admin %>
-          <div class="d-flex justify-content-end mb-1">
-            <%= link_to "削除", admin_counseling_post_post_comment_path(post_comment.counseling_post, post_comment), remote: true, class: "btn btn-delete", method: :delete %>
-          </div>
-        <% end %>
+      <div class="container">
+        <div class="answer-comment d-flex flex-column justify-content-between">
+          <p class="card-text mb-0"><small><%= time_ago_in_words(post_comment.created_at) %>前</small></p>
+          <p class="card-text" style="word-wrap: break-word; word-break: break-all;">
+            <%= post_comment.comment %>
+          </p>
+         <% if current_admin %>
+            <div class="mt-auto d-flex justify-content-end mb-1">
+              <%= link_to "削除", admin_counseling_post_post_comment_path(post_comment.counseling_post, post_comment), remote: true, class: "btn btn-delete", method: :delete %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
