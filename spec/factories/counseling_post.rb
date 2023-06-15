@@ -5,7 +5,7 @@ FactoryBot.define do
     content { Faker::Lorem.characters(number:30) }
     status { :answer_reception }
     usage_frequency { :everyday }
-    star { 0 }
+    star { 3 }
 
     after(:create) do |counseling_post|
       counseling_post.tags = Tag.limit(3)

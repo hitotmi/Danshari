@@ -31,6 +31,12 @@ describe '投稿のテスト' do
       it "投稿の画像フォームが表示されているか" do
         expect(page).to have_selector('input[type="file"][accept="image/*"]')
       end
+      it "使用頻度の入力フォームが存在しているか" do
+        expect(page).to have_selector('select[name="counseling_post[usage_frequency]"]')
+      end
+      it "お気に入り度の入力フォームが存在しているか" do
+        expect(page).to have_selector('input#review_star', visible: false)
+      end
       it "タグの選択フォームが表示されているか" do
         expect(page).to have_selector('input[type="checkbox"][name="counseling_post[tag_ids][]"]', count: Tag.count)
       end
@@ -40,10 +46,11 @@ describe '投稿のテスト' do
     end
     context '投稿処理のテスト' do
       it '投稿後のリダイレクト先は正しいか' do
-        attach_file 'counseling_post[image]', Rails.root.join('app', 'assets', 'images', 'no_image.jpg')
+        attach_file 'counseling_post[image]', Rails.root.join('spec', 'fixtures', 'test_image.jpg')
         fill_in 'counseling_post[title]', with: Faker::Lorem.characters(number:10)
         fill_in 'counseling_post[content]', with: Faker::Lorem.characters(number:30)
         select '毎日', from: 'counseling_post_usage_frequency'
+        find('input#review_star', visible: false).set(4)
         check "counseling_post_tag_ids_1"
         click_button '投稿'
         expect(page).to have_current_path counseling_post_path(CounselingPost.last)
@@ -65,10 +72,13 @@ describe '投稿のテスト' do
       visit counseling_posts_path
     end
     context '表示の確認' do
+      it 'counseling_posts_pathが"/counseling_posts"であるか' do
+        expect(current_path).to eq('/counseling_posts')
+      end
       it 'タイトルされたものが表示されているか' do
         expect(page).to have_content @counseling_post.title
       end
-      it "相談内容入力フォームが存在しているか" do
+      it "相談内容が表示されているか" do
         expect(page).to have_content @counseling_post.content
       end
       it "ステータス(回答受付中・解決済)が存在しているか" do
@@ -86,6 +96,9 @@ describe '投稿のテスト' do
       visit counseling_post_path(@counseling_post)
     end
     context '表示の確認' do
+      it 'counseling_post_path(counseling_post)が"/counseling_posts/counseling_post.id"であるか' do
+        expect(current_path).to eq("/counseling_posts/" + counseling_post.id.to_s)
+      end
       it '削除リンクが存在しているか' do
         expect(page).to have_link('削除')
       end
@@ -100,6 +113,12 @@ describe '投稿のテスト' do
       end
       it "タグが表示されているか" do
         expect(@counseling_post.tag_ids.count).to eq(3)
+      end
+      it "スター評価が表示しているか" do
+        expect(page).to have_content @counseling_post.star
+      end
+      it "使用頻度が表示しているか" do
+        expect(page).to have_content @counseling_post.usage_frequency_i18n
       end
       it "ステータス(回答受付中・解決済)が存在しているか" do
         expect(page).to have_content @counseling_post.status_i18n
@@ -127,6 +146,9 @@ describe '投稿のテスト' do
       it '投稿の内容の入力フォームが表示されているか' do
         expect(page).to have_field 'counseling_post[content]', with: @counseling_post.content
       end
+      it "お気に入り度の入力フォームが存在しているか" do
+        expect(page).to have_selector('input#review_star', visible: false)
+      end
       it "タグの選択フォームが表示されているか" do
         expect(page).to have_selector('input[type="checkbox"][name="counseling_post[tag_ids][]"]', count: Tag.count)
       end
@@ -139,10 +161,11 @@ describe '投稿のテスト' do
     end
     context '更新処理に関するテスト' do
       it '投稿が更新されてリダイレクトされること' do
+        attach_file 'counseling_post[image]', Rails.root.join('spec', 'fixtures', 'test_image.jpg')
         fill_in 'counseling_post[title]', with: Faker::Lorem.characters(number:10)
         fill_in 'counseling_post[content]', with: Faker::Lorem.characters(number:30)
         select '毎日', from: 'counseling_post_usage_frequency'
-        select CounselingPost.usage_frequencies_i18n[CounselingPost.usage_frequencies.keys.sample], from: 'counseling_post[usage_frequency]'
+        find('input#review_star', visible: false).set(4)
         check "counseling_post_tag_ids_1"
         click_button '投稿'
         expect(page).to have_current_path counseling_post_path(@counseling_post)
