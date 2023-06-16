@@ -3,29 +3,33 @@
     <h3 class="text-center">相談した投稿</h3>
   </div>
   <% counseling_posts.each do |counseling_post| %>
-    <div class="col-md-4 mt-2 mb-2 post-card">
-      <%= link_to counseling_post_path(counseling_post.id), class: "post-link" do %>
-        <div class="mb-4">
-          <div class="card-img-container">
-            <%= image_tag counseling_post.get_image, size: '200x300', class: "card-img" %>
-            <p class="post-status"><strong><%= counseling_post.status_i18n %></strong></p>
+    <div class="col-md-4 my-2 padding-adjust">
+      <div class="post-card">
+        <%= link_to counseling_post_path(counseling_post.id), class: "post-link flex-container" do %>
+          <div>
+            <div class="card-img-container">
+              <%= image_tag counseling_post.get_image, size: '200x300', class: "card-img" %>
+              <p class="status-<%= counseling_post.status %>"><strong><%= counseling_post.status_i18n %></strong></p>
+            </div>
+            <h5 class="post-title mt-2 px-3" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= counseling_post.title %></strong></h5>
+            <!--<p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%#= counseling_post.content %></p>-->
+            <div class="px-3">
+              <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
+            </div>
           </div>
-          <h5 class="post-title mt-2"><strong><%= counseling_post.title %></strong></h5>
-          <p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%= counseling_post.content %></p>
-          <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
-          <div class="d-flex justify-content-between align-items-end">
+          <div class="d-flex justify-content-between align-items-end bottom-aligned px-3">
             <div class="d-flex align-items-end">
               <%= image_tag counseling_post.user.get_profile_image, size: '50x50', class: "user-image rounded-circle" %>
               <div>
                 <%= counseling_post.user.name %>さん
               </div>
             </div>
-          　<div>
-            　<i class="fa-regular fa-message comment-icon"></i><span class="comment-count ml-2"><%= counseling_post.post_comments.count %></span>
+            <div>
+              <i class="fa-regular fa-message comment-icon"></i><span class="comment-count ml-2"><%= counseling_post.post_comments.count %></span>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
