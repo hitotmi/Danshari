@@ -1,22 +1,5 @@
 <div class="container">
-  <h3 class="text-center mb-5 mt-3">～お悩み相談一覧～</h3>
-  <% if @counseling_posts.blank? %>
-    <p class="text-center">検索の結果、該当するものが見つかりませんでした。</p>
-  <% elsif params[:tag_ids].present? %>
-    <p class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
-  <% elsif params[:content].present? %>
-    <p class="text-center">「<%= params[:content] %>」の検索結果</p>
-  <% end %>
-  <div class="mt-5">
-    <%= render "admin/counseling_posts/search" %>
-    <%= render "admin/counseling_posts/tag_search" %>
-  </div>
-  <div class="row mb-2 d-flex justify-content-between">
-    <%= link_to "新着順", admin_counseling_posts_path, class: "btn text-center btn-color col-4" %>
-    <%= link_to "回答受付中", admin_counseling_posts_path(status: "answer_reception"), class: "btn btn-color text-center col-4" %>
-    <%= link_to "解決済", admin_counseling_posts_path(status: "resolved"), class: "btn btn-color text-center col-4" %>
-  </div>
-
+  <h3 class="text-center mb-5 mt-3"><%= @user.name %>さんの相談投稿</h3>
   <div class="row mt-2">
     <% @counseling_posts.each do |counseling_post| %>
       <div class="col-md-4 my-2 padding-adjust">
@@ -51,4 +34,3 @@
   </div>
   <%= paginate @counseling_posts %>
 </div>
-

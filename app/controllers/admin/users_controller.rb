@@ -23,6 +23,13 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def counseling_posts_index
+    @user = User.find(params[:user_id])
+    @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
+  end
+
+  private
+
   def user_params
     params.require(:user).permit(:name, :introduction, :email, :is_deleted, :admin)
   end

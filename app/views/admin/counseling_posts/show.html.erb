@@ -14,7 +14,7 @@
 
   <div class="row mt-4">
      <div class="col-md-6">
-      <%= image_tag @counseling_post.get_image, size: '500x500', class: "card-img"%>
+      <%= image_tag @counseling_post.get_image, class: "post-image img-fluid"%>
       <div class="d-flex justify-content-between mt-2">
         <div>質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %></div>
       </div>
