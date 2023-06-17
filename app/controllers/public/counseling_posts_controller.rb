@@ -50,7 +50,7 @@ class Public::CounselingPostsController < ApplicationController
   def update
     @counseling_post = CounselingPost.find(params[:id])
     if @counseling_post.update(counseling_post_params)
-      flash[:notice] = "更新しました。"
+      flash[:notice] = "投稿を更新しました。"
       redirect_to counseling_post_path(@counseling_post)
     else
       render :edit
@@ -60,7 +60,7 @@ class Public::CounselingPostsController < ApplicationController
   def destroy
     @counseling_post = CounselingPost.find(params[:id])
     @counseling_post.destroy
-    flash[:notice] = "削除しました。"
+    flash[:notice] = "投稿を削除しました。"
     redirect_to counseling_posts_path
   end
 

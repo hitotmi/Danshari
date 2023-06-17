@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
       #ユーザーが参考になった相談に登録した相談投稿の一覧を取得。
       @counseling_favorites_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
     else
-      @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
+      @counseling_posts = @user.counseling_posts.order(created_at: :desc).page(params[:page]).per(9)
     end
   end
 

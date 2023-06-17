@@ -1,4 +1,4 @@
-<div class="col-md-5">
+<div class="col-md-6">
   <h3 class="mt-5 mb-4 subtitle-underline"><strong>投票結果</strong></h3>
   <% if counseling_post.votes.group(:option).count.present? %>
     <canvas id="votesChart" width="50" height="50"></canvas>
@@ -31,19 +31,19 @@
       });
     </script>
 
-    <table class="table table-bordered mt-4 mb-5">
+    <table class="table table-bordered mt-5 mb-5 count-table">
       <thead>
-        <tr>
-          <th class="text-center">捨てる</th>
-          <th class="text-center">捨てない</th>
-          <th class="text-center">どちらでもよい</th>
+        <tr class="d-flex">
+          <th class="text-center col">捨てる</th>
+          <th class="text-center col">捨てない</th>
+          <th class="text-center col">どちらでもよい</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
-          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
-          <td class="text-center"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
+        <tr class="d-flex">
+          <td class="text-center col"><strong><%= counseling_post.votes.where(option: 'discard').count %></strong></td>
+          <td class="text-center col"><strong><%= counseling_post.votes.where(option: 'keep').count %></strong></td>
+          <td class="text-center col"><strong><%= counseling_post.votes.where(option: 'either').count %></strong></td>
         </tr>
       </tbody>
     </table>

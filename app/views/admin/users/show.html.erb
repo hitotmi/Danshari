@@ -1,5 +1,10 @@
-<div class="container">
-  <h3 class="text-center mb-5 mt-3"><%= @user.name %>さんの詳細</h3>
+<div class="py-4" style=" background-color: #19A7CE;">
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;"><%= @user.name %>さんの詳細</h2>
+  <span style="display: block; text-align: center; font-size: 20px;">users</span>
+</div>
+
+<%= render "layouts/flash" %>
+<div class="container mt-5">
   <div class="row mb-2 justify-content-end">
     <%= link_to "投稿をみる",  admin_user_counseling_posts_index_path(@user), class: "btn btn-color btn-sm" %>
   </div>

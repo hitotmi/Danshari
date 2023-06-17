@@ -1,5 +1,6 @@
 .card-border{
-  border: 3px solid #000;
+  border: 2px solid #000;
+  border-radius: 10px;
 }
 
 .user-link{
@@ -11,13 +12,14 @@
 .tag-link {
   display: inline-block;
   padding: 4px 8px;
-  background-color: #007bff;
-  color: #FFF;
+  background-color: #FFF;
+  color: #343A40;
   text-decoration: none;
   border-radius: 30px;
+  border: 2px solid #343A40;
 
   &:hover {
-    background-color: rgba(0, 121, 255, 0.8);
+    background-color: #343A40;
     color: #FFF;
     text-decoration: none;
   }
@@ -57,6 +59,7 @@
   padding: 15px;
   border: 2px solid #000;
   position: relative;
+  border-radius: 10px;
 
   .fa-heart{
     color: #cd5c5c;
@@ -67,24 +70,28 @@
 
 .answer-card{
   border: 2px solid #000;
+  border-radius: 10px;
 
   #post_comment_comment{
     border: 1px solid #000;
+    border-radius: 10px;
   }
 }
 
-  .status-answer_reception {
-    padding: 10px;
-    color: #FFF;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
+.status-answer_reception {
+  padding: 10px;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
 
-  .status-resolved {
-    padding: 10px;
-    color: #FFF;
-    background-color: rgb(242, 76, 61, 0.8);
-  }
+.status-resolved {
+  padding: 10px;
+  color: #FFF;
+  background-color: rgb(242, 76, 61, 0.8);
+  border-radius: 10px;
+}
 
-  .post-image{
-    border: 3px solid #000;
-  }
+.post-image{
+  border: 3px solid #000;
+}

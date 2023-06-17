@@ -1,12 +1,20 @@
+<div class="py-4" style=" background-color: #19A7CE;">
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;">お悩み相談</h2>
+  <span style="display: block; text-align: center; font-size: 20px;">Q&A</span>
+</div>
+
+<%= render "layouts/flash" %>
 <div class="container">
-  <h3 class="text-center mb-5 mt-3">～お悩み相談一覧～</h3>
-  <% if @counseling_posts.blank? %>
-    <p class="text-center">検索の結果、該当するものが見つかりませんでした。</p>
-  <% elsif params[:tag_ids].present? %>
-    <p class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
-  <% elsif params[:content].present? %>
-    <p class="text-center">「<%= params[:content] %>」の検索結果</p>
-  <% end %>
+  <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
+    <% if @counseling_posts.blank? %>
+      <p class="text-center">検索の結果、該当するものが見つかりませんでした。</p>
+    <% elsif params[:tag_ids].present? %>
+      <p class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
+    <% elsif params[:content].present? %>
+      <p class="text-center">「<%= params[:content] %>」の検索結果</p>
+    <% end %>
+  </div>
+
   <div class="mt-5">
     <%= render "admin/counseling_posts/search" %>
     <%= render "admin/counseling_posts/tag_search" %>
@@ -28,7 +36,6 @@
                 <p class="status-<%= counseling_post.status %>"><strong><%= counseling_post.status_i18n %></strong></p>
               </div>
               <h5 class="post-title mt-2 px-3" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= counseling_post.title %></strong></h5>
-              <!--<p class="post-text overflow-hidden text-overflow-ellipsis text-truncate mb-4"><%#= counseling_post.content %></p>-->
               <div class="px-3">
                 <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
               </div>
