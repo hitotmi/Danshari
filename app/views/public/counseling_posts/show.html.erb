@@ -54,12 +54,14 @@
           <% end %>
         </div>
         <% if @counseling_post.usage_frequency.present? %>
-          <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
-          <% if @counseling_post.tags.present? %>
-            <% @counseling_post.tags.each do |tag| %>
-              <%= link_to counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm mb-1" do %>
-                <span>#<%=tag.name%></span>
-              <% end %>
+          <p class="mb-1">使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
+        <% else %>
+          <p class="mb-1">使用頻度： 未登録</p>
+        <% end %>
+        <% if @counseling_post.tags.present? %>
+          <% @counseling_post.tags.each do |tag| %>
+            <%= link_to counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm mb-1" do %>
+              <span><i class="fa-solid fa-hashtag"></i><strong><%=tag.name%></strong></span>
             <% end %>
           <% end %>
         <% end %>
@@ -68,12 +70,12 @@
   </div>
 
   <!--投票-->
-  <div class="row">
+  <div class="row mt-3">
     <%= render 'public/votes/vote_result', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
     <%= render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
   </div>
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-12">
       <div class="errors">
         <%= render 'layouts/error', obj: @post_comment %>

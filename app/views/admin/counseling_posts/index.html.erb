@@ -5,7 +5,7 @@
 
 <%= render "layouts/flash" %>
 <div class="container">
-  <div class="row mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 1px solid #EBEBEB;">
+  <div class="row no-gutters mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 1px solid #EBEBEB;">
     <div class="col">
       <%= link_to "新着順", admin_counseling_posts_path, class: "custom-link" %>
     </div>
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class="row mt-2">
+  <div class="row no-gutters mt-2">
     <% @counseling_posts.each do |counseling_post| %>
       <div class="col-md-4 my-2 padding-adjust">
         <div class="post-card">

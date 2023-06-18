@@ -2,7 +2,7 @@
   <% if current_user.id == counseling_post.user_id && post_comment.user_id != current_user.id %>
     <% if post_comment.good_commented_by?(current_user) %>
       <%= link_to  counseling_post_post_comment_good_comments_path(counseling_post.id, post_comment.id),method: :delete, remote: true, class: "btn" do %>
-        <i class="fa-solid fa-thumbs-up"></i>グッドアドバイス
+        <i class="fa-solid fa-thumbs-up" style="color: #ff8c00;"></i>&nbsp;グッドアドバイス
       <% end %>
     <% else %>
       <%= link_to counseling_post_post_comment_good_comments_path(counseling_post.id, post_comment.id),method: :post, remote: true, class: "btn btn-favorite" do %>
@@ -11,7 +11,7 @@
     <% end %>
   <% else %>
     <% if post_comment.good_commented_by?(counseling_post.user) %>
-      <div class="badge mt-5">
+      <div class="badge mt-2">
         <i class="fa-solid fa-heart"></i>相談者からグットアドバイスをいただきました
       </div>
     <% end %>
