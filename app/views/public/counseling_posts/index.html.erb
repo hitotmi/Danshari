@@ -5,6 +5,24 @@
 
 <%= render "layouts/flash" %>
 <div class="container">
+  <div class="row mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 1px solid #EBEBEB;">
+    <div class="col">
+      <%= link_to "新着順", counseling_posts_path, class: "custom-link" %>
+    </div>
+    <div class="col-auto">
+      |
+    </div>
+    <div class="col">
+      <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "custom-link" %>
+    </div>
+    <div class="col-auto">
+      |
+    </div>
+    <div class="col">
+      <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "custom-link" %>
+    </div>
+  </div>
+
   <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
     <% if @counseling_posts.blank? %>
       <p class="text-center">検索の結果、該当するものが見つかりませんでした。</p>
@@ -20,24 +38,6 @@
       <span class="box-title">検索<i class="fa-solid fa-magnifying-glass"></i></span>
       <%= render "public/counseling_posts/search" %>
       <%= render "public/counseling_posts/tag_search" %>
-    </div>
-  </div>
-
-  <div class="row mb-2 py-3 text-center" style="background-color: #FFF; border: 1px solid #EBEBEB;">
-    <div class="col">
-      <%= link_to "新着順", counseling_posts_path, class: "custom-link" %>
-    </div>
-    <div class="col-auto">
-      |
-    </div>
-    <div class="col">
-      <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "custom-link" %>
-    </div>
-    <div class="col-auto">
-      |
-    </div>
-    <div class="col">
-      <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "custom-link" %>
     </div>
   </div>
 

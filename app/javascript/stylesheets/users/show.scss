@@ -1,6 +1,6 @@
 .user-profile{
   padding: 10px;
-  background-color: #FFF;
+  background-color: #F5F5F5;
   border: 1px solid #EBEBEB;
   border-radius: 10px;
 
@@ -40,6 +40,17 @@
   &:hover {
     background-color: rgba(178, 39, 39, 0.7);
     color: #FFF;
+  }
+}
+
+
+.post-select-link {
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    color: #19A7CE;
+    text-decoration: none;
   }
 }
 

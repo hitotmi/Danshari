@@ -4,7 +4,7 @@
 </div>
 
 <%= render "layouts/flash" %>
-<div class="container pt-1 pb-5 <%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>" style="background-color: #FFF; border: 1px solid #ebebeb;">
+<div class="container <%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>" style="background-color: #FFF;">
   <div class="d-flex justify-content-between mb-3 mt-5">
     <h4>新着</h4>
     <%= link_to notification_path(@notifications), class: "btn btn-delete", method: :delete do %>

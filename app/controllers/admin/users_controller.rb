@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
 
   def counseling_posts_index
     @user = User.find(params[:user_id])
-    @counseling_posts = @user.counseling_posts.page(params[:page]).per(9)
+    @counseling_posts = @user.counseling_posts.order(created_at: :desc).page(params[:page]).per(9)
   end
 
   private
