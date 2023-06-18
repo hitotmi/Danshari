@@ -1,11 +1,11 @@
 // ヘッダー
 
-header{
+header {
   .header-bg-color {
     background-color: #ffffff!important;
   }
 
-  .navbar-brand{
+  .navbar-brand {
     color: #000 !important;
     font-weight: bold;
   }
@@ -14,23 +14,32 @@ header{
     color: black;
   }
 
-  #navbarNavDropdown{
-
-    ul{
+  #navbarNavDropdown {
+    ul {
       list-style: none;
+    }
 
-      a{
-        font-weight: bold;
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      margin-right: 20px;
+    }
+
+    a:hover,
+    a:active {
+      color: #000;
+      text-decoration: none;
+      border-bottom: 3px solid #19A7CE;
+    }
+
+    .dropdown-item {
+      &:hover,
+      &:active {
+        color: #000;
         text-decoration: none;
-        color: black;
-        margin-right: 20px;
-
-        &:hover, &:active {
-          color: #000;
-          text-decoration: none;
-          border-bottom: 3px solid #19A7CE;
-          background-color: #FFF;
-        }
+        border-bottom: 3px solid #19A7CE;
+        background-color: #ffffff;
       }
     }
   }
@@ -38,9 +47,7 @@ header{
 
 
 .concept{
-
   .concept-main{
-
     .sub-title-heading{
       background-color: #000;
       color: #FFF;

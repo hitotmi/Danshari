@@ -20,8 +20,7 @@ h3 {
 }
 
 .card-img{
-  border-bottom: 1px solid #EBEBEB;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
 }
 
 .user-image{
@@ -50,6 +49,9 @@ h3 {
     border-radius: 0 8px 0 10px;
     color: #FFF;
     background-color: rgb(242, 76, 61, 0.8);
+  }
+  .card-img{
+    border-radius: 10px 10px 0 0;
   }
 }
 
@@ -166,6 +168,6 @@ a.custom-link {
     color: #000;
     text-decoration: none;
     border-bottom: 3px solid #19A7CE;
-    padding-bottom: 10px;
+    padding-bottom: 1rem;
   }
 }

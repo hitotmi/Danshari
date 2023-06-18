@@ -21,7 +21,7 @@
 
   <div class="row mt-4">
     <div class="col-md-6">
-      <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, .16);" %>
+      <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);" %>
       <div class="d-flex justify-content-between mt-2">
         <div>
           質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %>
