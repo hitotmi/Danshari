@@ -7,11 +7,11 @@
     <div class="comment-card-body d-flex">
       <div class="d-flex flex-column align-items-start mt-2">
         <div style="width: 100px;">
-          <%= link_to user_path(post_comment.user_id), remote: true do %>
+          <%= link_to user_path(post_comment.user_id) do %>
             <%= image_tag post_comment.user.get_profile_image, size: '50x50', class: "rounded-circle mr-3 user-image" %>
           <% end %>
           <div>
-            <%= link_to user_path(post_comment.user_id),class: "user-name", remote: true do %>
+            <%= link_to user_path(post_comment.user_id),class: "user-link" do %>
               <p class="card-title mb-0 text-wrap"><%= post_comment.user.name %>さん</p>
             <% end %>
           </div>

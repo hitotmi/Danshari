@@ -41,36 +41,8 @@
     </div>
   </div>
 
-  <div class="row no-gutters mt-2">
-    <% @counseling_posts.each do |counseling_post| %>
-      <div class="col-md-4 my-2 padding-adjust">
-        <div class="post-card">
-          <%= link_to admin_counseling_post_path(counseling_post.id), class: "post-link flex-container" do %>
-            <div>
-              <div class="card-img-container">
-                <%= image_tag counseling_post.get_image, size: '200x300', class: "card-img" %>
-                <p class="status-<%= counseling_post.status %>"><strong><%= counseling_post.status_i18n %></strong></p>
-              </div>
-              <h5 class="post-title mt-2 px-3" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= counseling_post.title %></strong></h5>
-              <div class="px-3">
-                <%= counseling_post.created_at.strftime("%Y年%m月%d日") %>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-end bottom-aligned px-3">
-              <div class="d-flex align-items-end">
-                <%= image_tag counseling_post.user.get_profile_image, size: '50x50', class: "user-image rounded-circle" %>
-                <div>
-                  <%= counseling_post.user.name %>さん
-                </div>
-              </div>
-              <div>
-                <i class="fa-regular fa-message comment-icon"></i><span class="comment-count ml-2"><%= counseling_post.post_comments.count %></span>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+  <div class="row no-gutters post-list mt-2">
+    <%= render "index", counseling_posts: @counseling_posts %>
   </div>
   <%= paginate @counseling_posts %>
 </div>

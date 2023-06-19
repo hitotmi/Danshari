@@ -16,7 +16,17 @@
      <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, .16);" %>
       <div class="d-flex justify-content-between mt-2">
-        <div>質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %></div>
+        <div>
+          質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %>
+          <div class="d-flex align-items-end user-link mt-3">
+            <%= link_to admin_user_path(@counseling_post.user_id), class: "user-link" do %>
+              <%= image_tag @counseling_post.user.get_profile_image, size: '80x80', class: "rounded-circle user-image" %>
+            <% end %>
+            <%= link_to admin_user_path(@counseling_post.user_id), class: "ml-1 mb-0" do %>
+              <%= @counseling_post.user.name %>さん
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -32,24 +42,14 @@
       </div>
     </div>
   </div>
-  <div class="row">
-     <div class="col-md-6">
-      <h3 class="mt-5"><strong>相談者</strong></h3><br>
-      <div class="d-flex align-items-end">
-        <%= link_to admin_user_path(@counseling_post.user_id) do %>
-          <%= image_tag @counseling_post.user.get_profile_image, size: '80x80', class: "user-image rounded-circle bordered-image mt-2" %>
-        <% end %>
-        <%= link_to @counseling_post.user.name, admin_user_path(@counseling_post.user_id), class: "ml-1 mb-0" %>さん
-      </div>
-    </div>
-  </div>
+
   <div class="row mt-5">
     <div class="col-12" id="flash-message">
       <% if flash[:post_comment_created] %>
         <%= render "layouts/flash", message: flash[:post_comment_created] %>
       <% end %>
     </div>
-    <div class="col-12 post-comments-index">
+    <div class="col-12 post-comments-index comment-area">
       <%= render "admin/post_comments/index", counseling_post: @counseling_post %>
     </div>
   </div>
