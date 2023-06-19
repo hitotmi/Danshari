@@ -12,7 +12,6 @@
           <th>ユーザー名</th>
           <th>メールアドレス</th>
           <th>会員ステータス</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +32,6 @@
           <% else %>
             <td class="text-secondary font-weight-bold">退会</td>
           <% end %>
-          <td><%= link_to "投稿をみる",  admin_user_counseling_posts_index_path(user), class: "btn btn-color btn-sm" %></td>
         </tr>
         <% end %>
       </tbody>

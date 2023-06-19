@@ -14,7 +14,5 @@
     <% end %>
   </div>
   <%= paginate @counseling_posts %>
-  <%= link_to admin_user_path(@user), class: "text-center d-block mt-5" do %>
-    <%= @user.name %>さんの会員情報に戻る
-  <% end %>
+  <%= link_to "戻る", admin_user_path(@user), class: "text-center d-block mt-5" %>
 </div>
