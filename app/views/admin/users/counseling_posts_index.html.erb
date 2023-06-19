@@ -5,7 +5,16 @@
 
 <div class="container mt-5">
   <div class="row no-gutters post-list mt-2">
-    <%= render "admin/counseling_posts/index", counseling_posts: @counseling_posts %>
+    <% if @counseling_posts.present? %>
+      <%= render "admin/counseling_posts/index", counseling_posts: @counseling_posts %>
+    <% else %>
+      <div class="col-12">
+        <p class="text-center">まだ投稿はありません。</p>
+      </div>
+    <% end %>
   </div>
   <%= paginate @counseling_posts %>
+  <%= link_to admin_user_path(@user), class: "text-center d-block mt-5" do %>
+    <%= @user.name %>さんの会員情報に戻る
+  <% end %>
 </div>

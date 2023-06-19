@@ -1,4 +1,9 @@
-<div class="container">
+<div class="py-4" style=" background-color: #19A7CE;">
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;">お悩み相談詳細</h2>
+  <span style="display: block; text-align: center; font-size: 20px;">Q&A</span>
+</div>
+
+<div class="container mt-5">
   <div class="row">
     <div class="col-12">
       <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
@@ -52,5 +57,8 @@
     <div class="col-12 post-comments-index comment-area">
       <%= render "admin/post_comments/index", counseling_post: @counseling_post %>
     </div>
+  </div>
+  <div class="col-12 text-center mt-5">
+    <%= link_to "戻る", admin_counseling_posts_path, class: "text-center" %>
   </div>
 </div>
