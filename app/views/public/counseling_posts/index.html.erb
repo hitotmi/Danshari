@@ -5,7 +5,7 @@
 
 <%= render "layouts/flash" %>
 <div class="container">
-  <div class="row no-gutters mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 1px solid #EBEBEB;">
+  <div class="row no-gutters mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 2px solid #EBEBEB; border-radius: 8px;">
     <div class="col">
       <%= link_to "新着順", counseling_posts_path, class: "custom-link" %>
     </div>
@@ -35,7 +35,7 @@
 
   <div class="mt-5">
     <div class="box mt-5 px-4 pt-4">
-      <span class="box-title">検索<i class="fa-solid fa-magnifying-glass"></i></span>
+      <span class="box-title mb-5"><i class="fa-solid fa-magnifying-glass"></i>検索</span>
       <%= render "public/counseling_posts/search" %>
       <%= render "public/counseling_posts/tag_search" %>
     </div>
@@ -64,7 +64,7 @@
                 </div>
               </div>
               <div>
-                <i class="fa-regular fa-message comment-icon"></i><span class="comment-count ml-2"><%= counseling_post.post_comments.count %></span>
+                <i class="fa-regular fa-message" style="font-size: 20px;"></i><span class="ml-2" style="font-size: 20px;"><%= counseling_post.post_comments.count %></span>
               </div>
             </div>
           <% end %>

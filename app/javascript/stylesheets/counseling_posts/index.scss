@@ -22,114 +22,84 @@ h3 {
   }
 }
 
-.card-img{
-  border-radius: 10px;
-}
-
 .user-image{
-  border: 2px solid #000;
+  border: 2px solid #343a40;
   background-color: #FFF;
 }
-
-.card-img-container {
-  position: relative;
-
-  .status-answer_reception {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    border-radius: 0 8px 0 10px;
-    color: #FFF;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-
-  .status-resolved {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    border-radius: 0 8px 0 10px;
-    color: #FFF;
-    background-color: rgb(242, 76, 61, 0.8);
-  }
-  .card-img{
-    border-radius: 10px 10px 0 0;
-  }
-}
-
 
 // 一覧のカード
-.post-link {
-  color: #000;
-  text-decoration: none;
-
-  &:hover {
+.post-list {
+  .post-link {
     color: #000;
     text-decoration: none;
-    border-bottom: 1px solid #000;
+
+    &:hover {
+      color: #000;
+      text-decoration: none;
+    }
   }
-}
 
-.post-card {
-  position: relative;
-  background-color: #FFF;
-  border: 2px solid #000;
-  height: 520px;
-  border-radius: 10px;
+  .post-card {
+    position: relative;
+    background-color: #FFF;
+    border: 2px solid #343a40;
+    height: 520px;
+    border-radius: 10px;
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-    margin-top: -5px;
-    color: #000;
-    text-decoration: none;
-    opacity: 0.6;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+      margin-top: -5px;
+      color: #000;
+      text-decoration: none;
+      opacity: 0.6;
+    }
   }
-}
 
-.padding-adjust {
-    padding-right: 5px !important;
-    padding-left: 5px !important;
-}
+  .padding-adjust {
+    padding: 0 5px !important;
+  }
 
-.flex-container {
+  .flex-container {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
-}
+  }
 
-.bottom-aligned {
-    margin-top: auto;
-    margin-bottom: 10px;
-}
+  .bottom-aligned {
+    margin: auto 0 10px 0;
+  }
 
-.bottom{
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-}
+  .bottom {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
 
+  .card-img-container {
+    position: relative;
 
-.comment-icon {
-  font-size: 20px;
-}
+    .status-answer_reception, .status-resolved {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      border-radius: 0 8px 0 10px;
+      color: #FFF;
+    }
 
-.comment-count {
-  font-size: 20px;
-}
+    .status-answer_reception {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
 
+    .status-resolved {
+      background-color: rgb(242, 76, 61, 0.8);
+    }
 
-.btn-color-index {
-  padding: 10px 20px;
-  border: 2px solid #000;
-  background-color: transparent;
-  color: #000;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #000;
-    color: #FFF;
+    .card-img {
+      border-radius: 10px 10px 0 0;
+    }
   }
 }
 
@@ -139,7 +109,7 @@ h3 {
   position: relative;
   margin: 2em 0;
   padding: 0.5em 1em;
-  border: 2px solid #000;
+  border: 2px solid #EBEBEB;
   border-radius: 8px;
 
   .box-title {

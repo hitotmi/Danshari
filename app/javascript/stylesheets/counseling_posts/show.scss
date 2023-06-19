@@ -1,11 +1,11 @@
 .card-border{
-  border: 2px solid #000;
+  border: 2px solid #343a40;
   border-radius: 10px;
 }
 
 .user-link{
   a{
-    color: #000;
+    color: #343a40;
   }
 }
 
@@ -13,6 +13,20 @@
   color: #0079FF;
   text-decoration: none;
   padding: 0 10px 0 0;
+}
+
+.status-answer_reception, .status-resolved {
+  padding: 10px;
+  color: #FFF;
+  border-radius: 10px;
+
+  &.status-answer_reception {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  &.status-resolved {
+    background-color: rgb(242, 76, 61, 0.8);
+  }
 }
 
 // favoriteとgood_commentボタン
@@ -42,49 +56,28 @@
   }
 }
 
-.green-background {
-  background-color: #A7ECEE;
-  margin-bottom: 5px;
-}
-
 // コメント一覧
-.comment-card-body{
-  padding: 15px;
-  border: 2px solid #000;
-  position: relative;
-  border-radius: 10px;
-
-  .fa-heart{
-    color: #cd5c5c;
-    font-size: 15px;
-    margin: 5px;
-  }
-}
-
-.answer-card{
-  border: 2px solid #000;
-  border-radius: 10px;
-
-  #post_comment_comment{
-    border: 2px solid #000;
+.comment-area{
+  .comment-card-body{
+    padding: 15px;
+    border: 2px solid #343a40;
+    position: relative;
     border-radius: 10px;
+
+    .fa-heart{
+      color: #cd5c5c;
+      font-size: 15px;
+      margin: 5px;
+    }
   }
-}
 
-.status-answer_reception {
-  padding: 10px;
-  color: #FFF;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-}
+  .answer-card{
+    border: 2px solid #343a40;
+    border-radius: 10px;
 
-.status-resolved {
-  padding: 10px;
-  color: #FFF;
-  background-color: rgb(242, 76, 61, 0.8);
-  border-radius: 10px;
-}
-
-.post-image{
-  border: 3px solid #000;
+    #post_comment_comment{
+      border: 2px solid #343a40;
+      border-radius: 10px;
+    }
+  }
 }

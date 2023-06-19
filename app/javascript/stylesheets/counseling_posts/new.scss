@@ -8,10 +8,10 @@
         max-width: 800px;
         width: 100%;
         margin: 50px auto;
-        border: 3px solid #000;
+        border: 3px solid #343a40;
 
         .new-post {
-          border-bottom: 3px solid #000;
+          border-bottom: 3px solid #343a40;
           padding: 20px;
         }
 
@@ -29,12 +29,12 @@
 
 .btn-color {
   padding: 10px 20px;
-  border: 2px solid #000;
+  border: 2px solid #343a40;
   background-color: #FFF;
   color: #000;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #000;
+    background-color: #343a40;
     color: #FFF;
   }
 }
@@ -67,6 +67,7 @@ span {
   }
 }
 
+
 // チェックボックス
 .tag-index {
   label {
@@ -88,12 +89,13 @@ span {
       }
     }
   }
+  .form-check {
+    position: relative;
+    display: block;
+    padding-left: 0;
+  }
 }
 
-.form-check {
-  position: relative;
-  display: block;
-  padding-left: 0;
-}
+
 
 
