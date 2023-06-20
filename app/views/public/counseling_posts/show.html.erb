@@ -57,8 +57,6 @@
         </div>
         <% if @counseling_post.usage_frequency.present? %>
           <p class="mb-1">使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
-        <% else %>
-          <p class="mb-1">使用頻度： 未登録</p>
         <% end %>
         <% if @counseling_post.tags.present? %>
           <% @counseling_post.tags.each do |tag| %>

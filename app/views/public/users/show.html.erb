@@ -1,6 +1,11 @@
 <div class="py-4" style=" background-color: #19A7CE;">
-  <h2 class="text-center" style="color: #FFF; font-weight: bold;">マイページ</h2>
-  <span style="display: block; text-align: center; font-size: 20px;">mypage</span>
+  <% if current_user == @user %>
+    <h2 class="text-center" style="color: #FFF; font-weight: bold;">マイページ</h2>
+    <span style="display: block; text-align: center; font-size: 20px;">mypage</span>
+  <% else %>
+    <h2 class="text-center" style="color: #FFF; font-weight: bold;"><%= @user.name %>さんのページ</h2>
+    <span style="display: block; text-align: center; font-size: 20px;">userpage</span>
+  <% end %>
 </div>
 
 <%= render "layouts/flash" %>
