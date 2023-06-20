@@ -109,6 +109,25 @@ describe "ログインテスト" do
   end
 end
 
+describe 'ユーザログアウトのテスト' do
+  let(:user) { create(:user) }
+
+  before do
+    visit new_user_session_path
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    click_button 'ログインする'
+    find('#navbarDropdown').click
+  end
+
+  context 'ログアウト機能のテスト' do
+    it 'ログアウト後のリダイレクト先が、トップになっている' do
+      click_link 'ログアウト'
+      expect(current_path).to eq '/'
+    end
+  end
+end
+
 describe '自分のユーザ詳細画面のテスト' do
   let(:user) { create(:user) }
   let!(:counseling_post) { create(:counseling_post, user: user) }
