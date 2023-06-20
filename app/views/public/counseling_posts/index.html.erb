@@ -23,15 +23,6 @@
     </div>
   </div>
 
-  <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
-    <% if @counseling_posts.blank? %>
-      <p class="text-center">検索の結果、該当するものが見つかりませんでした。</p>
-    <% elsif params[:tag_ids].present? %>
-      <p class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
-    <% elsif params[:content].present? %>
-      <p class="text-center">「<%= params[:content] %>」の検索結果</p>
-    <% end %>
-  </div>
 
   <div class="mt-5">
     <div class="box mt-5 px-4 pt-4">
@@ -40,6 +31,18 @@
       <%= render "public/counseling_posts/tag_search" %>
     </div>
   </div>
+
+    <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
+    <% if @counseling_posts.blank? %>
+      <p class="text-center">該当するものが見つかりませんでした。</p>
+    <% elsif params[:tag_ids].present? %>
+      <p class="text-center" style="font-size: 25px;">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
+    <% elsif params[:content].present? %>
+      <p class="text-center" style="font-size: 25px;">「<%= params[:content] %>」の検索結果</p>
+    <% end %>
+  </div>
+
+
 
   <div class="row no-gutters post-list">
     <%= render "index", counseling_posts: @counseling_posts %>
