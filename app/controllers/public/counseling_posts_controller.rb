@@ -2,7 +2,6 @@ class Public::CounselingPostsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
 
-
   def new
     @counseling_post = CounselingPost.new
   end
@@ -76,6 +75,5 @@ class Public::CounselingPostsController < ApplicationController
       redirect_to counseling_posts_path
     end
   end
-
 
 end

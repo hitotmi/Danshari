@@ -5,44 +5,44 @@
 
 <%= render "layouts/flash" %>
 <div class="container">
-  <div class="row no-gutters mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 2px solid #EBEBEB; border-radius: 8px;">
-    <div class="col">
-      <%= link_to "新着順", counseling_posts_path, class: "custom-link" %>
+  <% unless params[:tag_ids].present? || params[:content].present? %>
+    <div class="row no-gutters mb-5 mt-2 py-3 text-center" style="background-color: #f8f8f8; border: 2px solid #EBEBEB; border-radius: 8px;">
+      <div class="col">
+        <%= link_to "新着順", counseling_posts_path, class: !params[:status] ? "custom-link-active" : "custom-link" %>
+      </div>
+      <div class="col-auto">
+        |
+      </div>
+      <div class="col">
+        <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: current_status?("answer_reception") ? "custom-link-active" : "custom-link" %>
+      </div>
+      <div class="col-auto">
+        |
+      </div>
+      <div class="col">
+        <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: current_status?("resolved") ? "custom-link-active" : "custom-link" %>
+      </div>
     </div>
-    <div class="col-auto">
-      |
-    </div>
-    <div class="col">
-      <%= link_to "回答受付中", counseling_posts_path(status: "answer_reception"), class: "custom-link" %>
-    </div>
-    <div class="col-auto">
-      |
-    </div>
-    <div class="col">
-      <%= link_to "解決済", counseling_posts_path(status: "resolved"), class: "custom-link" %>
-    </div>
-  </div>
+  <% end %>
 
-
-  <div class="mt-5">
-    <div class="box mt-5 px-4 pt-4">
+  <div>
+    <div class="box px-4 pt-4">
       <span class="box-title mb-5"><i class="fa-solid fa-magnifying-glass"></i>検索</span>
       <%= render "public/counseling_posts/search" %>
       <%= render "public/counseling_posts/tag_search" %>
     </div>
   </div>
 
-    <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
+  <div>
     <% if @counseling_posts.blank? %>
-      <p class="text-center">該当するものが見つかりませんでした。</p>
+      <p class="text-center mt-5 py-5" style="">該当するものが見つかりませんでした。
+      <div class="text-center mt-5"><%= link_to "一覧に戻る", counseling_posts_path %></div>
     <% elsif params[:tag_ids].present? %>
       <p class="text-center" style="font-size: 25px;">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
     <% elsif params[:content].present? %>
       <p class="text-center" style="font-size: 25px;">「<%= params[:content] %>」の検索結果</p>
     <% end %>
   </div>
-
-
 
   <div class="row no-gutters post-list">
     <%= render "index", counseling_posts: @counseling_posts %>
