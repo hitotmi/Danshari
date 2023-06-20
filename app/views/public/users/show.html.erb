@@ -13,7 +13,7 @@
         <% end %>
         <%= image_tag @user.get_profile_image, size: '100x100', class: "rounded-circle user-image mb-3" %>
         <p class="user-name"><strong><%= @user.name %></strong></p>
-        <p class="mt-2 profile-introduction">自己紹介</p>
+        <p class="mt-2 profile-introduction" style="text-align: center; font-size: 20px;">ー自己紹介ー</p>
         <p class="profile-introduction-content" style="white-space: pre-wrap;"><%= @user.introduction %></p>
         <% if @user.name != "ゲストユーザー" && @user.id == current_user.id %>
           <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-color position-sm-static position-md-absolute", style: "height: 50px; top: 20px; right: 30px;" %>

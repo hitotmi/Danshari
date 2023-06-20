@@ -63,7 +63,7 @@ class Public::SessionsController < Devise::SessionsController
     ##取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     ##ユーザーが退会済みなら新規登録画面に遷移させる
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
-      flash[:notice] = "退会済みの為、再度ご登録してご利用ください"
+      flash[:alert] = "退会済みの為、再度ご登録してご利用ください"
       redirect_to new_user_registration_path
     end
   end
