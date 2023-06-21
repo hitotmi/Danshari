@@ -28,8 +28,13 @@
     text-decoration: none;
 
     &:hover {
-      color: #19A7CE;
+      color: 	#0072BC;
       text-decoration: none;
+    }
+
+    &.active {
+      color: 	#0072BC;
+      font-weight: bold;
     }
   }
 }

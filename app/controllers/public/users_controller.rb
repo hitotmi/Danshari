@@ -19,7 +19,6 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
   def edit
     @user = User.find(params[:id])
   end
@@ -27,7 +26,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "更新しました。"
+      flash[:notice] = "プロフィールを更新しました。"
       redirect_to user_path(current_user)
     else
       render :edit
@@ -76,6 +75,4 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
-
 end
