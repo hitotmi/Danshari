@@ -16,23 +16,23 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td>
-            <%= link_to admin_user_path(user.id) do %>
-              <div class="user-info">
-                <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
-                <%= user.name %>
-              </div>
+          <tr>
+            <td><%= user.id %></td>
+            <td>
+              <%= link_to admin_user_path(user.id) do %>
+                <div class="user-info">
+                  <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
+                  <%= user.name %>
+                </div>
+              <% end %>
+            </td>
+            <td><%= user.email %></td>
+            <% if user.is_deleted == false %>
+              <td class="text-success font-weight-bold">有効</td>
+            <% else %>
+              <td class="text-secondary font-weight-bold">退会</td>
             <% end %>
-          </td>
-          <td><%= user.email %></td>
-          <% if user.is_deleted == false %>
-            <td class="text-success font-weight-bold">有効</td>
-          <% else %>
-            <td class="text-secondary font-weight-bold">退会</td>
-          <% end %>
-        </tr>
+          </tr>
         <% end %>
       </tbody>
     </table>

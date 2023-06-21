@@ -18,7 +18,7 @@
   </div>
 
   <div class="row mt-4">
-     <div class="col-md-6">
+    <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, .16);" %>
       <div class="d-flex justify-content-between mt-2">
         <div>
@@ -35,12 +35,12 @@
       </div>
     </div>
 
-     <div class="col-md-6">
+    <div class="col-md-6">
       <div class="card-border p-3">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
-          <div class="mr-2">お気に入り度： </div>
+          <div class="mr-2">お気に入り度：</div>
           <%= render "star", counseling_post: @counseling_post %>
         </div>
         <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>

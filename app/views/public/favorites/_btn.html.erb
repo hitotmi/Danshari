@@ -1,7 +1,7 @@
 <% if counseling_post.favorited_by?(current_user) %>
   <%= link_to counseling_post_favorites_path(counseling_post.id), method: :delete, remote: true, class: "btn btn-unfavorite" do %>
     <i class="fa-solid fa-hands-clapping"></i>&nbsp;参考リスト保存
-<% end %>
+  <% end %>
 <% else %>
   <%= link_to counseling_post_favorites_path(counseling_post.id), method: :post, remote: true, class: "btn btn-favorite" do %>
     <i class="fa-solid fa-hands-clapping"></i>&nbsp;参考リスト保存

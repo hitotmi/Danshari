@@ -23,7 +23,7 @@
           <p class="card-text" style="word-wrap: break-word; word-break: break-all;">
             <%= post_comment.comment %>
           </p>
-         <% if current_admin %>
+          <% if current_admin %>
             <div class="mt-auto d-flex justify-content-end mb-1">
               <%= link_to "削除", admin_counseling_post_post_comment_path(post_comment.counseling_post, post_comment), remote: true, class: "btn btn-delete", method: :delete %>
             </div>
