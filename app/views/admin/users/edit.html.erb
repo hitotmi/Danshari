@@ -1,12 +1,15 @@
 <div class="py-4" style=" background-color: #19A7CE;">
-  <h2 class="text-center" style="color: #FFF; font-weight: bold;"><%= @user.name %>さんの登録情報編集</h2>
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;">登録情報編集</h2>
   <span style="display: block; text-align: center; font-size: 20px;">edit</span>
 </div>
 
 <div class="container mt-5">
-  <%= render 'layouts/error', obj: @user %>
   <div class="row justify-content-center">
-    <div class="col-sm-8 col-12 mt-3 mb-5">
+    <div class="col-sm-8 col-12 mt-2 px-0">
+      <%= render 'layouts/error', obj: @user %>
+      <h4 class="mt-4"><%= @user.name %>さんの登録情報編集</h4>
+    </div>
+    <div class="col-sm-8 col-12 mt-3 mb-5 p-3" style="background-color: #f8f8f8; border-radius: 10px; border: 1px solid #EBEBEB;">
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
         <div class="form-group">
           <table class="table table-borderless">

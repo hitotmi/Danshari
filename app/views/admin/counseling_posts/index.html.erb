@@ -5,27 +5,30 @@
 
 <%= render "layouts/flash" %>
 <div class="container mt-3">
-  <div class="row no-gutters mb-2 py-3 text-center" style="background-color: #f8f8f8; border: 1px solid #EBEBEB;">
-    <div class="col">
-      <%= link_to "新着順", admin_counseling_posts_path, class: "custom-link" %>
+  <% unless params[:tag_ids].present? || params[:content].present? %>
+    <div class="row no-gutters mb-5 mt-2 py-3 text-center" style="background-color: #f8f8f8; border: 2px solid #EBEBEB; border-radius: 8px;">
+      <div class="col">
+        <%= link_to "新着順", admin_counseling_posts_path, class: !params[:status] ? "custom-link-active" : "custom-link" %>
+      </div>
+      <div class="col-auto">
+        |
+      </div>
+      <div class="col">
+        <%= link_to "回答受付中", admin_counseling_posts_path(status: "answer_reception"), class: current_status?("answer_reception") ? "custom-link-active" : "custom-link" %>
+      </div>
+      <div class="col-auto">
+        |
+      </div>
+      <div class="col">
+        <%= link_to "解決済", admin_counseling_posts_path(status: "resolved"), class: current_status?("resolved") ? "custom-link-active" : "custom-link" %>
+      </div>
     </div>
-    <div class="col-auto">
-      |
-    </div>
-    <div class="col">
-      <%= link_to "回答受付中", admin_counseling_posts_path(status: "answer_reception"), class: "custom-link" %>
-    </div>
-    <div class="col-auto">
-      |
-    </div>
-    <div class="col">
-      <%= link_to "解決済", admin_counseling_posts_path(status: "resolved"), class: "custom-link" %>
-    </div>
-  </div>
+  <% end %>
 
   <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
     <% if @counseling_posts.blank? %>
-      <p class="text-center">検索の結果、該当するものが見つかりませんでした。</p>
+      <p class="text-center">該当するものが見つかりませんでした。</p>
+      <div class="text-center mt-5"><%= link_to "一覧に戻る", admin_counseling_posts_path %></div>
     <% elsif params[:tag_ids].present? %>
       <p class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
     <% elsif params[:content].present? %>

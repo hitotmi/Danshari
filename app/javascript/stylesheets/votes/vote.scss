@@ -51,4 +51,20 @@
   }
 }
 
+.table-bordered {
+  border: 1px solid black;
+
+  thead th, td {
+    border: 1px solid black;
+  }
+
+  thead th {
+    border-bottom: 1px solid black !important;
+  }
+
+  .blue-background {
+    background-color: #A6D0DD;
+  }
+}
+
 
