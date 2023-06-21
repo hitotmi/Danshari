@@ -3,11 +3,18 @@
   <% if counseling_post.votes.group(:option).count.present? %>
     <canvas id="votesChart" width="50" height="50"></canvas>
     <script>
+      var myChart;
+
       $(document).on('turbolinks:load', function() {
         var chartElement = document.getElementById('votesChart');
         if (chartElement !== null) {
+          // 既存のチャートがあれば破棄
+          if (myChart) {
+            myChart.destroy();
+          }
+
           var ctx = chartElement.getContext('2d');
-          var chart = new Chart(ctx, {
+          myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
               labels: ['捨てる', '捨てない', 'どちらでもよい'],

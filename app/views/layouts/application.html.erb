@@ -13,8 +13,12 @@
 
   <body>
     <%= render "layouts/header" %>
-    <%#= render "layouts/flash" %>
     <%= yield %>
+    <span id="back">
+      <a href="#">
+        <%= image_tag "topbtn.png", alt: "" %>
+      </a>
+    </span>
     <%= render "layouts/footer" %>
   </body>
 </html>

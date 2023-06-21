@@ -14,6 +14,7 @@ import "bootstrap";
 import Chart from "chart.js/auto";
 import './preview';
 import './vote';
+import './scrolltop';
 
 import "../stylesheets/application";
 

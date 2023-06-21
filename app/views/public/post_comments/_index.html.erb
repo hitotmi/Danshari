@@ -20,9 +20,9 @@
       <div class="container">
         <div class="answer-comment d-flex flex-column justify-content-between">
           <p class="card-text mb-0"><small><%= time_ago_in_words(post_comment.created_at) %>前</small></p>
-          <p class="card-text" style="word-wrap: break-word; word-break: break-all;">
-            <%= post_comment.comment %>
-          </p>
+          <div class="card-text" style="word-wrap: break-word; word-break: break-all; overflow-wrap: break-word;">
+            <%= simple_format(post_comment.comment) %>
+          </div>
           <div id="good_comment_btn_<%= post_comment.id %>">
             <%= render "public/good_comments/btn", counseling_post: counseling_post, post_comment: post_comment %>
           </div>

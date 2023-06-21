@@ -198,7 +198,7 @@ header {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .custom-mx {
     margin-left: 200px;
     margin-right: 200px;
@@ -213,4 +213,38 @@ header {
     line-height: 1.5;
     border-radius: 20px;
   }
+}
+
+
+#back {
+  position: fixed;
+  right: 80px;
+  bottom: 80px;
+
+  img {
+    width: 80px;
+  }
+
+  a {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  #back {
+    right: 5px;
+    bottom: 5px;
+
+    img {
+      width: 40px;
+    }
+
+    a {
+      display: none;
+    }
+  }
+}
+
+#back a.show {
+  display: block;
 }
