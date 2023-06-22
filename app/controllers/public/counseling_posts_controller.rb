@@ -13,6 +13,7 @@ class Public::CounselingPostsController < ApplicationController
       flash[:notice] = "投稿しました。"
       redirect_to counseling_post_path(@counseling_post)
     else
+      @counseling_post.image = nil
       render :new
     end
   end
@@ -52,6 +53,7 @@ class Public::CounselingPostsController < ApplicationController
       flash[:notice] = "投稿を更新しました。"
       redirect_to counseling_post_path(@counseling_post)
     else
+      @counseling_post.reload
       render :edit
     end
   end

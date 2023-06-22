@@ -15,7 +15,7 @@ header {
   }
 
   .navbar-toggler-icon {
-    color: black;
+    color: #000;
   }
 
   #navbarNavDropdown {
@@ -26,7 +26,7 @@ header {
     a {
       font-weight: bold;
       text-decoration: none;
-      color: black;
+      color: #000;
       margin-right: 20px;
     }
 
@@ -53,7 +53,7 @@ header {
 .concept{
   .concept-main{
     .sub-title-heading{
-      background-color: #000;
+      background-color: #343a40;
       color: #FFF;
     }
 
@@ -189,11 +189,6 @@ header {
   }
 }
 
-#responsive-image {
-  width: 1300px;
-  height: 600px;
-}
-
 #back {
   position: fixed;
   right: 80px;
@@ -212,6 +207,12 @@ header {
   }
 }
 
+#responsive-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+}
+
 @media (max-width: 767px) {
   #back {
     right: 5px;
@@ -227,14 +228,6 @@ header {
   }
 }
 
-@media (max-width: 767px) {
-  #responsive-image {
-    width: 100%;
-    height: auto;
-  }
-}
-
-
 @media (min-width: 767px) {
   .custom-mx {
     margin-left: 200px;
@@ -244,17 +237,50 @@ header {
 
 @media (max-width: 767px) {
   .responsive-btn {
-    margin-top: 20px;
-    padding: 4px 8px;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 20px;
+    display: block !important;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding: 4px 12px;
   }
 }
+
 
 @media (max-width: 767px) {
   .logo {
     max-width: 120px !important;
     max-height: 60px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #responsive-image {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .text-left {
+    margin-top: 0;
+
+    .img-title {
+      max-width: 200px !important;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

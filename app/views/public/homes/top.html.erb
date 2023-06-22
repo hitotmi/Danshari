@@ -1,23 +1,32 @@
 <%= render "layouts/flash_logout" %>
-<div class="cover align-middle container-fluid">
+<div class="cover align-middle container-fluid mt-4" >
   <div class="row">
-    <div class="col-12">
-      <div class="text-center">
-        <div class="image-container">
-          <%= image_tag "top.png", id: "responsive-image" %>
-        </div>
-        <div class="d-md-flex justify-content-center align-items-center flex-wrap">
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-color-blue btn-lg responsive-btn d-block d-md-inline-block mb-3 mb-md-0" %>
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-login btn-lg responsive-btn ml-md-3 d-block d-md-inline-block mb-3 mb-md-0" %>
-          <%= link_to 'ゲストログイン（閲覧用）',  users_guest_sign_in_path, class: "btn btn-login btn-lg responsive-btn ml-md-3 d-block d-md-inline-block", method: :post %>
-        </div>
+    <div class="col-md-7 col-sm-12 text-right">
+      <div class="image-container">
+        <%= image_tag "top.png", id: "responsive-image", class: "img-fluid" %>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-sm-12 d-flex flex-column justify-content-center">
+      <div class="text-left" style="max-width: 400px; width: 100%; height: auto; margin-bottom: 20px;">
+        <%= image_tag "DANSHARI.png", class: "img-title", style: "width: 100%; height: auto; margin-bottom: 20px;" %>
+        <p style="font-size: 20px;">
+          Q&Aと投票で一緒に断捨離。<br>
+          捨てるべきか迷うあなたへ、<br>
+          悩みを共有し、一緒に解決しましょう。
+        </p>
+      </div>
+      <div class="d-flex justify-content-start align-items-center flex-wrap mt-3">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-color-blue responsive-btn d-block d-md-inline-block mb-3 mb-md-0" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-login responsive-btn ml-md-3 d-block d-md-inline-block mb-3 mb-md-0" %>
+        <%= link_to 'ゲストログイン',  users_guest_sign_in_path, class: "btn btn-lg btn-login responsive-btn ml-md-3 d-block d-md-inline-block", method: :post %>
       </div>
     </div>
   </div>
 
-  <div class="concept mt-3">
-    <div class="row mt-5">
-      <div class="col-12 concept-main mt-5">
+  <div class="concept" style="margin-top: 100px;">
+    <div class="row">
+      <div class="col-12 concept-main">
         <h1 class="sub-title-heading text-center">Danshariについて</h1>
         <p class="text-center concept-body mt-5">
           Danshariはモノが捨てられない・捨てることに抵抗を感じる方が、<br>
@@ -29,7 +38,7 @@
 
     <hr class="featurette-divider mx-md-5">
 
-    <div class="row featurette custom-mx">
+    <div class="row featurette custom-mx"　>
       <div class="col-md-7 d-flex flex-column justify-content-center">
         <h1 class="mb-3"><span>01</span>気軽に相談できる</h1>
         <p class="lead">
