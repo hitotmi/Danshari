@@ -3,8 +3,10 @@
     <%= f.label :image, "画像", class: "font-weight-bold" %></br>
     <%= f.file_field :image, accept: "image/*" %>
     <div class="preview mt-3">
-      <% if counseling_post.image.present? %>
+      <% if counseling_post.image.attached? %>
         <%= image_tag counseling_post.get_image, size: '500x500', class: "card-img", id: "card-img" %>
+      <% elsif @edit_mode %>
+        <%= image_tag 'no_image.png', size: '500x500', class: "card-img", id: "card-img" %>
       <% end %>
       <img id="image-preview" src="#" alt="プレビュー" class="card-img mt-2">
     </div>

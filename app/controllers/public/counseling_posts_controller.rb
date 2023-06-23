@@ -1,9 +1,11 @@
 class Public::CounselingPostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_counseling_post, only: [:show, :edit, :update, :destroy, :is_matching_login_user]
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @counseling_post = CounselingPost.new
+    @edit_mode = false
   end
 
   def create
@@ -33,7 +35,6 @@ class Public::CounselingPostsController < ApplicationController
   end
 
   def show
-    @counseling_post = CounselingPost.find(params[:id])
     @post_comments = @counseling_post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
     @post_comment = PostComment.new
     @vote =  @counseling_post.votes.build
@@ -44,11 +45,10 @@ class Public::CounselingPostsController < ApplicationController
   end
 
   def edit
-    @counseling_post = CounselingPost.find(params[:id])
+    @edit_mode = true
   end
 
   def update
-    @counseling_post = CounselingPost.find(params[:id])
     if @counseling_post.update(counseling_post_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to counseling_post_path(@counseling_post)
@@ -59,7 +59,6 @@ class Public::CounselingPostsController < ApplicationController
   end
 
   def destroy
-    @counseling_post = CounselingPost.find(params[:id])
     @counseling_post.destroy
     flash[:notice] = "投稿を削除しました。"
     redirect_to counseling_posts_path
@@ -71,11 +70,13 @@ class Public::CounselingPostsController < ApplicationController
     params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star , tag_ids: [])
   end
 
+  def set_counseling_post
+    @counseling_post = CounselingPost.find(params[:id])
+  end
+
   def is_matching_login_user
-    counseling_post = CounselingPost.find(params[:id])
-    unless counseling_post.user_id == current_user.id
+    unless @counseling_post.user_id == current_user.id
       redirect_to counseling_posts_path
     end
   end
-
 end
