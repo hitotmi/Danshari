@@ -1,6 +1,6 @@
 class CounselingPost < ApplicationRecord
 
-  validates :title, presence:true, length: { maximum: 50 }, presence:true
+  validates :title, length: { maximum: 50 }, presence:true
   validates :content, length: { maximum: 500 }, presence:true
   validates :status, presence:true
 
@@ -73,7 +73,3 @@ class CounselingPost < ApplicationRecord
     (image.attached?) ? image : 'no_image.png'
   end
 end
-
-
-
-
