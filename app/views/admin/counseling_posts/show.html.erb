@@ -40,10 +40,21 @@
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
-          <div class="mr-2">お気に入り度：</div>
-          <%= render "star", counseling_post: @counseling_post %>
+          <% if @counseling_post.star.present? %>
+            <div class="mr-2">お気に入り度：</div>
+            <%= render "star", counseling_post: @counseling_post %>
+          <% end %>
         </div>
-        <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
+        <% if @counseling_post.usage_frequency.present? %>
+          <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
+        <% end %>
+        <% if @counseling_post.tags.present? %>
+          <% @counseling_post.tags.each do |tag| %>
+            <%= link_to admin_counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm mb-1" do %>
+              <span><i class="fa-solid fa-hashtag"></i><strong><%=tag.name%></strong></span>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -13,7 +13,6 @@ class Public::VotesController < ApplicationController
       redirect_to  counseling_post_path(@counseling_post)
       flash[:alert] = "投票に失敗しました。選択しなおしてください。"
     end
-    @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
   end
 
   private

@@ -1,5 +1,6 @@
 class Admin::CounselingPostsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_counseling_post, only: [:show, :destroy]
 
   def index
     @counseling_posts = if params[:content].present?
@@ -15,11 +16,9 @@ class Admin::CounselingPostsController < ApplicationController
   end
 
   def show
-    @counseling_post = CounselingPost.find(params[:id])
   end
 
   def destroy
-    @counseling_post = CounselingPost.find(params[:id])
     if current_admin
       @counseling_post.destroy
       redirect_to admin_counseling_posts_path, notice: '投稿が削除されました'
@@ -28,4 +27,9 @@ class Admin::CounselingPostsController < ApplicationController
     end
   end
 
+  private
+
+  def set_counseling_post
+    @counseling_post = CounselingPost.find(params[:id])
+  end
 end

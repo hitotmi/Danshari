@@ -37,7 +37,9 @@ class Public::CounselingPostsController < ApplicationController
     @post_comments = @counseling_post.post_comments.order(created_at: :desc)
     @post_comment = PostComment.new
     @vote =  @counseling_post.votes.build
+    # 投稿に対するログインユーザーの投票があれば取得
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
+    # 投票数を選択肢ごとにカウントする
     @discard_votes =  @counseling_post.votes.discard.count # 投票結果(捨てる)のカウントを取得
     @keep_votes = @counseling_post.votes.keep.count        # 投票結果(捨てない)のカウントを取得
     @either_votes = @counseling_post.votes.either.count    # 投票結果(どちらでもよい)のカウントを取得
