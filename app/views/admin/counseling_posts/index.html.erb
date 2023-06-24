@@ -25,23 +25,23 @@
     </div>
   <% end %>
 
-  <div class="<%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
-    <% if @counseling_posts.blank? %>
-      <p class="text-center">該当するものが見つかりませんでした。</p>
-      <div class="text-center mt-5"><%= link_to "一覧に戻る", admin_counseling_posts_path %></div>
-    <% elsif params[:tag_ids].present? %>
-      <p class="text-center">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
-    <% elsif params[:content].present? %>
-      <p class="text-center">「<%= params[:content] %>」の検索結果</p>
-    <% end %>
-  </div>
-
   <div class="mt-5">
     <div class="box mt-5 px-4 pt-4">
       <span class="box-title">検索<i class="fa-solid fa-magnifying-glass"></i></span>
       <%= render "admin/counseling_posts/search" %>
       <%= render "admin/counseling_posts/tag_search" %>
     </div>
+  </div>
+
+  <div>
+    <% if @counseling_posts.blank? %>
+      <p class="text-center">該当するものが見つかりませんでした。</p>
+      <div class="text-center mt-5"><%= link_to "一覧に戻る", admin_counseling_posts_path %></div>
+    <% elsif params[:tag_ids].present? %>
+      <p class="text-center" style="font-size: 25px;">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
+    <% elsif params[:content].present? %>
+      <p class="text-center" style="font-size: 25px;">「<%= params[:content] %>」の検索結果</p>
+    <% end %>
   </div>
 
   <div class="row no-gutters post-list mt-2">

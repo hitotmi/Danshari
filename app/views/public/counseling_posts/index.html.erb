@@ -35,7 +35,7 @@
 
   <div>
     <% if @counseling_posts.blank? %>
-      <p class="text-center mt-5 py-5" style="">該当するものが見つかりませんでした。
+      <p class="text-center mt-5 py-5">該当するものが見つかりませんでした。
       <div class="text-center mt-5"><%= link_to "一覧に戻る", counseling_posts_path %></div>
     <% elsif params[:tag_ids].present? %>
       <p class="text-center" style="font-size: 25px;">「<%= Tag.find(params[:tag_ids]).name %>」タグの検索結果</p>
