@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    get '/' => 'homes#top'
     resources :users,  only: [:index, :show, :edit, :update] do
       get 'counseling_posts_index' => 'users#counseling_posts_index'
     end
