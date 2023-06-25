@@ -1,0 +1,42 @@
+<div class="py-4" style=" background-color: #19A7CE;">
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;">回答一覧</h2>
+  <span style="display: block; text-align: center; font-size: 20px;">Comments</span>
+</div>
+
+<div class="container mt-5">
+  <div class="row no-gutters">
+    <% if @post_comments.present? %>
+      <div class="col-12" id="flash-message">
+        <% if flash[:post_comment_created] %>
+          <%= render "layouts/flash", message: flash[:post_comment_created] %>
+        <% end %>
+      </div>
+      <table class="table">
+        <tbody>
+          <% @post_comments.each do |post_comment| %>
+            <tr id="post-comment-<%= post_comment.id %>">
+              <td class="col-2">
+                <%= link_to admin_user_path(post_comment.user.id) do %>
+                  <div class="user-info">
+                    <%= image_tag post_comment.user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
+                    <%= post_comment.user.name %>さん
+                  </div>
+                <% end %>
+              </td>
+              <td style="word-wrap: break-word; word-break: break-all; overflow-wrap: break-word;">
+                <%= simple_format(post_comment.comment) %>
+              </td>
+              <td class="col-2">
+                <%= link_to "詳細", admin_post_comment_path(post_comment.id), class: "btn btn-color btn-sm ml-1" %>
+                <%= link_to "削除", admin_counseling_post_post_comment_path(post_comment.counseling_post, post_comment), remote: true, class: "btn btn-delete btn-sm ml-1", method: :delete %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="col-12 text-center">コメントが存在しません。</p>
+    <% end %>
+  </div>
+  <%= paginate @post_comments %>
+</div>

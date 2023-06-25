@@ -8,7 +8,7 @@ class Public::PostCommentsController < ApplicationController
     unless @post_comment.save
       render 'error' # app/views/public/post_comments/error.js.erbを参照する
     else
-      flash.now[:post_comment_created] = "回答が作成されました。"
+      flash.now[:post_comment] = "回答が作成されました。"
       # @post_comment_itemにコメントが紐づいている投稿を設定する
       @post_comment_item = @post_comment.counseling_post
       # コメントされたという通知を作成する
@@ -20,7 +20,7 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     comment = PostComment.find_by(id: params[:id])
     comment.destroy
-    flash.now[:post_comment_created] = '回答を削除しました'
+    flash.now[:post_comment] = '回答を削除しました'
     @post_comments = @counseling_post.post_comments.order(created_at: :desc)
   end
 

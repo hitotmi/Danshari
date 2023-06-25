@@ -1,0 +1,75 @@
+<div class="py-4" style=" background-color: #19A7CE;">
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;">回答の詳細</h2>
+  <span style="display: block; text-align: center; font-size: 20px;">Comment</span>
+</div>
+
+<div class="container mt-5">
+  <div class="row mt-5 no-gutters">
+    <h4>回答</h4>
+    <div class="col-12" id="flash-message">
+      <% if flash[:post_comment_created] %>
+        <%= render "layouts/flash", message: flash[:post_comment_created] %>
+      <% end %>
+    </div>
+    <table class="table" style="background-color: #f8f8f8; border-radius: 10px; border: 3px solid #EBEBEB;">
+      <tbody>
+        <tr id="post-comment-<%= @post_comment.id %>">
+          <td class="col-2">
+            <%= link_to admin_user_path(@post_comment.user.id) do %>
+              <div class="user-info">
+                <%= image_tag @post_comment.user.get_profile_image, size: '50x50', class: "rounded-circle user-image" %>
+                <%= @post_comment.user.name %>さん
+              </div>
+            <% end %>
+          </td>
+          <td class="col-8" style="word-wrap: break-word; word-break: break-all; overflow-wrap: break-word;">
+            <%= simple_format(@post_comment.comment) %>
+          </td>
+          <td class="col-1">
+            <%= link_to "削除", admin_counseling_post_post_comment_path(@post_comment.counseling_post, @post_comment), remote: true, class: "btn btn-delete btn-sm", method: :delete %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, .16);" %>
+      <div class="d-flex justify-content-between mt-2">
+        <div>
+          質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %>
+          <div class="d-flex align-items-end user-link mt-3">
+            <%= link_to admin_user_path(@counseling_post.user_id), class: "user-link" do %>
+              <%= image_tag @counseling_post.user.get_profile_image, size: '80x80', class: "rounded-circle user-image" %>
+            <% end %>
+            <%= link_to admin_user_path(@counseling_post.user_id), class: "ml-1 mb-0" do %>
+              <%= @counseling_post.user.name %>さん
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-border p-3">
+        <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
+        <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
+        <div class="d-flex align-items-center mt-5">
+          <% if @counseling_post.star.present? %>
+            <div class="mr-2">お気に入り度：</div>
+            <%= render "admin/counseling_posts/star", counseling_post: @counseling_post %>
+          <% end %>
+        </div>
+        <% if @counseling_post.usage_frequency.present? %>
+          <p>使用頻度： <%= @counseling_post.usage_frequency_i18n %></p>
+        <% end %>
+        <% if @counseling_post.tags.present? %>
+          <% @counseling_post.tags.each do |tag| %>
+            <%= link_to admin_counseling_posts_path(tag_ids: tag.id), class: "tag-link btn-sm mb-1" do %>
+              <span><i class="fa-solid fa-hashtag"></i><strong><%=tag.name%></strong></span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
