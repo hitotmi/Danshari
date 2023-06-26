@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :is_matching_login_user, only: [:edit, :update]
 
+
   def show
     @good_comments_count = @user.total_good_comments_count
     # 1位のユーザーを取得
