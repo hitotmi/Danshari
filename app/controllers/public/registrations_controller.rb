@@ -14,19 +14,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def create
-    build_resource(sign_up_params)
-
-    if resource.save
-      #作成されたユーザーをログイン状態にする
-      sign_in(resource)
-      redirect_to after_sign_up_path_for(resource)
-    else
-      flash[:danger] = resource.errors.full_messages
-      redirect_to new_user_registration_path
-    end
-  end
-
   # GET /resource/edit
   # def edit
   #   super
