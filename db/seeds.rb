@@ -54,7 +54,6 @@ CounselingPost.create!(
     {
       title: '小学生の時に集めたハッピーセット。掃除をしている最中で捨てるか悩んでます。',
       content: "ハッピーセットの大量保有により、限られたスペースが圧迫されています。\n思い出が詰まったこれらを捨てるのは躊躇しますが、スペースの制約も問題です。\nどうすれば良いか困っています。",
-      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg"),
       status: :answer_reception,
       usage_frequency: :unused,
       star: 3,
@@ -64,8 +63,7 @@ CounselingPost.create!(
     {
       title: 'UFOキャッチャーでとれたぬいぐるみ。捨てたいけど捨てられない事態が発生しています。',
       content: "取れたのは良かったのですが、部屋の雰囲気と違い置く場所に困っています。\n捨てようとも思いましたがぬいぐるみを一般ごみで捨ててしまうとよくないようなことを聞いたことがあり、捨てるか捨てないかで迷っています。",
-      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg"),
-      status: :answer_reception,
+      status: :resolved,
       usage_frequency: :unused,
       tag_ids: tags.select { |tag| ["捨てることへの恐怖・不安"].include?(tag.name) }.map(&:id),
       user_id: 1
