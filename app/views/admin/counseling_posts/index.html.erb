@@ -5,6 +5,7 @@
 
 <%= render "layouts/flash" %>
 <div class="container mt-3">
+  <!-- Sorting Links -->
   <% unless params[:tag_ids].present? || params[:content].present? %>
     <div class="row no-gutters mb-5 mt-2 py-3 text-center" style="background-color: #f8f8f8; border: 2px solid #EBEBEB; border-radius: 8px;">
       <div class="col">
@@ -25,6 +26,7 @@
     </div>
   <% end %>
 
+  <!-- Search -->
   <div class="mt-5">
     <div class="box mt-5 px-4 pt-4">
       <span class="box-title">検索<i class="fa-solid fa-magnifying-glass"></i></span>
@@ -33,6 +35,7 @@
     </div>
   </div>
 
+  <!-- Posts Display -->
   <div>
     <% if @counseling_posts.blank? %>
       <p class="text-center">該当するものが見つかりませんでした。</p>

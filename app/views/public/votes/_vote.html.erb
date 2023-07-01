@@ -32,7 +32,10 @@
         <div class="col">
           <p>※投票は1人1回までです</p>
           <% if user_vote %>
-            <p><strong>あなたは「<%= user_vote.option_i18n %>」に投票済です</strong></p>
+            <p>
+              <strong>あなたは「<%= user_vote.option_i18n %>」に投票済です</strong><br>
+              (選択を変更したい場合は、再投票を行うことが可能です)
+            </p>
           <% end %>
           <%= f.submit '投票', class: "btn btn-submit btn-block mt-2" %>
         </div>

@@ -20,6 +20,8 @@
   </div>
 
   <div class="row mt-4">
+    
+    <!-- CounselingPost details left-->
     <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);" %>
       <div class="d-flex justify-content-between mt-2">
@@ -45,6 +47,7 @@
       </div>
     </div>
 
+    <!-- CounselingPost details right-->
     <div class="col-md-6">
       <div class="card-border p-3">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
@@ -69,12 +72,13 @@
     </div>
   </div>
 
-  <!--投票-->
+  <!-- Vote section -->
   <div class="row mt-3">
     <%= render 'public/votes/vote_result', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
     <%= render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
   </div>
 
+  <!-- Comments section -->
   <div class="row mt-3 comment-area">
     <div class="col-12">
       <div class="errors">

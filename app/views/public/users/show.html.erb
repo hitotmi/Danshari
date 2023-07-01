@@ -10,6 +10,8 @@
 
 <%= render "layouts/flash" %>
 <div class="container mypage <%= flash[:notice] || flash[:alert] ? 'mt-0' : 'mt-5' %>">
+
+  <!-- User profile section -->
   <div class="row position-relative">
     <div class="col-12">
       <div class="d-flex flex-column align-items-center user-profile mb-5">
@@ -24,6 +26,7 @@
           <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-color position-sm-static position-md-absolute", style: "height: 50px; top: 20px; right: 30px;" %>
         <% end %>
 
+        <!-- Display counts of user activities -->
         <table class="table table-bordered count-table mt-2">
           <thead>
             <tr>
@@ -49,6 +52,7 @@
   <div id="posts"></div>
   <div id="favorites"></div>
 
+  <!-- Navigation links for CounselingPosts and favorites -->
   <div class="d-flex mt-5 pb-3 mb-0" style="border-bottom: 1px solid #666666;">
     <div class="mr-2">
       <%= link_to '相談した投稿を表示', user_path(@user, anchor: 'posts'), class: ("post-select-link #{'active' if params[:mode] != 'favorites'}") %>
@@ -62,7 +66,7 @@
   </div>
 
 
-  <!--相談した投稿-->
+  <!-- Display CounselingPosts -->
   <% if params[:mode] != 'favorites' %>
     <% if @counseling_posts.present? %>
       <%= render "public/users/counseling_post", counseling_posts: @counseling_posts %>
@@ -72,7 +76,7 @@
     <% end %>
   <% end %>
 
-  <!--参考になった投稿-->
+  <!-- Display FavoritedPosts -->
   <% if params[:mode] == 'favorites' %>
     <% if @counseling_favorites_posts.present? %>
       <%= render "public/users/counseling_post_favorites", counseling_favorites_posts: @counseling_favorites_posts %>
@@ -82,6 +86,7 @@
     <% end %>
   <% end %>
 
+  <!-- Pagination based on mode -->
   <% if params[:mode] == 'favorites' %>
     <%= paginate @counseling_favorites_posts %>
   <% else %>

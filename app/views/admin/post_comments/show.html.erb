@@ -4,6 +4,8 @@
 </div>
 
 <div class="container mt-5">
+
+  <!-- Comments section -->
   <div class="row mt-5 no-gutters">
     <h4>回答</h4>
     <div class="col-12" id="flash-message">
@@ -32,7 +34,11 @@
       </tbody>
     </table>
   </div>
+
+
   <div class="row mt-5">
+    
+    <!-- CounselingPost details left-->
     <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, .16);" %>
       <div class="d-flex justify-content-between mt-2">
@@ -49,6 +55,8 @@
         </div>
       </div>
     </div>
+
+    <!-- CounselingPost details right-->
     <div class="col-md-6">
       <div class="card-border p-3">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
