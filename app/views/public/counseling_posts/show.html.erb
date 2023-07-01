@@ -20,7 +20,7 @@
   </div>
 
   <div class="row mt-4">
-    
+
     <!-- CounselingPost details left-->
     <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);" %>
@@ -49,7 +49,7 @@
 
     <!-- CounselingPost details right-->
     <div class="col-md-6">
-      <div class="card-border p-3">
+      <div class="card-border p-3 mb-3">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">
@@ -68,6 +68,36 @@
             <% end %>
           <% end %>
         <% end %>
+      </div>
+
+      <!-- Sentiment Analysis -->
+      <div class="p-3" style="background-color: #F5F5F5; border-radius: 10px; border: 2px solid #EBEBEB;">
+        <h4><i class="fas fa-heartbeat"></i> 感情のチェック</h4>
+        <table class="table" style="width: 100%; text-align: center; border: 1px solid #dee2e6; background-color: #FFF;">
+          <tr style="background-color: #FFF;">
+            <th style="padding: 10px;">感情指数</th>
+            <th style="padding: 10px;">感情の強さ</th>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">
+              <% if @counseling_post.score.negative? %>
+                <span style="color: red; font-weight: bold;"><%= @counseling_post.score %></span>
+              <% else %>
+                <span style="color: green; font-weight: bold;"><%= @counseling_post.score %></span>
+              <% end %>
+            </td>
+            <td style="padding: 10px; font-weight: bold;">
+              <% if @counseling_post.magnitude >= 0.7 %>
+                <span style="color: #ff0000;">常に強い</span>
+              <% elsif @counseling_post.magnitude >= 0.3 %>
+                <span style="color: #ffa500;">やや強い</span>
+              <% else %>
+                <span style="color: #008000;">弱い</span>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <p>※ 感情指数は-1から1の範囲で評価され、負の値はネガティブな感情を、正の値はポジティブな感情を表します。0に近いほど感情的な偏りが少ない状態です。</p>
       </div>
     </div>
   </div>

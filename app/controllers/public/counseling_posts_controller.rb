@@ -10,8 +10,11 @@ class Public::CounselingPostsController < ApplicationController
 
   def create
     @counseling_post = CounselingPost.new(counseling_post_params)
+    sentiment_data = Language.get_data(counseling_post_params[:content])
+    @counseling_post.score = sentiment_data[:score]
+    @counseling_post.magnitude = sentiment_data[:magnitude]
     @counseling_post.user_id = current_user.id
-    if  @counseling_post.save
+    if @counseling_post.save
       flash[:notice] = "投稿しました。"
       redirect_to counseling_post_path(@counseling_post)
     else
