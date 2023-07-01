@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users,  only: [:index, :show, :edit, :update] do
       get 'counseling_posts_index' => 'users#counseling_posts_index'
+      get 'post_comments_index' => 'users#post_comments_index'
     end
     resources :counseling_posts,  only: [:index, :show, :destroy] do
       resources :post_comments, only: :destroy

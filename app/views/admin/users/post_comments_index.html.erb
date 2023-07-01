@@ -1,9 +1,10 @@
 <div class="py-4" style=" background-color: #19A7CE;">
-  <h2 class="text-center" style="color: #FFF; font-weight: bold;">回答一覧</h2>
+  <h2 class="text-center" style="color: #FFF; font-weight: bold;"><%= @user.name %>さんの回答一覧</h2>
   <span style="display: block; text-align: center; font-size: 20px;">Comments</span>
 </div>
 
 <div class="container mt-5">
   <%= render "admin/post_comments/comment_list", post_comments: @post_comments %>
   <%= paginate @post_comments %>
+  <%= link_to "戻る", admin_user_path(@user), class: "text-center d-block mt-5" %>
 </div>

@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(15)
   end
 
   def show
@@ -26,6 +26,11 @@ class Admin::UsersController < ApplicationController
   def counseling_posts_index
     @user = User.find(params[:user_id])
     @counseling_posts = @user.counseling_posts.order(created_at: :desc).page(params[:page]).per(9)
+  end
+
+  def post_comments_index
+    @user = User.find(params[:user_id])
+    @post_comments = @user.post_comments.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   private

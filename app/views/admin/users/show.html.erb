@@ -7,9 +7,14 @@
 <div class="container mt-5">
   <div class="row mb-2 justify-content-between align-items-end no-gutters">
     <h4><%= @user.name %>さんの会員情報</h4>
-    <%= link_to admin_user_counseling_posts_index_path(@user), class: "btn btn-color btn-sm" do %>
-      <%= @user.name %>さんの投稿を見る
-    <% end %>
+    <div>
+      <%= link_to admin_user_counseling_posts_index_path(@user), class: "btn btn-color btn-sm" do %>
+        相談投稿一覧
+      <% end %>
+      <%= link_to admin_user_post_comments_index_path(@user), class: "btn btn-color btn-sm" do %>
+        回答一覧
+      <% end %>
+    </div>
   </div>
 
   <div class="row no-gutters">
