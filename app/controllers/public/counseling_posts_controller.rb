@@ -10,9 +10,11 @@ class Public::CounselingPostsController < ApplicationController
 
   def create
     @counseling_post = CounselingPost.new(counseling_post_params)
-    sentiment_data = Language.get_data(counseling_post_params[:content])
-    @counseling_post.score = sentiment_data[:score]
-    @counseling_post.magnitude = sentiment_data[:magnitude]
+    if params[:counseling_post][:emotion_analysis] == '1'
+      sentiment_data = Language.get_data(counseling_post_params[:content])
+      @counseling_post.score = sentiment_data[:score]
+      @counseling_post.magnitude = sentiment_data[:magnitude]
+    end
     @counseling_post.user_id = current_user.id
     if @counseling_post.save
       flash[:notice] = "投稿しました。"
@@ -52,7 +54,17 @@ class Public::CounselingPostsController < ApplicationController
     @edit_mode = true
   end
 
+
   def update
+    if params[:counseling_post][:emotion_analysis] == '1'
+      sentiment_data = Language.get_data(counseling_post_params[:content])
+      @counseling_post.score = sentiment_data[:score]
+      @counseling_post.magnitude = sentiment_data[:magnitude]
+    else
+      # '0'が選択された場合、データを空にする
+      @counseling_post.score = nil
+      @counseling_post.magnitude = nil
+    end
     if @counseling_post.update(counseling_post_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to counseling_post_path(@counseling_post)
@@ -71,7 +83,7 @@ class Public::CounselingPostsController < ApplicationController
   private
 
   def counseling_post_params
-    params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star , tag_ids: [])
+    params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star, tag_ids: [])
   end
 
   def set_counseling_post

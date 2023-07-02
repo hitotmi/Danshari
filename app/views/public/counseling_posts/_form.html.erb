@@ -78,6 +78,22 @@
       <%= f.select :status, options_for_select(CounselingPost.statuses_i18n.keys.map { |key| [CounselingPost.statuses_i18n[key], key] }, counseling_post.status), include_blank: "選択してください" %>
     </div>
   <% end %>
+
+  <div class="form-group mt-4">
+    <div class="form-check">
+      <%= f.check_box :emotion_analysis, class: "form-check-input", checked: @counseling_post.score.present? %>
+      <%= f.label :emotion_analysis, class: "form-check-label font-weight-bold" do %>
+        感情分析を行う
+      <% end %>
+    </div>
+    <small class="form-text text-muted">
+      感情分析は投稿内容から感情的な傾向を分析する機能です。<br>
+      自己理解を深めたり、他のユーザーがあなたの投稿をより深く理解する助けとなります。<br>
+      また、他のユーザーがあなたの感情を理解することで、共感や適切なアドバイスを受けることが可能になります。<br>
+      これにより、相談・質問へのレスポンスがより的確で有益なものとなります。
+    </small>
+  </div>
+
   <div class="actions mt-5">
     <%= f.submit "投稿", class: "btn btn-color-blue w-100" %>
   </div>
