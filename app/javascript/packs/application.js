@@ -15,6 +15,7 @@ import Chart from "chart.js/auto";
 import './preview';
 import './vote';
 import './scrolltop';
+import './emotion_analysis';
 
 import "../stylesheets/application";
 

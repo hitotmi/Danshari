@@ -71,43 +71,7 @@
       </div>
 
       <!-- Sentiment Analysis -->
-      <% if @counseling_post.score.present? && @counseling_post.magnitude.present? %>
-        <div class="p-3" style="background-color: #F5F5F5; border-radius: 10px; border: 2px solid #EBEBEB;">
-          <h4><i class="fas fa-heartbeat"></i>感情分析：相談者理解の一助として</h4>
-          <p style="font-size: 16px;">以下の結果は、相談内容から自動的に分析されたものです。</p>
-          <table class="table mb-4" style="width: 100%; text-align: center; border: 1px solid #dee2e6; background-color: #FFF;">
-            <tr style="background-color: #FFF;">
-              <th style="padding: 10px;">感情の状態</th>
-              <th style="padding: 10px;">感情の強さ</th>
-            </tr>
-            <tr>
-              <td style="padding: 10px;">
-                <% if @counseling_post.score <= -0.6 %>
-                  <span style="color: red; font-weight: bold;"><i class="fa-solid fa-face-tired"></i>非常にネガティブ</span>
-                <% elsif @counseling_post.score <= -0.2 %>
-                  <span style="color: orange; font-weight: bold;"><i class="fa-solid fa-face-frown"></i>ややネガティブ</span>
-                <% elsif @counseling_post.score <= 0.2 %>
-                  <span style="color: #ffa500; font-weight: bold;"><i class="fa-regular fa-face-meh"></i>平穏な気持ち</span>
-                <% elsif @counseling_post.score <= 0.6 %>
-                  <span style="color: #9acd32; font-weight: bold;"><i class="fa-solid fa-face-smile"></i>ややポジティブ</span>
-                <% else %>
-                  <span style="color: green; font-weight: bold;"><i class="fa-solid fa-face-laugh-squint"></i>非常にポジティブ</span>
-                <% end %>
-              </td>
-              <td style="padding: 10px; font-weight: bold;">
-                <% if @counseling_post.magnitude >= 0.7 %>
-                  <span style="color: #ff0000;"><i class="fa-solid fa-fire"></i>とても強い</span>
-                <% elsif @counseling_post.magnitude >= 0.3 %>
-                  <span style="color: #ffa500;"><i class="fa-solid fa-bolt-lightning"></i>やや強い</span>
-                <% else %>
-                  <span style="color: #008000;"><i class="fa-solid fa-leaf"></i>あまり強くない</span>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-          <p style="font-size: 14px;"><em>※感情分析は自動化ツールによる予測結果です。正確性や完全性は保証されませんので、参考程度にご利用ください。具体的な状況や背景も考慮して判断してください。</em></p>
-        </div>
-      <% end %>
+      <%= render "emotion_analysis", counseling_post: @counseling_post %>
     </div>
   </div>
 
