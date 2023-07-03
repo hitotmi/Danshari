@@ -61,6 +61,19 @@ class CounselingPost < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  # 投票の通知
+  def create_vote_notification_by(current_user, id, user_id, vote_option)
+    return if current_user.id == user_id
+    notification = current_user.active_notifications.new(
+      counseling_post_id: id,
+      visited_id: user_id,
+      action: "vote_#{vote_option}" 
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
+  end
+
+
   def get_image
     (image.attached?) ? image : 'no_image.png'
   end
