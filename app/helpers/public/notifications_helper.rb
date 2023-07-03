@@ -18,6 +18,12 @@ module Public::NotificationsHelper
       tag.a(notification.visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "に「捨てない」を選択し、投票しました"
     when "vote_either"
       tag.a(notification.visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "に「どちらでもよい」を選択し、投票しました"
+    when "vote_change_to_discard"
+      tag.a(@visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "を「捨てる」に再投票しました"
+    when "vote_change_to_keep"
+      tag.a(@visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "を「捨てない」に再投票しました"
+    when "vote_change_to_either"
+      tag.a(@visitor.name, href: user_path(@visitor), style: "font-weight: bold;") + "さんが" + your_counseling_post + "を「どちらでもよい」に再投票しました"
     end
   end
 
