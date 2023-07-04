@@ -19,7 +19,7 @@
 
   <div class="row mt-4">
 
-    <!-- CounselingPost details left-->
+    <!-- CounselingPostの詳細（左側） -->
     <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, .16);" %>
       <div class="d-flex justify-content-between mt-2">
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <!-- CounselingPost details right-->
+    <!-- CounselingPostの詳細（右側） -->
     <div class="col-md-6">
       <div class="card-border p-3">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <!-- Comments section -->
+  <!-- コメント欄を表示 -->
   <div class="row mt-5">
     <div class="col-12" id="flash-message">
       <% if flash[:post_comment_created] %>
@@ -74,7 +74,6 @@
     </div>
   </div>
 
-  <!-- Back link -->
   <div class="col-12 text-center mt-5">
     <%= link_to "戻る", admin_counseling_posts_path, class: "text-center" %>
   </div>

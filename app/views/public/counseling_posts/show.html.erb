@@ -19,9 +19,9 @@
     </div>
   </div>
 
-  <div class="row mt-4">
+  <div class="row my-5">
 
-    <!-- CounselingPost details left-->
+    <!-- CounselingPostの詳細（左側） -->
     <div class="col-md-6">
       <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);" %>
       <div class="d-flex justify-content-between mt-2">
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <!-- CounselingPost details right-->
+    <!-- CounselingPostの詳細（右側） -->
     <div class="col-md-6">
       <div class="card-border p-3 mb-3">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
@@ -70,18 +70,36 @@
         <% end %>
       </div>
 
-      <!-- Sentiment Analysis -->
+      <!-- 感情分析を表示 -->
       <%= render "emotion_analysis", counseling_post: @counseling_post %>
     </div>
   </div>
 
-  <!-- Vote section -->
-  <div class="row mt-3">
+ 
+  <div id="voting-section"></div>
+  <div class="pt-2">
+    <!-- 投票成功の通知メッセージを表示 -->
+    <% if flash[:vote_notice] %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:vote_notice] %>
+      </div>
+    <% end %>
+
+    <!-- 投票エラーのアラートメッセージを表示 -->
+    <% if flash[:vote_alert] %>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:vote_alert] %>
+      </div>
+    <% end %>
+  </div>
+  
+   <!-- 投票フォーム・結果を表示 -->
+  <div class="row">
     <%= render 'public/votes/vote_result', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
     <%= render 'public/votes/vote', counseling_post: @counseling_post, vote: @vote, user_vote: @user_vote, keep_votes: @keep_votes, either_votes: @either_votes, discard_votes: @discard_votes %>
   </div>
 
-  <!-- Comments section -->
+  <!-- コメント欄を表示 -->
   <div class="row mt-3 comment-area">
     <div class="col-12">
       <div class="errors">

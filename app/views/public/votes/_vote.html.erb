@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  <h3 class="mt-5"><strong>投票しよう</strong></h3>
+  <h3><strong>投票しよう</strong></h3>
   <h5 class="py-3" style="font-size: 25px;">Ｑ捨てるべきですか？捨てないべきですか？</h5>
   <div>
     <%= form_with model: vote, url: counseling_post_votes_path(counseling_post), local: true, method: :post do |f| %>

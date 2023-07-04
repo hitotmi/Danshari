@@ -5,6 +5,7 @@
 
 <%= render "layouts/flash" %>
 <div class="container">
+  <!--相談投稿を並べ替えるためのリンクの表示-->
   <% unless params[:tag_ids].present? || params[:content].present? %>
     <div class="row no-gutters mb-5 mt-2 py-3 text-center" style="background-color: #f8f8f8; border: 2px solid #EBEBEB; border-radius: 8px;">
       <div class="col">
@@ -25,6 +26,7 @@
     </div>
   <% end %>
 
+  <!--検索ボックスの表示-->
   <div>
     <div class="box px-4 pt-4">
       <span class="box-title mb-5"><i class="fa-solid fa-magnifying-glass"></i>検索</span>
@@ -32,7 +34,6 @@
       <%= render "public/counseling_posts/tag_search" %>
     </div>
   </div>
-
   <div>
     <% if @counseling_posts.blank? %>
       <p class="text-center mt-5 py-5">該当するものが見つかりませんでした。
@@ -44,6 +45,7 @@
     <% end %>
   </div>
 
+  <!--相談投稿一覧の表示-->
   <div class="row no-gutters post-list">
     <%= render "index", counseling_posts: @counseling_posts %>
   </div>
