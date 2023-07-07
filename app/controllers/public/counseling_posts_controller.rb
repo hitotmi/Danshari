@@ -10,12 +10,9 @@ class Public::CounselingPostsController < ApplicationController
 
   def create
     @counseling_post = CounselingPost.new(counseling_post_params)
-    if params[:counseling_post][:emotion_analysis] == '1'
-      sentiment_data = Language.get_data(counseling_post_params[:content])
-      @counseling_post.score = sentiment_data[:score]
-      @counseling_post.magnitude = sentiment_data[:magnitude]
-    end
     @counseling_post.user_id = current_user.id
+    perform_emotion_analysis
+    
     if @counseling_post.save
       flash[:notice] = "投稿しました。"
       redirect_to counseling_post_path(@counseling_post)
@@ -45,7 +42,7 @@ class Public::CounselingPostsController < ApplicationController
     # 投稿に対するログインユーザーの投票があれば取得
     @user_vote = current_user.votes.find_by(counseling_post_id: @counseling_post.id)
     # 投票数を選択肢ごとにカウントする
-    @discard_votes =  @counseling_post.votes.discard.count # 投票結果(捨てる)のカウントを取得
+    @discard_votes = @counseling_post.votes.discard.count # 投票結果(捨てる)のカウントを取得
     @keep_votes = @counseling_post.votes.keep.count        # 投票結果(捨てない)のカウントを取得
     @either_votes = @counseling_post.votes.either.count    # 投票結果(どちらでもよい)のカウントを取得
   end
@@ -54,17 +51,9 @@ class Public::CounselingPostsController < ApplicationController
     @edit_mode = true
   end
 
-
   def update
-    if params[:counseling_post][:emotion_analysis] == '1'
-      sentiment_data = Language.get_data(counseling_post_params[:content])
-      @counseling_post.score = sentiment_data[:score]
-      @counseling_post.magnitude = sentiment_data[:magnitude]
-    else
-      # '0'が選択された場合、データを空にする
-      @counseling_post.score = nil
-      @counseling_post.magnitude = nil
-    end
+    perform_emotion_analysis
+    
     if @counseling_post.update(counseling_post_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to counseling_post_path(@counseling_post)
@@ -84,6 +73,19 @@ class Public::CounselingPostsController < ApplicationController
 
   def counseling_post_params
     params.require(:counseling_post).permit(:title, :content, :status, :image, :usage_frequency, :star, tag_ids: [])
+  end
+
+  def perform_emotion_analysis
+    # "emotion_analysis" パラメータが '1' の場合（感情分析オプションが有効に設定された場合）感情分析を実行
+    if params[:counseling_post][:emotion_analysis] == '1'
+      sentiment_data = Language.get_data(counseling_post_params[:content])
+      @counseling_post.score = sentiment_data[:score]
+      @counseling_post.magnitude = sentiment_data[:magnitude]
+    else
+    # "emotion_analysis" パラメータが '0'に設定された場合（感情分析オプションが無効に設定された場合）スコアとマグニチュードを空にする
+      @counseling_post.score = nil
+      @counseling_post.magnitude = nil
+    end
   end
 
   def set_counseling_post
