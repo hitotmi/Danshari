@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
 
     if params[:mode] == 'favorites'
       #ユーザーが参考リストに登録した投稿の一覧を取得。
-      @counseling_favorites_posts = current_user.counseling_post_favoirtes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
+      @counseling_favorites_posts = @user.counseling_post_favoirtes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
     else
       @counseling_posts = @user.counseling_posts.order(created_at: :desc).page(params[:page]).per(9)
     end

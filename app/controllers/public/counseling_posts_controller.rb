@@ -12,7 +12,7 @@ class Public::CounselingPostsController < ApplicationController
     @counseling_post = CounselingPost.new(counseling_post_params)
     @counseling_post.user_id = current_user.id
     perform_emotion_analysis
-    
+
     if @counseling_post.save
       flash[:notice] = "投稿しました。"
       redirect_to counseling_post_path(@counseling_post)
@@ -53,7 +53,7 @@ class Public::CounselingPostsController < ApplicationController
 
   def update
     perform_emotion_analysis
-    
+
     if @counseling_post.update(counseling_post_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to counseling_post_path(@counseling_post)
