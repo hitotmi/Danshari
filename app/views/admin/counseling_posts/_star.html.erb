@@ -3,12 +3,11 @@
   $(document).on('turbolinks:load', function() {
     let elem = document.querySelector('#star_<%= counseling_post.id %>');
     if (elem == null) return;
-  
+
     elem.innerHTML = "";
     let opt = {
       starOn: "<%= asset_path('star-on.png') %>",
       starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'counseling_post[star]',
       score: "<%= counseling_post.star %>",
       readOnly: true,
     };
