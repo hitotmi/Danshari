@@ -32,6 +32,7 @@ class Public::CounselingPostsController < ApplicationController
                         else
                           CounselingPost.all
                         end
+
     @counseling_posts = @counseling_posts.order(created_at: :desc).page(params[:page]).per(9)
   end
 

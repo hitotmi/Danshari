@@ -6,7 +6,7 @@ class CounselingPost < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
-  has_many :post_comments, dependent: :destroy
+  has_many :post_comments, dependent: :destroy  
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_tags,dependent: :destroy
@@ -64,7 +64,7 @@ class CounselingPost < ApplicationRecord
   # 投票の通知
   def create_vote_notification_by(current_user, id, user_id, vote_option, is_new_vote)
     return if current_user.id == user_id
-  
+
     if is_new_vote
       # 新しい投票に関する通知を作成する
       notification = current_user.active_notifications.new(
@@ -80,7 +80,7 @@ class CounselingPost < ApplicationRecord
         action: "vote_change_to_#{vote_option}"
       )
     end
-  
+
     notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
