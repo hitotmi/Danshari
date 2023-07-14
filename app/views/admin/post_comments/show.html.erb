@@ -8,11 +8,6 @@
   <!--コメントの表示-->
   <div class="row mt-5 no-gutters">
     <h4>回答</h4>
-    <div class="col-12" id="flash-message">
-      <% if flash[:post_comment_created] %>
-        <%= render "layouts/flash", message: flash[:post_comment_created] %>
-      <% end %>
-    </div>
     <table class="table" style="background-color: #f8f8f8; border-radius: 10px; border: 3px solid #EBEBEB;">
       <tbody>
         <tr id="post-comment-<%= @post_comment.id %>">
@@ -28,7 +23,7 @@
             <%= simple_format(@post_comment.comment) %>
           </td>
           <td class="col-1">
-            <%= link_to "削除", admin_counseling_post_post_comment_path(@post_comment.counseling_post, @post_comment), remote: true, class: "btn btn-delete btn-sm", method: :delete %>
+            <%= link_to "削除", admin_counseling_post_post_comment_path(@post_comment.counseling_post, @post_comment, from_show_page: true), class: "btn btn-delete btn-sm", method: :delete %>
           </td>
         </tr>
       </tbody>

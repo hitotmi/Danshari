@@ -12,7 +12,7 @@ class PostComment < ApplicationRecord
     good_comments.exists?(user_id: user.id)
   end
 
-  #相談者から役に立った評価がもらえたときの通知
+  #相談者からグッドアドバイス評価がもらえたときの通知
   def create_notification_by(current_user, id, user_id)
     return if current_user.id == user_id
     notification = current_user.active_notifications.new(

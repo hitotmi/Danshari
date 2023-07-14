@@ -1,8 +1,8 @@
   <div class="row no-gutters">
     <% if post_comments.present? %>
       <div class="col-12" id="flash-message">
-        <% if flash[:post_comment_created] %>
-          <%= render "layouts/flash", message: flash[:post_comment_created] %>
+        <% if flash[:post_comment] %>
+          <%= render "layouts/flash", message: flash[:post_comment] %>
         <% end %>
       </div>
       <table class="table">

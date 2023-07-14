@@ -14,13 +14,14 @@ class Admin::PostCommentsController < ApplicationController
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
     @counseling_post = CounselingPost.find(params[:counseling_post_id])
-    flash.now[:post_comment] = '回答を削除しました'
 
-    if request.referrer.include? admin_post_comment_path
+    if params[:from_show_page] == 'true'
       # 詳細ページからのリクエストがあった場合
-      render :destroy_show
+      flash[:post_comment] = '回答を削除しました'
+      redirect_to admin_post_comments_path
     else
       # 一覧ページからのリクエストがあった場合
+      flash.now[:post_comment] = '回答を削除しました'
       render :destroy_index
     end
   end

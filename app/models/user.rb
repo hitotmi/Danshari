@@ -18,13 +18,10 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-
-
   ## ユーザーのgood_commentsの数（グッドアドバイス数）を取得。
   def total_good_comments_count
     good_comments_through_post_comments.count
   end
-
 
   #ランキングで表示するトータル数を取得。
   def good_comments_count
@@ -50,7 +47,6 @@ class User < ApplicationRecord
     end
     profile_image
   end
-
 
   #ゲストログイン機能としてゲストユーザーを作成する
   def self.guest
