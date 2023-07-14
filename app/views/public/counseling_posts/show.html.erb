@@ -23,8 +23,8 @@
 
     <!-- CounselingPostの詳細（左側） -->
     <div class="col-md-6">
-      <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);" %>
-      <div class="d-flex justify-content-between mt-2">
+      <%= image_tag @counseling_post.get_image, class: "img-fluid", style: "width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);" %>
+      <div class="d-flex justify-content-between mt-3">
         <div>
           質問日時：<%= @counseling_post.created_at.strftime("%Y年%m月%d日") %>
           <div class="d-flex align-items-end user-link mt-3">
@@ -49,7 +49,7 @@
 
     <!-- CounselingPostの詳細（右側） -->
     <div class="col-md-6">
-      <div class="card-border p-3 mb-3">
+      <div class="card-border p-3 mb-4">
         <h4 class="border-bottom border-dark" style="white-space: pre-wrap; overflow-wrap: break-word;"><strong><%= @counseling_post.title %></strong></h4>
         <p style="white-space: pre-wrap; overflow-wrap: break-word;"><%= @counseling_post.content %></p>
         <div class="d-flex align-items-center mt-5">

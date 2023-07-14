@@ -1,5 +1,5 @@
 <% if counseling_post.score.present? && counseling_post.magnitude.present? %>
-  <div class="p-3" style="background-color: #F5F5F5; border-radius: 10px; border: 2px solid #EBEBEB;">
+  <div class="p-3" style="background-color: #e0f1fc; border-radius: 10px; border: 2px solid #BBE1FA;">
     <h4>
       <div style="display: flex; align-items: center;">
         <i class="fas fa-heartbeat" style="margin-right: 10px;"></i>
@@ -40,7 +40,10 @@
         </ul>
       </div>
       <div style="margin-top: 20px;">
-        <p>これらの指標は、どのような気持ちで相談を書いているのか、相談者の心理状態を理解し、適切な対応を行うための手がかりとなります。</p>
+        <p>
+          これらの指標は、相談者がどのような気持ちで相談を投稿しているのか、心理状態を理解する手がかりとなります。<br>
+          これにより、適切な対応を行うことが可能となります。
+        </p>
       </div>
       <div style="margin-top: 20px; text-align: center;">
         <button id="close-modal-btn" style="margin-top: 20px; padding: 10px 20px; background-color: #219EBC; color: #FFFFFF; border: none; border-radius: 5px; cursor: pointer;">閉じる</button>
@@ -79,6 +82,10 @@
         </td>
       </tr>
     </table>
-    <p style="font-size: 14px;"><em>※感情分析は自動化ツールによる予測結果です。正確性や完全性は保証されませんので、参考程度にご利用ください。具体的な状況や背景も考慮して判断してください。</em></p>
+    <p style="font-size: 13px; color: #666;">
+      <em>
+        ※感情分析は自動化ツールによる予測結果です。正確性や完全性は保証されませんので、参考程度にご利用ください。具体的な状況や背景も考慮して判断してください。
+      </em>
+    </p>
   </div>
 <% end %>
