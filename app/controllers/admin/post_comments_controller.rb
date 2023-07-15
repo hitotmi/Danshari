@@ -22,7 +22,7 @@ class Admin::PostCommentsController < ApplicationController
     else
       # 一覧ページからのリクエストがあった場合
       flash.now[:post_comment] = '回答を削除しました'
-      render :destroy_index
+      render :destroy
     end
   end
 end

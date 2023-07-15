@@ -1,3 +1,3 @@
 $('.post-comments-index').html("<%= j(render 'public/post_comments/index', counseling_post: @counseling_post, post_comments: @post_comments) %>")
 $('#flash-message').html("<%= j(render "layouts/flash") %>").show().delay(5000).fadeOut();
-$('.errors').val("");
+$('.errors').html("");

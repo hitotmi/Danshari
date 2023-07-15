@@ -18,8 +18,8 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def destroy
-    comment = PostComment.find_by(id: params[:id])
-    comment.destroy
+    @comment = PostComment.find_by(id: params[:id])
+    @comment.destroy
     flash.now[:post_comment] = '回答を削除しました'
     @post_comments = @counseling_post.post_comments.order(created_at: :desc)
   end
