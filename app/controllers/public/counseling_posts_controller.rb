@@ -1,7 +1,7 @@
 class Public::CounselingPostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_counseling_post, only: [:show, :edit, :update, :destroy, :is_matching_login_user]
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :set_counseling_post, only: [:show, :edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def new
     @counseling_post = CounselingPost.new

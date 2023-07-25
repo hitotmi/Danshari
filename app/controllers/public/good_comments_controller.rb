@@ -24,5 +24,4 @@ class Public::GoodCommentsController < ApplicationController
   def set_post_comment
     @post_comment = PostComment.find(params[:post_comment_id])
   end
-
 end

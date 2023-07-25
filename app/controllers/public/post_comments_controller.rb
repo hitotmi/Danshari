@@ -1,6 +1,7 @@
 class Public::PostCommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_counseling_post, only: [:create, :destroy]
+  before_action :is_comment_owner, only: [:destroy]
 
   def create
     @post_comment = current_user.post_comments.new(post_comment_params)
@@ -18,8 +19,7 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def destroy
-    comment = PostComment.find_by(id: params[:id])
-    comment.destroy
+    @comment.destroy
     flash.now[:post_comment] = '回答を削除しました'
     @post_comments = @counseling_post.post_comments.order(created_at: :desc)
   end
@@ -32,5 +32,12 @@ class Public::PostCommentsController < ApplicationController
 
   def set_counseling_post
     @counseling_post = CounselingPost.find(params[:counseling_post_id])
+  end
+
+  def is_comment_owner
+    @comment = PostComment.find_by(id: params[:id])
+    unless @comment.user_id == current_user.id
+      redirect_to counseling_post_path(@counseling_post)
+    end
   end
 end
